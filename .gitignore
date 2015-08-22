@@ -1,0 +1,11 @@
+/.settings
+/.classpath
+/.project
+*.log
+*.epoch
+*.lck
+.idea/
+*.iml
+bower_components/
+node_modules/
+target/
