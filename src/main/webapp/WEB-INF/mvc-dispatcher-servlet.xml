@@ -8,13 +8,13 @@
 
     <context:component-scan base-package="com.skyfly33.spring"/>
 
-    <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
-        <!--<property name="prefix" value="/WEB-INF/pages/"/>-->
-        <!--<property name="suffix" value=".jsp"/>-->
-    <!--</bean>-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/pages/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
 
     <mvc:annotation-driven />
 
-    <mvc:resources mapping="/yo/**" location="/WEB-INF/www/app" cache-period="31556926"/>
+    <mvc:resources mapping="/resources/**" location="/resources/" cache-period="31556926"/>
 
 </beans>
