@@ -38,7 +38,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2 text">
-                    <h1><strong>CubeoneAPI</strong> Login Form</h1>
+                    <h1><strong>CubeoneAPI</strong> ${message}</h1>
 
                     <div class="description">
                         <p>
