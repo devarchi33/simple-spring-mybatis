@@ -112,7 +112,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="<c:url value="/resources/bower_components/adminlte/dist/img/user2-160x160.jpg"/>"
                              class="user-image" alt="User Image">
-                        <span class="hidden-xs">Alexander Pierce</span>
+                        <span class="hidden-xs">${loginEmail}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->

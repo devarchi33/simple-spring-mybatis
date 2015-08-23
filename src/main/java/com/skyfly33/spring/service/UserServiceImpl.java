@@ -28,5 +28,17 @@ public class UserServiceImpl implements UserService {
         return allUser;
     }
 
+    @Override
+    public User findUserByEmail(String email) {
+        User user = userDao.findUserByEmail(email);
+        return user;
+    }
+
+    @Override
+    public Boolean isValidUser(User user) {
+        Boolean isValidUser = userDao.isValidUser(user);
+        return isValidUser;
+    }
+
 
 }

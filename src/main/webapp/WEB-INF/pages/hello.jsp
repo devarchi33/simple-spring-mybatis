@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -62,11 +63,11 @@
                         </div>
                     </div>
                     <div class="form-bottom">
-                        <form role="form" action="/login" method="get" class="login-form">
+                        <form:form role="form" action="/login" method="post" class="login-form" modelAttribute="User">
                             <div class="form-group">
-                                <label class="sr-only" for="form-username">Username</label>
-                                <input type="text" name="form-username" placeholder="Username..."
-                                       class="form-username form-control" id="form-username">
+                                <label class="sr-only" for="form-email">Username</label>
+                                <input type="email" name="form-email" placeholder="Email..."
+                                       class="form-email form-control" id="form-email">
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="form-password">Password</label>
@@ -74,9 +75,12 @@
                                        class="form-password form-control" id="form-password">
                             </div>
                             <button type="submit" class="btn">Sign in!</button>
-                        </form>
+                        </form:form>
                     </div>
                 </div>
+            </div>
+            <div class="row">
+                <p>${inValidUser}</p>
             </div>
             <%--<div class="row">--%>
                 <%--<div class="col-sm-6 col-sm-offset-3 social-login">--%>

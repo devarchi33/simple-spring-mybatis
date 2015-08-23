@@ -12,4 +12,8 @@ import java.util.List;
 public interface UserDao {
 
     List<User> findAllUsers();
+
+    User findUserByEmail(String email);
+
+    Boolean isValidUser(User user);
 }

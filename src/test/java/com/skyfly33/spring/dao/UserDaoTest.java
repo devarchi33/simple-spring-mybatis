@@ -1,5 +1,6 @@
 package com.skyfly33.spring.dao;
 
+import com.skyfly33.spring.domain.User;
 import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
@@ -32,5 +33,20 @@ public class UserDaoTest extends TestCase {
     @Test
     public void testSetUserDao() throws Exception {
         assertNotNull(userDao);
+    }
+
+    @Test
+    public void testFindUserByEmail() throws Exception {
+        String email = "skyfly33@iruen.com";
+        User user = userDao.findUserByEmail(email);
+        assertEquals(email, user.getEmail());
+    }
+
+    @Test
+    public void testIsValidUser() throws Exception {
+        User loginParam = new User(1L, "skyfly33@iruen.com", "iruen", 01020570001);
+
+        Boolean isValidUser = userDao.isValidUser(loginParam);
+        assertTrue(isValidUser);
     }
 }

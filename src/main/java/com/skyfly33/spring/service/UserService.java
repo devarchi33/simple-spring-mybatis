@@ -16,5 +16,9 @@ public interface UserService {
     @Autowired
     UserDao userDao = null;
 
-    public List<User> findAllUsers();
+    List<User> findAllUsers();
+
+    User findUserByEmail(String email);
+
+    Boolean isValidUser(User user);
 }
