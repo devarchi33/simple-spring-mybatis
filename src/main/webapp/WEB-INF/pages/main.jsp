@@ -39,10 +39,13 @@
 </head>
 <body>
 <div class="wrapper skin-black">
+
     <%@ include file="components/header.jsp" %>
     <%@ include file="components/mainSideBar.jsp" %>
 
-    <div class="container" style="height: 500px;"></div>
+    <div class="content-wrapper">
+        <%@ include file="contents/userList.jsp" %>
+    </div>
 
     <%--script--%>
     <!-- jQuery 2.1.4 -->
@@ -55,9 +58,6 @@
     </script>
     <!-- Bootstrap 3.3.5 -->
     <script src="<c:url value="/resources/bower_components/bootstrap/dist/js/bootstrap.min.js" />"></script>
-    <!-- Morris.js charts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-    <script src="<c:url value="/resources/bower_components/adminlte/plugins/morris/morris.min.js"/> "></script>
     <!-- Sparkline -->
     <script src="<c:url value="/resources/bower_components/adminlte/plugins/sparkline/jquery.sparkline.min.js" /> "></script>
     <!-- jvectormap -->
@@ -82,6 +82,9 @@
     <script src="<c:url value="/resources/bower_components/adminlte/dist/js/pages/dashboard.js"/> "></script>
     <!-- AdminLTE for demo purposes -->
     <script src="<c:url value="/resources/bower_components/adminlte/dist/js/demo.js"/> "></script>
+    <!-- Morris.js charts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="<c:url value="/resources/bower_components/adminlte/plugins/morris/morris.min.js"/> "></script>
 </div>
 </body>
 </html>

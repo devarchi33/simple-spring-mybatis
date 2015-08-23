@@ -5,7 +5,7 @@
   Time: 오후 2:02
   To change this template use File | Settings | File Templates.
 --%>
-<div class="main-sidebar">
+<aside class="main-sidebar">
     <!-- Inner sidebar -->
     <div class="sidebar">
         <!-- user panel (Optional) -->
@@ -35,9 +35,9 @@
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-            <li class="header">HEADER</li>
+            <li class="header">CubeoneAPI_Test</li>
             <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="#"><span>Link</span></a><</li>
+            <li class="active"><a href="#"><span>UserList</span></a><</li>
             <li><a href="#"><span>Another Link</span></a></li>
             <li class="treeview">
                 <a href="#"><span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
@@ -51,5 +51,5 @@
 
     </div>
     <!-- /.sidebar -->
-</div>
+</aside>
 <!-- /.main-sidebar -->
