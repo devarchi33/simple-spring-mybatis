@@ -4,10 +4,10 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="net.madvirus.spring4.chap13.store.dao.ItemDao">
+<mapper namespace="com.skyfly33.spring.dao.UserDao">
 
-    <select id="findById" resultType="net.madvirus.spring4.chap13.store.model.Item">
-        select * from ITEM where ITEM_ID = #{id}
+    <select id="findAllUsers" resultType="com.skyfly33.spring.domain.User">
+        select * from cubeone_user
     </select>
 
 </mapper>
