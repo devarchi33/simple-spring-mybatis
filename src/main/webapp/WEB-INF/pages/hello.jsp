@@ -62,7 +62,7 @@
                         </div>
                     </div>
                     <div class="form-bottom">
-                        <form role="form" action="" method="post" class="login-form">
+                        <form role="form" action="/login" method="get" class="login-form">
                             <div class="form-group">
                                 <label class="sr-only" for="form-username">Username</label>
                                 <input type="text" name="form-username" placeholder="Username..."
