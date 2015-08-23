@@ -1,6 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://mybatis.org/schema/mybatis-spring
+       http://mybatis.org/schema/mybatis-spring.xsd">
+
+       <tx:annotation-driven/>
+
+       <mybatis:scan base-package="com.skyfly33.spring.dao"/>
+
+       <bean
+               class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+
+       <bean id="transactionManager"
+             class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+              <property name="dataSource" ref="dataSource"/>
+       </bean>
+
+       <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+             destroy-method="close">
+              <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+              <property name="jdbcUrl"
+                        value="jdbc:mysql://localhost/test?characterEncoding=utf8"/>
+              <property name="user" value="root"/>
+              <property name="password" value="sky1111"/>
+       </bean>
+
+       <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+              <property name="dataSource" ref="dataSource"/>
+              <property name="mapperLocations">
+                     <list>
+                            <value>classpath:/mybatis/user-mapper.xml</value>
+                     </list>
+              </property>
+              <property name="typeAliases">
+                     <list>
+                            <value>com.skyfly33.spring.domain.User</value>
+                     </list>
+              </property>
+       </bean>
+
+       <bean id="userDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+              <property name="mapperInterface" value="com.skyfly33.spring.dao.UserDao"/>
+              <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+       </bean>
+
+       <bean id="userService" class="com.skyfly33.spring.service.UserServiceImpl">
+              <property name="userDao" ref="userDao"/>
+       </bean>
 
 </beans>
