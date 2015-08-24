@@ -90,23 +90,24 @@
             <div class="row">
                 <p>${inValidUser}</p>
             </div>
-            <%--<div class="row">--%>
-            <%--<div class="col-sm-6 col-sm-offset-3 social-login">--%>
-            <%--<h3>...or login with:</h3>--%>
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3 social-login">
+                    <h3>...or login with:</h3>
 
-            <%--<div class="social-login-buttons">--%>
-            <%--<a class="btn btn-link-1 btn-link-1-facebook" href="#">--%>
-            <%--<i class="fa fa-facebook"></i> Facebook--%>
-            <%--</a>--%>
-            <%--<a class="btn btn-link-1 btn-link-1-twitter" href="#">--%>
-            <%--<i class="fa fa-twitter"></i> Twitter--%>
-            <%--</a>--%>
-            <%--<a class="btn btn-link-1 btn-link-1-google-plus" href="#">--%>
-            <%--<i class="fa fa-google-plus"></i> Google Plus--%>
-            <%--</a>--%>
-            <%--</div>--%>
-            <%--</div>--%>
-            <%--</div>--%>
+                    <div class="social-login-buttons">
+                        <a id="kakao-login-btn"></a>
+                        <%--<a class="btn btn-link-1 btn-link-1-facebook" href="#">--%>
+                        <%--<i class="fa fa-facebook"></i> Facebook--%>
+                        <%--</a>--%>
+                        <%--<a class="btn btn-link-1 btn-link-1-twitter" href="#">--%>
+                        <%--<i class="fa fa-twitter"></i> Twitter--%>
+                        <%--</a>--%>
+                        <%--<a class="btn btn-link-1 btn-link-1-google-plus" href="#">--%>
+                        <%--<i class="fa fa-google-plus"></i> Google Plus--%>
+                        <%--</a>--%>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -115,6 +116,8 @@
     <script src="<c:url value="/resources/bower_components/bootstrap/dist/js/bootstrap.min.js"/>"></script>
     <script src="<c:url value="/resources/bower_components/jquery-backstretch/jquery.backstretch.min.js"/>"></script>
     <script src="<c:url value="/resources/js/scripts.js"/>"></script>
+    <script src="<c:url value="/resources/js/kakao.js"/>"></script>
+    <script src="<c:url value="/resources/js/kakaoLogin.js"/>"></script>
 
     <!--[if lt IE 10]>
     <script src="<c:url value="/resources/js/placeholder.js"/>"></script>

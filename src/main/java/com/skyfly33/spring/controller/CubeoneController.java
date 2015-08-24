@@ -35,6 +35,12 @@ public class CubeoneController {
         return mv;
     }
 
+    @RequestMapping(value = "main", method = RequestMethod.GET)
+    public ModelAndView mainView() {
+        ModelAndView mv = new ModelAndView("main");
+        return mv;
+    }
+
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public ModelAndView excuteLogin(HttpServletRequest request,
                                     @ModelAttribute("User") User user,
