@@ -49,4 +49,14 @@ public class UserDaoTest extends TestCase {
         Boolean isValidUser = userDao.isValidUser(loginParam);
         assertTrue(isValidUser);
     }
+
+    @Test
+    public void testSignUpUser() throws Exception {
+        User signUpUser = new User("devarchi33@gmail.com", "devarchi33", 01020570003);
+
+        userDao.signUpUser(signUpUser);
+
+        User getSignUpUser = userDao.findUserByEmail(signUpUser.getEmail());
+        assertEquals(signUpUser.getEmail(), getSignUpUser.getEmail());
+    }
 }

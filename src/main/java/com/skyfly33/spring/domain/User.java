@@ -23,6 +23,12 @@ public class User {
         this.phone = phone;
     }
 
+    public User(String email, String password, int phone) {
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+    }
+
     public Long getId() {
         return id;
     }

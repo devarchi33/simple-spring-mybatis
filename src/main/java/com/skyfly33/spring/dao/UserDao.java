@@ -16,4 +16,6 @@ public interface UserDao {
     User findUserByEmail(String email);
 
     Boolean isValidUser(User user);
+
+    void signUpUser(User user);
 }
