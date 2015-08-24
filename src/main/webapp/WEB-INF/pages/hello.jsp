@@ -84,6 +84,10 @@
                             <button type="submit" class="btn">Sign in!</button>
                         </form:form>
                         <p><a href="signUp" style="color: #005983">Sign Up</a></p>
+
+                        <form action="/main" method="post" id="hiddenThumbnail">
+                            <input type="hidden" id="kakaoThumbnail" name="userThumb"/>
+                        </form>
                     </div>
                 </div>
             </div>

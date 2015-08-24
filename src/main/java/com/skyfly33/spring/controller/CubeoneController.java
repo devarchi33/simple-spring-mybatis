@@ -23,6 +23,8 @@ public class CubeoneController {
     @Autowired
     UserService userService;
 
+    private String thumbnailImg = null;
+
     @ModelAttribute("user")
     public User constructor() {
         return new User();
@@ -35,9 +37,12 @@ public class CubeoneController {
         return mv;
     }
 
-    @RequestMapping(value = "main", method = RequestMethod.GET)
-    public ModelAndView mainView() {
+    @RequestMapping(value = "main", method = RequestMethod.POST)
+    public ModelAndView saveParam(@RequestParam("userThumb") String userThumb) {
         ModelAndView mv = new ModelAndView("main");
+        logger.info("Thumbnail url : " + userThumb);
+        thumbnailImg = userThumb;
+        mv.addObject("thumbnail", thumbnailImg);
         return mv;
     }
 

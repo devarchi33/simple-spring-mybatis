@@ -11,8 +11,8 @@
         <!-- user panel (Optional) -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="<c:url value="/resources/bower_components/adminlte/dist/img/user2-160x160.jpg"/> "
-                     class="img-circle" alt="User Image">
+                <%--<img src="<c:url value="/resources/bower_components/adminlte/dist/img/user2-160x160.jpg"/> "--%>
+                <img src="${thumbnail}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
                 <p>${loginEmail}</p>

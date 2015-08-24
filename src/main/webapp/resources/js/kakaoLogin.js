@@ -9,8 +9,18 @@ Kakao.Auth.createLoginButton({
     container: '#kakao-login-btn',
     lang: 'en',
     success: function (authObj) {
-        alert(JSON.stringify(authObj));
-        window.onload = setTimeout("location.href='http://localhost:8080/main'",10);
+        Kakao.API.request({
+            url: '/v1/user/me',
+            success: function (res) {
+                var userProp = res.properties;
+                var userThumb = userProp.thumbnail_image;
+                console.log(userThumb);
+                console.log($("#hiddenThumbnail"));
+                console.log($("#kakaoThumbnail"));
+                $("#kakaoThumbnail").val(userThumb);
+                $("#hiddenThumbnail").submit();
+            }
+        });
     },
     fail: function (err) {
         alert(JSON.stringify(err))

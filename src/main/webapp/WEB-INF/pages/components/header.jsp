@@ -33,8 +33,7 @@
                                 <li><!-- start message -->
                                     <a href="#">
                                         <div class="pull-left">
-                                            <img src="<c:url value="/resources/bower_components/adminlte/dist/img/user2-160x160.jpg"/>"
-                                                 class="img-circle" alt="User Image">
+                                            <img src="${thumbnail}" class="img-circle" alt="User Image">
                                         </div>
                                         <h4>
                                             Sender Name
@@ -110,15 +109,13 @@
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="<c:url value="/resources/bower_components/adminlte/dist/img/user2-160x160.jpg"/>"
-                             class="user-image" alt="User Image">
+                        <img src="${thumbnail}" class="user-image" alt="User Image">
                         <span class="hidden-xs">${loginEmail}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            <img src="<c:url value="/resources/bower_components/adminlte/dist/img/user2-160x160.jpg" />"
-                                 class="img-circle" alt="User Image">
+                            <img src="${thumbnail}" class="img-circle" alt="User Image">
 
                             <p>
                                 Alexander Pierce - Web Developer
