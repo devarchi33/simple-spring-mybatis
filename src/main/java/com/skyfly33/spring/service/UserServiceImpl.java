@@ -40,5 +40,10 @@ public class UserServiceImpl implements UserService {
         return isValidUser;
     }
 
+    @Override
+    public void signUpUser(User user) {
+        userDao.signUpUser(user);
+    }
+
 
 }

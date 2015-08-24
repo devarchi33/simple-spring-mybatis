@@ -21,4 +21,6 @@ public interface UserService {
     User findUserByEmail(String email);
 
     Boolean isValidUser(User user);
+
+    void signUpUser (User user);
 }

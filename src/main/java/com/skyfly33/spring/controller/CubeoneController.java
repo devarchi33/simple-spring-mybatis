@@ -23,6 +23,11 @@ public class CubeoneController {
     @Autowired
     UserService userService;
 
+    @ModelAttribute("user")
+    public User constructor() {
+        return new User();
+    }
+
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView printWelcome() {
         ModelAndView mv = new ModelAndView("hello");
@@ -61,8 +66,15 @@ public class CubeoneController {
     }
 
     @RequestMapping(value = "signUp", method = RequestMethod.GET)
-    public ModelAndView join() {
+    public ModelAndView signUp() {
         ModelAndView mv = new ModelAndView("contents/signUp");
+        return mv;
+    }
+
+    @RequestMapping(value = "signUp", method = RequestMethod.POST)
+    public ModelAndView signUpProc(@ModelAttribute("user") User user) {
+        ModelAndView mv = new ModelAndView("contents/signUp");
+        userService.signUpUser(user);
         return mv;
     }
 

@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!doctype html>
 <html lang="ko">
 <head>
@@ -81,11 +82,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-7 text">
-                    <h1><strong>Bootstrap</strong> Registration Form</h1>
+                    <h1><strong>CubeoneAPI_Test</strong> Registration Form</h1>
+
                     <div class="description">
                         <p>
-                            This is a free responsive registration form made with Bootstrap.
-                            Download it on <a href="http://azmind.com"><strong>AZMIND</strong></a>, customize and use it as you like!
+                            This is CubeoneAPI_Test registration form made with Bootstrap.
                         </p>
                     </div>
                     <div class="top-big-link">
@@ -97,6 +98,7 @@
                     <div class="form-top">
                         <div class="form-top-left">
                             <h3>Sign up now</h3>
+
                             <p>Fill in the form below to get instant access:</p>
                         </div>
                         <div class="form-top-right">
@@ -104,26 +106,25 @@
                         </div>
                     </div>
                     <div class="form-bottom">
-                        <form role="form" action="" method="post" class="registration-form">
+                        <form:form modelAttribute="user" role="form" action="signUp" method="post"
+                                   class="registration-form">
                             <div class="form-group">
-                                <label class="sr-only" for="form-first-name">First name</label>
-                                <input type="text" name="form-first-name" placeholder="First name..." class="form-first-name form-control" id="form-first-name">
+                                <label class="sr-only" for="email">Email</label>
+                                <form:input path="email" placeholder="Email.."
+                                            class="form-email form-control" id="form-email"/>
                             </div>
                             <div class="form-group">
-                                <label class="sr-only" for="form-last-name">Last name</label>
-                                <input type="text" name="form-last-name" placeholder="Last name..." class="form-last-name form-control" id="form-last-name">
+                                <label class="sr-only" for="password">Password</label>
+                                <form:password path="password" placeholder="Password.."
+                                               class="form-password form-control" id="form-password"/>
                             </div>
                             <div class="form-group">
-                                <label class="sr-only" for="form-email">Email</label>
-                                <input type="text" name="form-email" placeholder="Email..." class="form-email form-control" id="form-email">
-                            </div>
-                            <div class="form-group">
-                                <label class="sr-only" for="form-about-yourself">About yourself</label>
-			                        	<textarea name="form-about-yourself" placeholder="About yourself..."
-                                                  class="form-about-yourself form-control" id="form-about-yourself"></textarea>
+                                <label class="sr-only" for="phone">Phone</label>
+                                <form:input path="phone" placeholder="Phone.."
+                                            class="form-phone form-control" id="form-phone"/>
                             </div>
                             <button type="submit" class="btn">Sign me up!</button>
-                        </form>
+                        </form:form>
                     </div>
                 </div>
             </div>
