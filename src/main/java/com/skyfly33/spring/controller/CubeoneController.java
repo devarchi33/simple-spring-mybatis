@@ -60,6 +60,12 @@ public class CubeoneController {
         return mv;
     }
 
+    @RequestMapping(value = "signUp", method = RequestMethod.GET)
+    public ModelAndView join() {
+        ModelAndView mv = new ModelAndView("contents/signUp");
+        return mv;
+    }
+
     @ExceptionHandler(RuntimeException.class)
     public ModelAndView RuntimeExceptionHandler() {
         ModelAndView mv = new ModelAndView("error/errorRuntimeException");
