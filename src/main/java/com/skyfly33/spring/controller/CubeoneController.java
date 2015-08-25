@@ -66,6 +66,7 @@ public class CubeoneController {
         user.setPhone(userService.findUserByEmail(form_email).getPhone());
 
         if (userService.isValidUser(user)) {
+            mv.addObject("thumbnail", this.thumbnailImg);
             mv.addObject("loginEmail", form_email);
             mv.setViewName("main");
         } else {
