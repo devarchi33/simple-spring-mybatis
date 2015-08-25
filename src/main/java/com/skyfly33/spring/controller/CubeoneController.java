@@ -24,6 +24,7 @@ public class CubeoneController {
     UserService userService;
 
     private String thumbnailImg = null;
+    private String kakaoNickName = null;
 
     @ModelAttribute("user")
     public User constructor() {
@@ -38,11 +39,15 @@ public class CubeoneController {
     }
 
     @RequestMapping(value = "main", method = RequestMethod.POST)
-    public ModelAndView saveParam(@RequestParam("userThumb") String userThumb) {
+    public ModelAndView saveParam(@RequestParam("userThumb") String userThumb,
+                                  @RequestParam("kakaoNickName") String kakaoNickName) {
         ModelAndView mv = new ModelAndView("main");
         logger.info("Thumbnail url : " + userThumb);
-        thumbnailImg = userThumb;
-        mv.addObject("thumbnail", thumbnailImg);
+        logger.info("kakaoNickName : " + kakaoNickName);
+        this.thumbnailImg = userThumb;
+        this.kakaoNickName = kakaoNickName;
+        mv.addObject("thumbnail", this.thumbnailImg);
+        mv.addObject("kakaoNickName", this.kakaoNickName);
         return mv;
     }
 

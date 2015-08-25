@@ -87,6 +87,7 @@
 
                         <form action="/main" method="post" id="hiddenThumbnail">
                             <input type="hidden" id="kakaoThumbnail" name="userThumb"/>
+                            <input type="hidden" id="kakaoNickName" name="kakaoNickName"/>
                         </form>
                     </div>
                 </div>

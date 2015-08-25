@@ -14,10 +14,12 @@ Kakao.Auth.createLoginButton({
             success: function (res) {
                 var userProp = res.properties;
                 var userThumb = userProp.thumbnail_image;
+                var nickName = userProp.nickname;
                 console.log(userThumb);
                 console.log($("#hiddenThumbnail"));
                 console.log($("#kakaoThumbnail"));
                 $("#kakaoThumbnail").val(userThumb);
+                $("#kakaoNickName").val(nickName);
                 $("#hiddenThumbnail").submit();
             }
         });

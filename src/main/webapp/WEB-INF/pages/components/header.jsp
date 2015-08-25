@@ -43,7 +43,6 @@
                                     </a>
                                 </li>
                                 <!-- end message -->
-                                ...
                             </ul>
                         </li>
                         <li class="footer"><a href="#">See All Messages</a></li>
@@ -118,7 +117,7 @@
                             <img src="${thumbnail}" class="img-circle" alt="User Image">
 
                             <p>
-                                Alexander Pierce - Web Developer
+                                ${kakaoNickName}
                                 <small>Member since Nov. 2012</small>
                             </p>
                         </li>
