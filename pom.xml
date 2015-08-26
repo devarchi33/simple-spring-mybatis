@@ -7,6 +7,13 @@
     <version>1.0-SNAPSHOT</version>
     <name>simple-spring-mybatis</name>
 
+    <repositories>
+        <repository>
+            <id>mesir-repo</id>
+            <url>http://mesir.googlecode.com/svn/trunk/mavenrepo</url>
+        </repository>
+    </repositories>
+
     <properties>
         <spring.version>4.1.1.RELEASE</spring.version>
         <!-- Logging -->
@@ -91,6 +98,11 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.30</version>
+        </dependency>
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc14</artifactId>
+            <version>10.2.0.4.0</version>
         </dependency>
 
         <!-- Logging with SLF4J & LogBack -->
