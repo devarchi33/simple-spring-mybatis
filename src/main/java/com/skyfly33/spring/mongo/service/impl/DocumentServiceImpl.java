@@ -5,12 +5,14 @@ import com.skyfly33.spring.mongo.model.Document;
 import com.skyfly33.spring.mongo.model.Type;
 import com.skyfly33.spring.mongo.service.DocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * Created by donghoon on 15. 8. 27..
  */
+@Service("documentService")
 public class DocumentServiceImpl implements DocumentService {
 
     @Autowired

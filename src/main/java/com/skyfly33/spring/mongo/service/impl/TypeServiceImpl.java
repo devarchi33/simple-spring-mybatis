@@ -4,12 +4,14 @@ import com.skyfly33.spring.mongo.dao.TypeDao;
 import com.skyfly33.spring.mongo.model.Type;
 import com.skyfly33.spring.mongo.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * Created by donghoon on 15. 8. 27..
  */
+@Service("typeService")
 public class TypeServiceImpl implements TypeService {
 
     @Autowired
