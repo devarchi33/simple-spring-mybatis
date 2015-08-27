@@ -2,12 +2,14 @@ package com.skyfly33.spring.mongo.dao.repository;
 
 import com.skyfly33.spring.mongo.dao.TypeDao;
 import com.skyfly33.spring.mongo.model.Type;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * Created by donghoon on 15. 8. 27..
  */
+@Repository("mongoTypeRepository")
 public class MongoTypeRepository implements TypeDao {
     @Override
     public List<Type> getAll() {
