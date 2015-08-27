@@ -10,15 +10,15 @@ import java.util.List;
  */
 public interface DocumentService {
 
-    public List<Document> getAllDocuments();
+    List<Document> getAllDocuments();
 
-    public Document findDocumentById(String id);
+    Document findDocumentById(String id);
 
-    public Document saveDocument(String id, Document document);
+    Document saveDocument(String id, Document document);
 
-    public Document removeDocumentById(String id);
+    Document removeDocumentById(String id);
 
-    public List<Document> findByType(Type type);
+    List<Document> findByType(Type type);
 
-    public boolean updateLocationFromDocumentId(String documentId, String location);
+    boolean updateLocationFromDocumentId(String documentId, String location);
 }

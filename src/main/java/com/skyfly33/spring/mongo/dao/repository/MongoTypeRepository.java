@@ -1,7 +1,13 @@
 package com.skyfly33.spring.mongo.dao.repository;
 
+import static org.springframework.data.mongodb.core.query.Criteria.where;
+import static org.springframework.data.mongodb.core.query.Query.query;
+
 import com.skyfly33.spring.mongo.dao.TypeDao;
 import com.skyfly33.spring.mongo.model.Type;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -11,18 +17,24 @@ import java.util.List;
  */
 @Repository("mongoTypeRepository")
 public class MongoTypeRepository implements TypeDao {
+
+    @Autowired
+    private MongoTemplate mongoTemplate;
+
     @Override
     public List<Type> getAll() {
-        return null;
+        return mongoTemplate.findAll(Type.class);
     }
 
     @Override
     public Type findById(String id) {
-        return null;
+        Query query = query(where("typeId").is(id));
+        return mongoTemplate.findOne(query, Type.class);
     }
 
     @Override
     public Type save(Type type) {
-        return null;
+        mongoTemplate.insert(type);
+        return type;
     }
 }

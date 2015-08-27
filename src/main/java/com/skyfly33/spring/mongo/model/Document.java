@@ -8,7 +8,7 @@ import java.util.Date;
 /**
  * Created by donghoon on 15. 8. 27..
  */
-@org.springframework.data.mongodb.core.mapping.Document(collection = "docs") // 컬렉션에 저장될 도메인 객체 식별.
+@org.springframework.data.mongodb.core.mapping.Document(collection = "documents") // 컬렉션에 저장될 도메인 객체 식별.
 public class Document {
 
     @Id //저장된 객체를 식별.
