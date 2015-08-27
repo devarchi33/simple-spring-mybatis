@@ -1,8 +1,8 @@
 package com.skyfly33.spring.mongo.service.impl;
 
 import com.skyfly33.spring.mongo.dao.DocumentDao;
-import com.skyfly33.spring.mongo.model.Document;
-import com.skyfly33.spring.mongo.model.Type;
+import com.skyfly33.spring.mongo.model.sample.Document;
+import com.skyfly33.spring.mongo.model.sample.Type;
 import com.skyfly33.spring.mongo.service.DocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

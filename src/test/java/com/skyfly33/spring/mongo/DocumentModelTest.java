@@ -8,12 +8,10 @@ import java.util.List;
 
 import com.skyfly33.spring.mongo.dao.DocumentDao;
 import com.skyfly33.spring.mongo.dao.TypeDao;
-import com.skyfly33.spring.mongo.model.Document;
-import com.skyfly33.spring.mongo.model.Type;
+import com.skyfly33.spring.mongo.model.sample.Document;
+import com.skyfly33.spring.mongo.model.sample.Type;
 import com.skyfly33.spring.mongo.service.DocumentService;
 import com.skyfly33.spring.mongo.service.TypeService;
-import jdk.internal.dynalink.linker.TypeBasedGuardingDynamicLinker;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -53,6 +51,8 @@ public class DocumentModelTest {
         assertNotNull(typeService);
 
         List<Type> types = typeService.getAllDefinedTypes();
+//        Type type1 = types.get(0);
+//        logger.debug(type1.toString());
         assertNotNull(types);
         assertEquals(4, types.size());
 
@@ -67,5 +67,16 @@ public class DocumentModelTest {
         for (Document document : documents) {
             mongoDocDao.save(document.getDocumentId(), document);
         }
+    }
+
+    @Test
+//    @Ignore
+    public void testMongoDBFind() {
+        logger.debug("Testing Spring Data MongoDB... [ FIND ]");
+        assertNotNull(mongoDocDao);
+        Document document = mongoDocDao.findById(ID);
+        assertNotNull(document);
+        assertEquals(NAME, document.getName());
+        logger.debug(document.toString());
     }
 }

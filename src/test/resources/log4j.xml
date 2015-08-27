@@ -38,7 +38,7 @@
 
     <!-- root 로거 기본 설정 -->
     <root>
-        <level value="INFO"/>
+        <level value="debug"/>
         <appender-ref ref="stdout"/>
     </root>
 </log4j:configuration> 

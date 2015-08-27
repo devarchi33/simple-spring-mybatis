@@ -1,7 +1,6 @@
-package com.skyfly33.spring.mongo.model;
+package com.skyfly33.spring.mongo.model.sample;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.*;
 
 /**
  * Created by donghoon on 15. 8. 27..
@@ -14,6 +13,21 @@ public class Type {
     private String name;
     private String desc;
     private String extension;
+
+    public Type(){
+        this(null,null);
+    }
+
+    public Type(String name,String extension){
+        this(java.util.UUID.randomUUID().toString(), name, extension, null);
+    }
+
+    public Type(String id, String name,String extension, String description){
+        this.typeId = id;
+        this.name = name;
+        this.extension = extension;
+        this.desc = description;
+    }
 
     public String getTypeId() {
         return typeId;
@@ -47,16 +61,17 @@ public class Type {
         this.extension = extension;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder builder = new StringBuilder("Type{");
-        builder.append("id: ").
-                append(typeId).
-                append(", name: ").
-                append(name).append(", desc: ").
-                append(desc).append(", extension: ").
-                append(extension).
-                append("}");
+    public String toString(){
+        StringBuilder builder = new StringBuilder("Type(");
+        builder.append("id: ");
+        builder.append(typeId);
+        builder.append(", name: ");
+        builder.append(name);
+        builder.append(", description: ");
+        builder.append(desc);
+        builder.append(", extension: ");
+        builder.append(extension);
+        builder.append(")");
         return builder.toString();
     }
 }

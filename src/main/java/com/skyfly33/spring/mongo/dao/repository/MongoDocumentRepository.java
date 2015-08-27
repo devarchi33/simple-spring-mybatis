@@ -4,7 +4,9 @@ import static org.springframework.data.mongodb.core.query.Criteria.where;
 import static org.springframework.data.mongodb.core.query.Query.query;
 
 import com.skyfly33.spring.mongo.dao.DocumentDao;
-import com.skyfly33.spring.mongo.model.Document;
+import com.skyfly33.spring.mongo.model.sample.Document;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
@@ -19,6 +21,8 @@ import java.util.List;
  */
 @Repository("mongoDocumentRepository")
 public class MongoDocumentRepository implements DocumentDao {
+
+    Logger logger = LoggerFactory.getLogger(MongoDocumentRepository.class);
 
     @Autowired
     MongoTemplate mongoTemplate;
@@ -49,9 +53,10 @@ public class MongoDocumentRepository implements DocumentDao {
 
     @Override
     public Document findById(String id) {
+        logger.debug(id);
         Query query = query(where("documentId").is(id));
-        mongoTemplate.findOne(query, Document.class);
-        return null;
+        logger.debug(query.toString());
+        return mongoTemplate.findOne(query, Document.class);
     }
 
     @Override

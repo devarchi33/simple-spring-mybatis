@@ -1,6 +1,6 @@
 package com.skyfly33.spring.mongo.dao;
 
-import com.skyfly33.spring.mongo.model.Document;
+import com.skyfly33.spring.mongo.model.sample.Document;
 
 import java.util.List;
 
