@@ -10,7 +10,7 @@ import java.util.Date;
  */
 @org.springframework.data.mongodb.core.mapping.Document(collection = "documents") // 컬렉션에 저장될 도메인 객체 식별.
 public class Document {
-    @Id //저장된 객체를 식별.
+//    @Id //저장된 객체를 식별.   ---   MongoDB의 ObjectId 필드에 해당함.
     private String documentId;
     private String name;
     @DBRef // 다른 컬렉션에 대한 레퍼런스 추가.
