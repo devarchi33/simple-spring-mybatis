@@ -23,7 +23,7 @@ public class WHOOController {
         return kakaoAuthCode;
     }
 
-    @RequestMapping(value = "/app/profile")
+    @RequestMapping(value = "/get/userInfo")
     public String saveAuthCode(@RequestParam String code) {
         logger.info("Auth Code : " + code);
         return code;
