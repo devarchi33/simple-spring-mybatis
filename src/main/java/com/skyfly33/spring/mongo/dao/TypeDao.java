@@ -8,9 +8,9 @@ import java.util.List;
  * Created by donghoon on 15. 8. 27..
  */
 public interface TypeDao {
-    public List<Type> getAll();
+    List<Type> getAll();
 
-    public Type findById(String id);
+    Type findById(String id);
 
-    public Type save(Type type);
+    Type save(Type type);
 }

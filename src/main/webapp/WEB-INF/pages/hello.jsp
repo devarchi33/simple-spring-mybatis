@@ -73,7 +73,7 @@
                         <form:form role="form" action="/login" method="post" class="login-form" modelAttribute="User">
                             <div class="form-group">
                                 <label class="sr-only" for="form-email">Username</label>
-                                <input type="email" name="form-email" placeholder="Email..."
+                                <input type="text" name="form-email" placeholder="Email..."
                                        class="form-email form-control" id="form-email">
                             </div>
                             <div class="form-group">
