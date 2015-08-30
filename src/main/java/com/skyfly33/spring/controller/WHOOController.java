@@ -32,13 +32,4 @@ public class WHOOController {
         return code;
     }
 
-    @RequestMapping(value = "/jsontest")
-    public @ResponseBody Object jsonTest(){
-        logger.info("jsontest!");
-        Code vo = new Code();
-
-        vo.setCode("skyfly33");
-
-        return vo;
-    }
 }
