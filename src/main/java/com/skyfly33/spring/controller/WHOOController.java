@@ -1,5 +1,6 @@
 package com.skyfly33.spring.controller;
 
+import com.skyfly33.spring.domain.Code;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -24,7 +25,9 @@ public class WHOOController {
     }
 
     @RequestMapping(value = "/get/userInfo")
-    public String saveAuthCode(@RequestParam String code) {
+    public
+    @ResponseBody
+    String saveAuthCode(@RequestParam String code) {
         logger.info("Auth Code : " + code);
         return code;
     }
