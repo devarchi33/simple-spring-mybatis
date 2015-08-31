@@ -38,7 +38,13 @@ public class KakaoGetUserList {
         HttpEntity<Void> requestEntity = new HttpEntity<>((Void) null, headers);
 
         ResponseEntity<String> userList = restTemplate.exchange(URI, HttpMethod.GET, requestEntity, String.class);
-        logger.info(userList.toString());
+        HttpStatus status = userList.getStatusCode();
+        HttpHeaders responseHeaders = userList.getHeaders();
+        String responseBody = userList.getBody();
+
+        logger.info(status.toString());
+        logger.info(responseHeaders.toString());
+        logger.info(responseBody);
     }
 
 }
