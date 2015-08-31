@@ -1,5 +1,6 @@
 package com.skyfly33.spring.http;
 
+import com.skyfly33.spring.restclient.KakaoPushMessageSend;
 import com.skyfly33.spring.restclient.KakaoPushTokenDeregister;
 import com.skyfly33.spring.restclient.KakaoPushTokenRegister;
 import com.skyfly33.spring.restclient.KakaoPushTokenSearch;
@@ -24,6 +25,8 @@ public class RestClientTest {
     KakaoPushTokenSearch kakaoPushTokenSearch;
     @Autowired
     KakaoPushTokenDeregister kakaoPushTokenDeregister;
+    @Autowired
+    KakaoPushMessageSend kakaoPushMessageSend;
 
     @Test
     public void tokenRegisterTest() {
@@ -38,5 +41,10 @@ public class RestClientTest {
     @Test
     public void tokenDeregisterTest() {
         kakaoPushTokenDeregister.tokenDeregister();
+    }
+
+    @Test
+    public void sendMessageTest() {
+        kakaoPushMessageSend.sendMessage("test message");
     }
 }
