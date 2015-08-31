@@ -1,9 +1,6 @@
 package com.skyfly33.spring.http;
 
-import com.skyfly33.spring.restclient.KakaoPushMessageSend;
-import com.skyfly33.spring.restclient.KakaoPushTokenDeregister;
-import com.skyfly33.spring.restclient.KakaoPushTokenRegister;
-import com.skyfly33.spring.restclient.KakaoPushTokenSearch;
+import com.skyfly33.spring.restclient.*;
 import org.junit.Assert.*;
 
 import org.junit.Test;
@@ -27,6 +24,8 @@ public class RestClientTest {
     KakaoPushTokenDeregister kakaoPushTokenDeregister;
     @Autowired
     KakaoPushMessageSend kakaoPushMessageSend;
+    @Autowired
+    KakaoGetUserList kakaoGetUserList;
 
     @Test
     public void tokenRegisterTest() {
@@ -46,5 +45,10 @@ public class RestClientTest {
     @Test
     public void sendMessageTest() {
         kakaoPushMessageSend.sendMessage("test message");
+    }
+
+    @Test
+    public void getUserListTest() {
+        kakaoGetUserList.getUserList();
     }
 }
