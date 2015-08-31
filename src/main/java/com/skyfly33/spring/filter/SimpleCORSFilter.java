@@ -19,6 +19,7 @@ public class SimpleCORSFilter implements Filter {
 //        response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Origin", "http://localhost:8100");  //web debugging
         response.setHeader("Access-Control-Allow-Origin", "http://localhost");  //app
+//        response.setHeader("Access-Control-Allow-Origin", "http://211.170.163.68:5480");  //proxy
 
 
         chain.doFilter(req, res);
