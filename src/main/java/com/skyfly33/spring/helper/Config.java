@@ -5,17 +5,17 @@ package com.skyfly33.spring.helper;
  * Created by donghoon on 15. 8. 31..
  */
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import java.io.*;
 import java.util.Properties;
-import java.io.File;
-import java.io.InputStream;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 
 @Component
 public class Config {
+
+    private final Logger logger = LoggerFactory.getLogger(Config.class);
 
     private static Properties prop;
     private static String configFile = "./whoo.properties";
@@ -26,7 +26,7 @@ public class Config {
         File src = new File(configFile);
 
         if (!src.exists()) {
-            System.out.println("Can't find config file...");
+            logger.debug("Can't find config file...");
         } else {
             InputStream in = null;
 
@@ -35,9 +35,9 @@ public class Config {
                 prop.load(in);
             } catch (FileNotFoundException e) {
                 // TODO: handle exception
-                System.out.println("Can't find config file...");
+                logger.debug("Can't find config file...");
             } catch (IOException e) {
-                System.out.println("Can't load config file...");
+                logger.debug("Can't load config file...");
             } finally {
                 try {
                     if (in != null)
