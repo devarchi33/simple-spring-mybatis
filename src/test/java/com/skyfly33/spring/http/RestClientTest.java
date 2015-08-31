@@ -1,5 +1,6 @@
 package com.skyfly33.spring.http;
 
+import com.skyfly33.spring.restclient.KakaoPushTokenDeregister;
 import com.skyfly33.spring.restclient.KakaoPushTokenRegister;
 import com.skyfly33.spring.restclient.KakaoPushTokenSearch;
 import org.junit.Assert.*;
@@ -21,6 +22,8 @@ public class RestClientTest {
     KakaoPushTokenRegister kakaoPushTokenRegister;
     @Autowired
     KakaoPushTokenSearch kakaoPushTokenSearch;
+    @Autowired
+    KakaoPushTokenDeregister kakaoPushTokenDeregister;
 
     @Test
     public void tokenRegisterTest() {
@@ -30,5 +33,10 @@ public class RestClientTest {
     @Test
     public void tokenSearchTest() {
         kakaoPushTokenSearch.tokenSearch();
+    }
+
+    @Test
+    public void tokenDeregisterTest() {
+        kakaoPushTokenDeregister.tokenDeregister();
     }
 }
