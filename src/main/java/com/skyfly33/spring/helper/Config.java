@@ -4,6 +4,9 @@ package com.skyfly33.spring.helper;
 /**
  * Created by donghoon on 15. 8. 31..
  */
+
+import org.springframework.stereotype.Component;
+
 import java.util.Properties;
 import java.io.File;
 import java.io.InputStream;
@@ -11,6 +14,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+@Component
 public class Config {
 
     private static Properties prop;
