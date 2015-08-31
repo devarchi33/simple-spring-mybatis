@@ -1,6 +1,7 @@
 package com.skyfly33.spring.restclient;
 
 import com.skyfly33.spring.helper.Config;
+import com.skyfly33.spring.helper.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +23,15 @@ public class KakaoPushTokenSearch {
     private final Logger logger = LoggerFactory.getLogger(KakaoPushTokenSearch.class);
 
     @Autowired
-    RestTemplate restTemplate;
+    private RestTemplate restTemplate;
+    @Autowired
+    private Utils utils;
 
     private String adminKey = Config.getInstance().getProperties("adminKey");
     private String uuid = Config.getInstance().getProperties("uuid");
 
     public boolean tokenSearch() {
-        printTitle("searchPushToken");
+        utils.printTitle("searchPushToken");
 
         try {
             URI uri = UriComponentsBuilder.newInstance()
@@ -55,10 +58,5 @@ public class KakaoPushTokenSearch {
             e.printStackTrace();
             return false;
         }
-    }
-
-    private static void printTitle(String title) {
-        System.out.println("\n\n");
-        System.out.println("[" + title + "]");
     }
 }

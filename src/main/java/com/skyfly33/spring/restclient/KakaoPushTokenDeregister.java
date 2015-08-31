@@ -1,6 +1,7 @@
 package com.skyfly33.spring.restclient;
 
 import com.skyfly33.spring.helper.Config;
+import com.skyfly33.spring.helper.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +20,12 @@ import java.util.Arrays;
 @Component
 public class KakaoPushTokenDeregister {
 
-    Logger logger = LoggerFactory.getLogger(KakaoPushTokenDeregister.class);
+    private final Logger logger = LoggerFactory.getLogger(KakaoPushTokenDeregister.class);
 
     @Autowired
-    RestTemplate restTemplate;
+    private RestTemplate restTemplate;
+    @Autowired
+    private Utils utils;
 
     private String adminKey = Config.getInstance().getProperties("adminKey");
     private String uuid = Config.getInstance().getProperties("uuid");
@@ -31,7 +34,7 @@ public class KakaoPushTokenDeregister {
     private final String URI = "https://kapi.kakao.com/v1/push/deregister";
 
     public boolean tokenDeregister() {
-        printTitle("Token Deregister");
+        utils.printTitle("Token Deregister");
 
         try {
             HttpHeaders headers = new HttpHeaders();
@@ -53,9 +56,5 @@ public class KakaoPushTokenDeregister {
             e.printStackTrace();
             return false;
         }
-    }
-    private static void printTitle(String title) {
-        System.out.println("\n\n");
-        System.out.println("[" + title + "]");
     }
 }
