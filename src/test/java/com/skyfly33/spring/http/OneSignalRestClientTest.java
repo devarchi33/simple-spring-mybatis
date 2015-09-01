@@ -1,10 +1,7 @@
 package com.skyfly33.spring.http;
 
 import com.skyfly33.spring.restclient.kakao.*;
-import com.skyfly33.spring.restclient.onesignal.OneSignalGetApps;
-import com.skyfly33.spring.restclient.onesignal.OneSignalGetAppsById;
-import com.skyfly33.spring.restclient.onesignal.OneSignalGetPlayers;
-import com.skyfly33.spring.restclient.onesignal.OneSignalGetPlayersById;
+import com.skyfly33.spring.restclient.onesignal.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +23,8 @@ public class OneSignalRestClientTest {
     OneSignalGetPlayers oneSignalGetPlayers;
     @Autowired
     OneSignalGetPlayersById oneSignalGetPlayersById;
+    @Autowired
+    OneSignalAddPlyers oneSignalAddPlyers;
 
     @Test
     public void getAppsTest() {
@@ -43,9 +42,12 @@ public class OneSignalRestClientTest {
     }
 
     @Test
-    public void getPlayersById() {
+    public void getPlayersByIdTest() {
         oneSignalGetPlayersById.getPlayersById();
     }
 
-    
+    @Test
+    public void addPlayersTest() {
+        oneSignalAddPlyers.addPlayers();
+    }
 }
