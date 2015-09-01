@@ -1,4 +1,4 @@
-package com.skyfly33.spring.restclient;
+package com.skyfly33.spring.restclient.kakao;
 
 import com.skyfly33.spring.helper.Config;
 import com.skyfly33.spring.helper.Utils;

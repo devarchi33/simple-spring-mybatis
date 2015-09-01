@@ -1,4 +1,4 @@
-package com.skyfly33.spring.restclient;
+package com.skyfly33.spring.restclient.kakao;
 
 import com.skyfly33.spring.helper.Config;
 import com.skyfly33.spring.helper.Utils;
@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
