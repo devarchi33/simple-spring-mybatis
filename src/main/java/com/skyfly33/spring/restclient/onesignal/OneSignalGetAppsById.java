@@ -14,10 +14,11 @@ import java.util.Arrays;
 /**
  * Created by donghoon on 15. 9. 1..
  */
-@Component
-public class OneSignalGetApps {
 
-    Logger logger = LoggerFactory.getLogger(OneSignalGetApps.class);
+@Component
+public class OneSignalGetAppsById {
+
+    Logger logger = LoggerFactory.getLogger(OneSignalGetAppsById.class);
 
     @Autowired
     RestTemplate restTemplate;
@@ -25,13 +26,15 @@ public class OneSignalGetApps {
     Utils utils;
 
     private String one_signal_auth_key = Config.getInstance().getProperties("one_signal_auth_key");
-    private final String URI = "https://onesignal.com/api/v1/apps";
+    private String one_signal_app_id = Config.getInstance().getProperties("one_signal_app_id");
+    private final String URI = "https://onesignal.com/api/v1/apps/" + one_signal_app_id;
 
-    public void getApps() {
-        utils.printTitle("Get Apps");
+    public void getAppsById() {
+        utils.printTitle("Get Apps By Id");
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", one_signal_auth_key);
+        headers.add("Content-Type", "application/json");
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 
         HttpEntity<Void> requestEntity = new HttpEntity<>((Void) null, headers);

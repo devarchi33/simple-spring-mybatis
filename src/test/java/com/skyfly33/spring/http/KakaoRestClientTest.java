@@ -3,6 +3,7 @@ package com.skyfly33.spring.http;
 import com.skyfly33.spring.restclient.kakao.*;
 
 import com.skyfly33.spring.restclient.onesignal.OneSignalGetApps;
+import com.skyfly33.spring.restclient.onesignal.OneSignalGetAppsById;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"/pojoApplicationContext.xml"})
-public class RestClientTest {
+public class KakaoRestClientTest {
 
     @Autowired
     KakaoPushTokenRegister kakaoPushTokenRegister;
@@ -26,8 +27,6 @@ public class RestClientTest {
     KakaoPushMessageSend kakaoPushMessageSend;
     @Autowired
     KakaoGetUserList kakaoGetUserList;
-    @Autowired
-    OneSignalGetApps oneSignalGetApps;
 
     @Test
     public void tokenRegisterTest() {
@@ -54,8 +53,4 @@ public class RestClientTest {
         kakaoGetUserList.getUserList();
     }
 
-    @Test
-    public void getAppsTest() {
-        oneSignalGetApps.getApps();
-    }
 }
