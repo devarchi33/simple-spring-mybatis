@@ -38,10 +38,10 @@ public class OneSignalGetPlayers {
 
         HttpEntity<Void> requestEntity = new HttpEntity<>((Void) null, headers);
 
-        ResponseEntity<String> userList = restTemplate.exchange(URI, HttpMethod.GET, requestEntity, String.class);
-        HttpStatus status = userList.getStatusCode();
-        HttpHeaders responseHeaders = userList.getHeaders();
-        String responseBody = userList.getBody();
+        ResponseEntity<String> responseEntity = restTemplate.exchange(URI, HttpMethod.GET, requestEntity, String.class);
+        HttpStatus status = responseEntity.getStatusCode();
+        HttpHeaders responseHeaders = responseEntity.getHeaders();
+        String responseBody = responseEntity.getBody();
 
         logger.info(status.toString());
         logger.info(responseHeaders.toString());

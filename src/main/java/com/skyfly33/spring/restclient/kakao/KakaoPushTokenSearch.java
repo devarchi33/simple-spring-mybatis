@@ -49,10 +49,16 @@ public class KakaoPushTokenSearch {
 
             HttpEntity<Void> requestEntity = new HttpEntity<>((Void) null, headers);
 
-            ResponseEntity<String> pushTokenResponse = restTemplate.exchange(
+            ResponseEntity<String> responseEntity = restTemplate.exchange(
                     uri, HttpMethod.GET, requestEntity, String.class);
-            logger.info(pushTokenResponse.toString());
 
+            HttpStatus status = responseEntity.getStatusCode();
+            HttpHeaders responseHeaders = responseEntity.getHeaders();
+            String responseBody = responseEntity.getBody();
+
+            logger.info(status.toString());
+            logger.info(responseHeaders.toString());
+            logger.info(responseBody);
             return true;
         } catch (RestClientException e) {
             e.printStackTrace();

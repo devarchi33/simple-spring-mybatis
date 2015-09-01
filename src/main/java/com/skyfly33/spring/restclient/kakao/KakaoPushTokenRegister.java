@@ -50,8 +50,15 @@ public class KakaoPushTokenRegister {
 
             HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<>(paramMap, headers);
 
-            ResponseEntity<String> registerResponse = restTemplate.exchange(URI, HttpMethod.POST, requestEntity, String.class);
-            logger.info(registerResponse.toString());
+            ResponseEntity<String> responseEntity = restTemplate.exchange(URI, HttpMethod.POST, requestEntity, String.class);
+
+            HttpStatus status = responseEntity.getStatusCode();
+            HttpHeaders responseHeaders = responseEntity.getHeaders();
+            String responseBody = responseEntity.getBody();
+
+            logger.info(status.toString());
+            logger.info(responseHeaders.toString());
+            logger.info(responseBody);
 
             return true;
         } catch (RestClientException e) {
