@@ -1,8 +1,8 @@
 package com.skyfly33.spring.http;
 
-import com.skyfly33.spring.restclient.*;
-import org.junit.Assert.*;
+import com.skyfly33.spring.restclient.kakao.*;
 
+import com.skyfly33.spring.restclient.onesignal.OneSignalGetApps;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +26,8 @@ public class RestClientTest {
     KakaoPushMessageSend kakaoPushMessageSend;
     @Autowired
     KakaoGetUserList kakaoGetUserList;
+    @Autowired
+    OneSignalGetApps oneSignalGetApps;
 
     @Test
     public void tokenRegisterTest() {
@@ -50,5 +52,10 @@ public class RestClientTest {
     @Test
     public void getUserListTest() {
         kakaoGetUserList.getUserList();
+    }
+
+    @Test
+    public void getAppsTest() {
+        oneSignalGetApps.getApps();
     }
 }
