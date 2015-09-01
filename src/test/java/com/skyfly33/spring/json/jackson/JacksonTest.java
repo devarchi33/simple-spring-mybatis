@@ -22,7 +22,7 @@ import org.slf4j.LoggerFactory;
 
 public class JacksonTest {
 
-    Logger logger = LoggerFactory.getLogger(JacksonTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(JacksonTest.class);
 
     public static void main(String[] args) {
         try {
@@ -59,6 +59,7 @@ public class JacksonTest {
             jsonStr = m.writeValueAsString(rootNode);
             logger.info("Tree Model : " + jsonStr);
             //Streaming API 예제
+            logger.info("########## streaming example ##########");
             JsonFactory f = new JsonFactory();
             OutputStream outStr = System.out;
             JsonGenerator g = f.createJsonGenerator(outStr);
