@@ -28,6 +28,8 @@ public class OneSignalRestClientTest {
     OneSignalGetPlayersById oneSignalGetPlayersById;
     @Autowired
     OneSignalAddPlyers oneSignalAddPlyers;
+    @Autowired
+    OneSignalGetNotifications oneSignalGetNotifications;
 
     @Test
     public void getAppsTest() {
@@ -52,5 +54,10 @@ public class OneSignalRestClientTest {
     @Test
     public void addPlayersTest() {
         oneSignalAddPlyers.addPlayers();
+    }
+
+    @Test
+    public void getNotificationsTest() {
+        logger.info(oneSignalGetNotifications.getNotifications());
     }
 }
