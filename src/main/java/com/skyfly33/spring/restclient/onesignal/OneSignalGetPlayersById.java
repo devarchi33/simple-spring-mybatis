@@ -27,7 +27,7 @@ public class OneSignalGetPlayersById {
     private String one_signal_player_id = Config.getInstance().getProperties("one_signal_player_id");
     private final String URI = "https://onesignal.com/api/v1/players/" + one_signal_player_id;
 
-    public void getPlayersById() {
+    public String getPlayersById() {
         utils.printTitle("Get Players By Id");
 
         HttpHeaders headers = new HttpHeaders();
@@ -42,5 +42,7 @@ public class OneSignalGetPlayersById {
         logger.info(status.toString());
         logger.info(responseHeaders.toString());
         logger.info(responseBody);
+
+        return responseBody;
     }
 }
