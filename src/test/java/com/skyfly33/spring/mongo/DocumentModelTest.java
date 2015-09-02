@@ -24,7 +24,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * Created by donghoon on 15. 8. 27..
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"/mongoApplicationContext.xml"})
+@ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/config/mongoApplicationContext.xml"})
 public class DocumentModelTest {
 
     private static final Logger logger = LoggerFactory.getLogger(DocumentModelTest.class);

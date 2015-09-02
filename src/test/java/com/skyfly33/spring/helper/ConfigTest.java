@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * Created by donghoon on 15. 8. 31..
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"/pojoApplicationContext.xml"})
+@ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/config/pojoApplicationContext.xml"})
 public class ConfigTest {
 
     private static final Logger logger = LoggerFactory.getLogger(ConfigTest.class);

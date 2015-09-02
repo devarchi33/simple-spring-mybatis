@@ -18,7 +18,7 @@ import java.sql.Statement;
  * Created by donghoon on 15. 8. 22..
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"/mybatis-scan.xml"})
+@ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/config/mybatisApplicationContext.xml"})
 public class ConnectionTest {
 
     @Autowired
