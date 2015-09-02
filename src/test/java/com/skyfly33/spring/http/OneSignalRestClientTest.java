@@ -1,9 +1,10 @@
 package com.skyfly33.spring.http;
 
-import com.skyfly33.spring.restclient.kakao.*;
 import com.skyfly33.spring.restclient.onesignal.*;
+import org.apache.ibatis.annotations.One;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -14,6 +15,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/config/pojoApplicationContext.xml"})
 public class OneSignalRestClientTest {
+
+    Logger logger = org.slf4j.LoggerFactory.getLogger(OneSignalRestClientTest.class);
 
     @Autowired
     OneSignalGetApps oneSignalGetApps;
@@ -33,7 +36,7 @@ public class OneSignalRestClientTest {
 
     @Test
     public void getAppsByIdTest() {
-        oneSignalGetAppsById.getAppsById();
+        logger.info(oneSignalGetAppsById.getAppsById());
     }
 
     @Test

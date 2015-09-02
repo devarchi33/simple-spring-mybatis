@@ -29,7 +29,7 @@ public class OneSignalGetAppsById {
     private String one_signal_app_id = Config.getInstance().getProperties("one_signal_app_id");
     private final String URI = "https://onesignal.com/api/v1/apps/" + one_signal_app_id;
 
-    public void getAppsById() {
+    public String getAppsById() {
         utils.printTitle("Get Apps By Id");
 
         HttpHeaders headers = new HttpHeaders();
@@ -47,5 +47,7 @@ public class OneSignalGetAppsById {
         logger.info(status.toString());
         logger.info(responseHeaders.toString());
         logger.info(responseBody);
+
+        return responseBody;
     }
 }
