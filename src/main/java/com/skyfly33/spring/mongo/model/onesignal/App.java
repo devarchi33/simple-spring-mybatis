@@ -12,22 +12,23 @@ import java.util.Date;
 public class App {
 
     @Id
-    private Long id;
+    private String id;
     private String name;
     private int players; //players number.
-    private int messagable_players; //messagable_players number.
+    private int messageable_players; //messageable_players number.
     private Date updated_at;
     private Date created_at;
     private String gcm_key;
+    private String chrome_key;
     private String apns_env;
     private String apns_certificates;
     private String basic_auth_key;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -47,12 +48,12 @@ public class App {
         this.players = players;
     }
 
-    public int getMessagable_players() {
-        return messagable_players;
+    public int getMessageable_players() {
+        return messageable_players;
     }
 
-    public void setMessagable_players(int messagable_players) {
-        this.messagable_players = messagable_players;
+    public void setMessageable_players(int messageable_players) {
+        this.messageable_players = messageable_players;
     }
 
     public Date getUpdated_at() {
@@ -77,6 +78,14 @@ public class App {
 
     public void setGcm_key(String gcm_key) {
         this.gcm_key = gcm_key;
+    }
+
+    public String getChrome_key() {
+        return chrome_key;
+    }
+
+    public void setChrome_key(String chrome_key) {
+        this.chrome_key = chrome_key;
     }
 
     public String getApns_env() {
