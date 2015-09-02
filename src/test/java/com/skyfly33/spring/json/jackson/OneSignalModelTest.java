@@ -2,8 +2,10 @@ package com.skyfly33.spring.json.jackson;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skyfly33.spring.mongo.model.onesignal.App;
+import com.skyfly33.spring.mongo.model.onesignal.Notification;
 import com.skyfly33.spring.mongo.model.onesignal.Player;
 import com.skyfly33.spring.restclient.onesignal.OneSignalGetAppsById;
+import com.skyfly33.spring.restclient.onesignal.OneSignalGetNotificationsById;
 import com.skyfly33.spring.restclient.onesignal.OneSignalGetPlayersById;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,6 +29,8 @@ public class OneSignalModelTest {
     @Autowired
     OneSignalGetPlayersById oneSignalGetPlayersById;
     @Autowired
+    OneSignalGetNotificationsById oneSignalGetNotificationsById;
+    @Autowired
     ObjectMapper mapper;
 
     @Test
@@ -48,6 +52,18 @@ public class OneSignalModelTest {
             Player player1 = mapper.readValue(player, Player.class);
             logger.info(player1.getDevice_model());
             logger.info(player1.getTags().getType());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void getNotificationsToJsonTest() {
+        String notification = oneSignalGetNotificationsById.getNotificationsById();
+        try {
+            Notification notification1 = mapper.readValue(notification, Notification.class);
+            logger.info(notification1.getId());
+            logger.info(notification1.getHeadings().getEn());
         } catch (Exception e) {
             e.printStackTrace();
         }
