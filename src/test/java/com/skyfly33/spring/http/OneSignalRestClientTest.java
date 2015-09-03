@@ -32,6 +32,8 @@ public class OneSignalRestClientTest {
     OneSignalGetNotifications oneSignalGetNotifications;
     @Autowired
     OneSignalGetNotificationsById oneSignalGetNotificationsById;
+    @Autowired
+    OneSignalCreateNotification oneSignalCreateNotification;
 
     @Test
     public void getAppsTest() {
@@ -64,7 +66,12 @@ public class OneSignalRestClientTest {
     }
 
     @Test
-    public void setOneSignalGetNotificationsByIdTest() {
+    public void getNotificationsByIdTest() {
         logger.info(oneSignalGetNotificationsById.getNotificationsById());
+    }
+
+    @Test
+    public void createNotificationTest() {
+        logger.info(oneSignalCreateNotification.createNotification());
     }
 }
