@@ -19,7 +19,9 @@ public class TestController {
     Logger logger = LoggerFactory.getLogger(TestController.class);
 
     @RequestMapping(value = "/jsontest")
-    public @ResponseBody Object jsonTest(){
+    public
+    @ResponseBody
+    Object jsonTest() {
         logger.info("jsontest!");
         Code vo = new Code();
 
@@ -27,4 +29,20 @@ public class TestController {
 
         return vo;
     }
+
+    @RequestMapping(value = "/sendUuid")
+    public
+    @ResponseBody
+    Object sendUuidTest(@RequestParam String uuid,
+                        @RequestParam String players_id) {
+        logger.info("sendUuid test!");
+        logger.info("input uuid: " + uuid);
+        logger.info("input players_id: " + players_id);
+        Code vo = new Code();
+
+        vo.setCode("Return: " + uuid + ", " + players_id);
+
+        return vo;
+    }
+
 }
