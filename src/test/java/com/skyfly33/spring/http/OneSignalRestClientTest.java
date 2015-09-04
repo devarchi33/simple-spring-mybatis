@@ -74,4 +74,14 @@ public class OneSignalRestClientTest {
     public void createNotificationTest() {
         logger.info(oneSignalCreateNotification.createNotification());
     }
+
+    @Test
+    public void createNotificationByApacheTest() {
+        logger.info(oneSignalCreateNotification.createNotificationByApache());
+    }
+
+    @Test
+    public void createNotificationByJDKTest() {
+        oneSignalCreateNotification.createnotificationByJDK();
+    }
 }
