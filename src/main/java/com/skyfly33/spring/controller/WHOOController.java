@@ -4,10 +4,7 @@ import com.skyfly33.spring.domain.Code;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by donghoon on 15. 8. 25..
@@ -32,7 +29,7 @@ public class WHOOController {
         return code;
     }
 
-    @RequestMapping(value = "/upsert")
+    @RequestMapping(value = "/upsert", method = RequestMethod.POST)
     public
     @ResponseBody
     Object sendUuidTest(@RequestParam String uid,
