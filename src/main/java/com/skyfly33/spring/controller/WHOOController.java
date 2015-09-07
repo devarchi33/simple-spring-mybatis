@@ -32,4 +32,18 @@ public class WHOOController {
         return code;
     }
 
+    @RequestMapping(value = "/upsert")
+    public
+    @ResponseBody
+    Object sendUuidTest(@RequestParam String uid,
+                        @RequestParam String pid) {
+        logger.info("sendUuid test!");
+        logger.info("input uuid: " + uid);
+        logger.info("input players_id: " + pid);
+        Code vo = new Code();
+
+        vo.setCode("Return: " + uid + ", " + pid);
+
+        return vo;
+    }
 }
