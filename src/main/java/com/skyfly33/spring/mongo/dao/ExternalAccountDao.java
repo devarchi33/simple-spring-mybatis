@@ -10,7 +10,7 @@ package com.skyfly33.spring.mongo.dao;
 public interface ExternalAccountDao {
     List<ExternalAccount> getAll();
 
-    ExternalAccount findById(Long id);
+    ExternalAccount findOneById(Long id);
 
     boolean save(ExternalAccount externalAccount);
 }

@@ -31,7 +31,7 @@ public class ExternalAccountRepository implements ExternalAccountDao {
     }
 
     @Override
-    public ExternalAccount findById(Long id) {
+    public ExternalAccount findOneById(Long id) {
         Query query = query(where("uuid").is(id));
         return mongoTemplate.findOne(query, ExternalAccount.class);
     }
