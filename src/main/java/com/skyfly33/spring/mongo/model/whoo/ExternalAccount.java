@@ -8,7 +8,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
  */
 @Document(collection = "externalAccount")
 public class ExternalAccount {
-    //Kakao
     @Id
     private Long uuid;
     private String type;
