@@ -27,9 +27,9 @@ public class ReceiverRepository implements ReceiverDao {
     }
 
     @Override
-    public Receiver findById(Long id) {
+    public Receiver findOneById(Long id) {
         Query query = query(where("uuid").is(id));
-        return mongoTemplate.findById(query, Receiver.class);
+        return mongoTemplate.findOne(query, Receiver.class);
     }
 
     @Override

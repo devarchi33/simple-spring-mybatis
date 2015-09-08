@@ -11,7 +11,7 @@ public interface ReceiverDao {
 
     List<Receiver> getAll();
 
-    Receiver findById(Long id);
+    Receiver findOneById(Long id);
 
     boolean save(Receiver receiver);
 }

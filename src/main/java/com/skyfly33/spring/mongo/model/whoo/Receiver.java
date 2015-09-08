@@ -1,6 +1,7 @@
 package com.skyfly33.spring.mongo.model.whoo;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
@@ -11,6 +12,7 @@ public class Receiver {
 
     @Id
     private Long uuid;
+    @DBRef
     private ExternalAccount externalAccount;
     private String pushToken;
     private String deviceToken;
