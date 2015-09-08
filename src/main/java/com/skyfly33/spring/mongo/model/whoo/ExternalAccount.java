@@ -7,9 +7,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
  * Created by donghoon on 15. 9. 2..
  */
 @Document(collection = "externalAccount")
-class ExternalAccount {
+public class ExternalAccount {
     //Kakao
-    private long uuid;
+    @Id
+    private Long uuid;
     private String type;
     private String nickname;
     private String thumbnailImg;
@@ -23,11 +24,11 @@ class ExternalAccount {
         this.type = type;
     }
 
-    public long getUuid() {
+    public Long getUuid() {
         return uuid;
     }
 
-    public void setUuid(long uuid) {
+    public void setUuid(Long uuid) {
         this.uuid = uuid;
     }
 
