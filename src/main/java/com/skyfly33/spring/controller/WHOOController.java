@@ -1,10 +1,12 @@
 package com.skyfly33.spring.controller;
 
 import com.skyfly33.spring.domain.Code;
+import com.skyfly33.spring.pubsub.Subscriber;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import redis.clients.jedis.Jedis;
 
 /**
  * Created by donghoon on 15. 8. 25..
@@ -13,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/whoo")
 public class WHOOController {
 
-    Logger logger = LoggerFactory.getLogger(WHOOController.class);
+    private final Logger logger = LoggerFactory.getLogger(WHOOController.class);
 
     @RequestMapping("/setKakaoAuthCode")
     public String setAuthCode(@RequestBody String kakaoAuthCode) {
@@ -55,7 +57,26 @@ public class WHOOController {
         Code vo = new Code();
 
         vo.setCode("Return: " + uid + ", " + pid);
+        createSubscriber(uid);
 
         return vo;
+    }
+
+    private void createSubscriber(final String channelName) {
+        final Jedis subscriberJedis = new Jedis();
+        final Subscriber subscriber = new Subscriber();
+
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    logger.info("Subscribing to \"" + channelName + "\". This thread will be blocked.");
+                    subscriberJedis.subscribe(subscriber, channelName);
+                    logger.info("Subscription ended.");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    logger.info("Subscribing failed." + e);
+                }
+            }
+        }).start();
     }
 }

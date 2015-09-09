@@ -125,7 +125,7 @@ public class OneSignalCreateNotification {
             String sendMessage = message.getIp() + ": " + "something wrong with " + message.getMessage();
 
             String contents = "{ " +
-                    "\"app_id\"            : \"" + one_signal_app_id + "\", " +
+                    "\"app_id\"            : \"" + "061e0aea-4ebb-11e5-9e94-27572f15b95f" + "\", " +
                     "\"contents\"            : {\"en\" : \"" + sendMessage + "\"}, " +
 //                    "\"included_segments\" : [ \"Test\" ] " +
                     "\"include_player_ids\" : [ \"5b1a39e4-5503-11e5-bdee-67e2d97b8c56\" ] " +
