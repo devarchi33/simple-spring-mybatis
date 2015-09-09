@@ -1,46 +1,48 @@
 package com.skyfly33.spring.mongo.model.onesignal;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.skyfly33.spring.helper.Config;
 
 /**
  * Created by donghoon on 15. 9. 3..
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Message {
 
-    private final String app_id = Config.getInstance().getProperties("one_signal_rest_key");
-    private boolean included_segments;
-    private String send_after;
-    private Content contents;
+    private String message;
+    private String host;
+    private String path;
+    private String ip;
 
-    public String getApp_id() {
-        return app_id;
+    public String getMessage() {
+        return message;
     }
 
-    public boolean isIncluded_segments() {
-        return included_segments;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    public void setIncluded_segments(boolean included_segments) {
-        this.included_segments = included_segments;
+    public String getHost() {
+        return host;
     }
 
-    public String getSend_after() {
-        return send_after;
+    public void setHost(String host) {
+        this.host = host;
     }
 
-    public void setSend_after(String send_after) {
-        this.send_after = send_after;
+    public String getPath() {
+        return path;
     }
 
-    public Content getContents() {
-        return contents;
+    public void setPath(String path) {
+        this.path = path;
     }
 
-    public void setContents(Content contents) {
-        this.contents = contents;
+    public String getIp() {
+        return ip;
     }
 
-    public class Content {
-        private String en;
+    public void setIp(String ip) {
+        this.ip = ip;
     }
 }
