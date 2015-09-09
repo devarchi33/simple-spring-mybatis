@@ -43,4 +43,19 @@ public class WHOOController {
 
         return vo;
     }
+
+    @RequestMapping(value = "/messageOnOff", method = RequestMethod.POST)
+    public
+    @ResponseBody
+    Object messageOnOff(@RequestParam String uid,
+                        @RequestParam String pid) {
+        logger.info("messageOnOff!");
+        logger.info("input uuid: " + uid);
+        logger.info("input players_id: " + pid);
+        Code vo = new Code();
+
+        vo.setCode("Return: " + uid + ", " + pid);
+
+        return vo;
+    }
 }
