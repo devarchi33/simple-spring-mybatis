@@ -18,6 +18,9 @@ import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.http.*;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -40,12 +43,11 @@ public class OneSignalCreateNotification {
 
     Logger logger = LoggerFactory.getLogger(OneSignalCreateNotification.class);
 
+    private ObjectMapper mapper = new ObjectMapper();
     @Autowired
-    RestTemplate restTemplate;
+    private RestTemplate restTemplate;
     @Autowired
-    ObjectMapper mapper;
-    @Autowired
-    Utils utils;
+    private Utils utils;
     @Autowired
     private URIBuilder builder;
     @Autowired
@@ -117,17 +119,21 @@ public class OneSignalCreateNotification {
         }
     }
 
-    public void createnotificationByJDK() {
-        String contents = "{ " +
-                "\"app_id\"            : \"" + one_signal_app_id + "\", " +
-                "\"contents\"            : {\"en\" : \"test message by JDK\"}, " +
-                "\"included_segments\" : [ \"All\" ] " +
-                "}";
-
-        String method = "POST";
-        String contentType = "application/json";
-
+    public void createnotificationByJDK(String rawMessage) {
         try {
+            Message message = mapper.readValue(rawMessage, Message.class);
+            String sendMessage = message.getIp() + ": " + "something wrong with " + message.getMessage();
+
+            String contents = "{ " +
+                    "\"app_id\"            : \"" + one_signal_app_id + "\", " +
+                    "\"contents\"            : {\"en\" : \"" + sendMessage + "\"}, " +
+//                    "\"included_segments\" : [ \"Test\" ] " +
+                    "\"include_player_ids\" : [ \"5b1a39e4-5503-11e5-bdee-67e2d97b8c56\" ] " +
+                    "}";
+
+            String method = "POST";
+            String contentType = "application/json";
+
             URL u = new URL(URI);
             HttpURLConnection conn = (HttpURLConnection) u.openConnection();
             conn.setRequestMethod(method);
@@ -137,7 +143,7 @@ public class OneSignalCreateNotification {
             conn.setDoInput(true);
             conn.setDoOutput(true);
 
-            conn.setRequestProperty("Authorization", "Basic " + "MDYxZTBiNmMtNGViYi0xMWU1LTllOTUtMWI4YTZiNGQzMmMw");
+            conn.setRequestProperty("Authorization", "Basic MDYxZTBiNmMtNGViYi0xMWU1LTllOTUtMWI4YTZiNGQzMmMw");
 
 
             OutputStream os = conn.getOutputStream();
@@ -146,7 +152,7 @@ public class OneSignalCreateNotification {
             wr.flush();
             wr.close();
 
-
+            logger.info(conn.toString());
             InputStream is = conn.getInputStream();
             BufferedReader rd = new BufferedReader(new InputStreamReader(is));
             String line;
