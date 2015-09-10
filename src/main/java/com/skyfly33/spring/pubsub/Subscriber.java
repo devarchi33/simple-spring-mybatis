@@ -17,7 +17,7 @@ public class Subscriber extends JedisPubSub {
         logger.info("Message received. Channel: " + channel + ", Msg: "
                 + message);
 //		sendMessage.sendMessage(message);
-//        oneSignalCreateNotification.createNotification();
+//      oneSignalCreateNotification.createNotification();
         oneSignalCreateNotification.createnotificationByJDK(message);
     }
 

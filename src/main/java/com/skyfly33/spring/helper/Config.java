@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 import java.io.*;
 import java.util.Properties;
 
-@Component
 public class Config {
 
     private final Logger logger = LoggerFactory.getLogger(Config.class);
