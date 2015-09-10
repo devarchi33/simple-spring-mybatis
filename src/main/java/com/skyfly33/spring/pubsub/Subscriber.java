@@ -18,7 +18,7 @@ public class Subscriber extends JedisPubSub {
                 + message);
 //		sendMessage.sendMessage(message);
 //      oneSignalCreateNotification.createNotification();
-        oneSignalCreateNotification.createnotificationByJDK(message);
+        oneSignalCreateNotification.createNotificationByJDK(channel, message);
     }
 
     @Override

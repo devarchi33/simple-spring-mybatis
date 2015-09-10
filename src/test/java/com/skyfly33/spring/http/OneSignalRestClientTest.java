@@ -82,6 +82,6 @@ public class OneSignalRestClientTest {
 
     @Test
     public void createNotificationByJDKTest() {
-        oneSignalCreateNotification.createnotificationByJDK("dummy");
+        oneSignalCreateNotification.createNotificationByJDK("testChannel","dummy");
     }
 }

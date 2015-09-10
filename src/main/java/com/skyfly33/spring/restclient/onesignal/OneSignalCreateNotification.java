@@ -119,7 +119,7 @@ public class OneSignalCreateNotification {
         }
     }
 
-    public void createnotificationByJDK(String rawMessage) {
+    public void createNotificationByJDK(String channel, String rawMessage) {
         try {
             Message message = mapper.readValue(rawMessage, Message.class);
             String sendMessage = message.getIp() + ": " + "something wrong with " + message.getMessage();
@@ -128,7 +128,7 @@ public class OneSignalCreateNotification {
                     "\"app_id\"            : \"" + "061e0aea-4ebb-11e5-9e94-27572f15b95f" + "\", " +
                     "\"contents\"            : {\"en\" : \"" + sendMessage + "\"}, " +
 //                    "\"included_segments\" : [ \"Test\" ] " +
-                    "\"include_player_ids\" : [ \"5b1a39e4-5503-11e5-bdee-67e2d97b8c56\" ] " +
+                    "\"include_player_ids\" : [ \"" + channel + "\" ] " +
                     "}";
 
             String method = "POST";
