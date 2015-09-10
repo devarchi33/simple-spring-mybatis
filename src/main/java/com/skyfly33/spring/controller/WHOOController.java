@@ -16,8 +16,8 @@ import redis.clients.jedis.Jedis;
 public class WHOOController {
 
     private final Logger logger = LoggerFactory.getLogger(WHOOController.class);
-    final Jedis subscriberJedis = new Jedis();
-    final Subscriber subscriber = new Subscriber();
+    private Jedis subscriberJedis;
+    private Subscriber subscriber = new Subscriber();
 
     @RequestMapping("/setKakaoAuthCode")
     public String setAuthCode(@RequestBody String kakaoAuthCode) {
@@ -68,7 +68,7 @@ public class WHOOController {
     public
     @ResponseBody
     Object messageOff(@RequestParam String uid,
-                     @RequestParam String pid) {
+                      @RequestParam String pid) {
         logger.info("messageOff!");
         logger.info("input uuid: " + uid);
         logger.info("input players_id: " + pid);
@@ -80,22 +80,12 @@ public class WHOOController {
         return vo;
     }
 
-    private void createSubscriber(final String userId, final String channelName) {
-
-
-        new Thread(new Runnable() {
-            public void run() {
-                try {
-                    logger.info("Subscribing to \"" + userId + "\". This thread will be blocked.");
-                    subscriberJedis.clientSetname(userId);
-                    subscriberJedis.subscribe(subscriber, channelName);
-                    logger.info("Subscription ended.");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    logger.info("Subscribing failed." + e);
-                }
-            }
-        }).start();
+    private void createSubscriber(String userId, String channelName) {
+        logger.info("Subscribing to \"" + userId + "\". This thread will be blocked.");
+        subscriberJedis = new Jedis();
+        subscriberJedis.clientSetname(userId);
+        subscriberJedis.subscribe(subscriber, channelName);
+        logger.info("Subscription ended.");
     }
 
     private void removeSubscriber(String userId) {
