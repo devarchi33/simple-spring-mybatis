@@ -75,7 +75,7 @@ public class WHOOController {
         Code vo = new Code();
 
         vo.setCode("MessageOff Return: " + uid + ", " + pid);
-        removeSubscriber(uid);
+        removeSubscriber(pid);
 
         return vo;
     }
@@ -83,12 +83,11 @@ public class WHOOController {
     private void createSubscriber(String userId, String channelName) {
         logger.info("Subscribing to \"" + userId + "\". This thread will be blocked.");
         subscriberJedis = new Jedis();
-        subscriberJedis.clientSetname(userId);
         subscriberJedis.subscribe(subscriber, channelName);
         logger.info("Subscription ended.");
     }
 
-    private void removeSubscriber(String userId) {
-        subscriberJedis.close();
+    private void removeSubscriber(String channel) {
+        subscriber.unsubscribe(channel);
     }
 }
