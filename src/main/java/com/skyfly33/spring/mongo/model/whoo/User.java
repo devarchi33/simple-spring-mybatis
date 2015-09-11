@@ -5,8 +5,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.List;
-
 /**
  * Created by donghoon on 15. 9. 2..
  */
@@ -14,11 +12,14 @@ import java.util.List;
 @Data
 public class User {
 
+    @Id
+    private long uuid;
     private String name;
     private String email;
     @DBRef
     private ExternalAccount externalAccount;
-    private List<Server> server;
+    @DBRef
+    private Server server;
 
     @Document(collection = "server")
     @Data

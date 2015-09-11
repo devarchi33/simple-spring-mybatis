@@ -7,10 +7,11 @@ import java.util.List;
 /**
  * Created by donghoon on 15. 9. 11..
  */
-public interface ServerDao {
-    List<User.Server> getAll();
+public interface UserDao {
 
-    User.Server findOneById(Long id);
+    List<User> getAll();
 
-    boolean save(User.Server server);
+    User findOneById(Long id);
+
+    boolean save(User user);
 }

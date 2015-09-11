@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import com.skyfly33.spring.mongo.dao.repository.ExternalAccountRepository;
 import com.skyfly33.spring.mongo.dao.repository.ReceiverRepository;
 import com.skyfly33.spring.mongo.dao.repository.ServerRepository;
+import com.skyfly33.spring.mongo.dao.repository.UserRepository;
 import com.skyfly33.spring.mongo.model.whoo.ExternalAccount;
 import com.skyfly33.spring.mongo.model.whoo.User;
 import org.junit.Before;
@@ -39,6 +40,8 @@ public class WhooMongoTest {
     ReceiverRepository receiverRepository;
     @Autowired
     ServerRepository serverRepository;
+    @Autowired
+    UserRepository userRepository;
 
     ExternalAccount externalAccount1 = new ExternalAccount();
     User user1 = new User();
@@ -63,6 +66,12 @@ public class WhooMongoTest {
         server1.setIp("211.170.163.68");
         server1.setUuid(externalAccount1.getUuid());
         server1.setReceiver(receiver1);
+
+        user1.setEmail("skyfly33727@gmail.com");
+        user1.setExternalAccount(externalAccount1);
+        user1.setServer(server1);
+        user1.setUuid(externalAccount1.getUuid());
+        user1.setName(externalAccount1.getNickname());
     }
 
     @Test
@@ -126,5 +135,26 @@ public class WhooMongoTest {
         User.Server server = serverList.get(0);
         assertEquals("push-token-sample", server.getReceiver().getPushToken());
         logger.info(server.getReceiver().getDeviceToken());
+    }
+
+    @Test
+    public void userSaveTest() {
+        boolean chk = userRepository.save(user1);
+        assertTrue(chk);
+    }
+
+    @Test
+    public void userFindOneByIdTest() {
+        User findUser = userRepository.findOneById(33190001L);
+        assertEquals("skyfly33", findUser.getServer().getReceiver().getExternalAccount().getNickname());
+        logger.info(findUser.getServer().getReceiver().getExternalAccount().getThumbnailImg());
+    }
+
+    @Test
+    public void userFindAllTest() {
+        List<User> userList = userRepository.getAll();
+        User user = userList.get(0);
+        assertEquals("push-token-sample", user.getServer().getReceiver().getPushToken());
+        logger.info(user.getServer().getReceiver().getDeviceToken());
     }
 }
