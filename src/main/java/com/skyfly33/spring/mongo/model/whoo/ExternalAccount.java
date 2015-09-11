@@ -13,7 +13,6 @@ public class ExternalAccount {
     private String type;
     private String nickname;
     private String thumbnailImg;
-    private String profileImg;
 
     public String getType() {
         return type;
@@ -45,13 +44,5 @@ public class ExternalAccount {
 
     public void setThumbnailImg(String thumbnailImg) {
         this.thumbnailImg = thumbnailImg;
-    }
-
-    public String getProfileImg() {
-        return profileImg;
-    }
-
-    public void setProfileImg(String profileImg) {
-        this.profileImg = profileImg;
     }
 }

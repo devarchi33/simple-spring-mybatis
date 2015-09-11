@@ -44,7 +44,6 @@ public class WhooMongoTest {
     @Before
     public void setUp() {
         externalAccount1.setNickname("skyfly33");
-        externalAccount1.setProfileImg("profile01.jpg");
         externalAccount1.setThumbnailImg("thumbnail01.jpg");
         externalAccount1.setType("kakao");
         externalAccount1.setUuid(33190001L);
@@ -86,7 +85,7 @@ public class WhooMongoTest {
     public void receiverFindOneByIdTest() {
         Receiver findReceiver = receiverRepository.findOneById(33190001L);
         assertEquals("skyfly33", findReceiver.getExternalAccount().getNickname());
-        logger.info(findReceiver.getExternalAccount().getProfileImg());
+        logger.info(findReceiver.getExternalAccount().getThumbnailImg());
     }
 
     @Test
