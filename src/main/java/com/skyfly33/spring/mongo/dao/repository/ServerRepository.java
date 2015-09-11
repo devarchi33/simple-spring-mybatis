@@ -1,6 +1,6 @@
 package com.skyfly33.spring.mongo.dao.repository;
 
-import com.skyfly33.spring.mongo.dao.ReceiverDao;
+import com.skyfly33.spring.mongo.dao.ServerDao;
 import com.skyfly33.spring.mongo.model.whoo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -13,29 +13,28 @@ import static org.springframework.data.mongodb.core.query.Criteria.where;
 import static org.springframework.data.mongodb.core.query.Query.query;
 
 /**
- * Created by donghoon on 15. 9. 8..
+ * Created by donghoon on 15. 9. 11.
  */
-@Repository("receiverRepository")
-public class ReceiverRepository implements ReceiverDao {
-
+@Repository("serverRepository")
+public class ServerRepository implements ServerDao {
     @Autowired
     MongoTemplate mongoTemplate;
 
     @Override
-    public List<User.Server.Receiver> getAll() {
-        return mongoTemplate.findAll(User.Server.Receiver.class);
+    public List<User.Server> getAll() {
+        return mongoTemplate.findAll(User.Server.class);
     }
 
     @Override
-    public User.Server.Receiver findOneById(Long id) {
-        Query query = query(where("uuid").is(id));
-        return mongoTemplate.findOne(query, User.Server.Receiver.class);
+    public User.Server findOneById(Long uuid) {
+        Query query = query(where("uuid").is(uuid));
+        return mongoTemplate.findOne(query, User.Server.class);
     }
 
     @Override
-    public boolean save(User.Server.Receiver receiver) {
+    public boolean save(User.Server server) {
         try {
-            mongoTemplate.insert(receiver);
+            mongoTemplate.insert(server);
             return true;
         } catch (Exception e) {
             e.printStackTrace();

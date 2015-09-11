@@ -4,8 +4,9 @@ import static org.junit.Assert.*;
 
 import com.skyfly33.spring.mongo.dao.repository.ExternalAccountRepository;
 import com.skyfly33.spring.mongo.dao.repository.ReceiverRepository;
+import com.skyfly33.spring.mongo.dao.repository.ServerRepository;
 import com.skyfly33.spring.mongo.model.whoo.ExternalAccount;
-import com.skyfly33.spring.mongo.model.whoo.Receiver;
+import com.skyfly33.spring.mongo.model.whoo.User;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -18,7 +19,6 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -37,9 +37,13 @@ public class WhooMongoTest {
     ExternalAccountRepository externalAccountRepository;
     @Autowired
     ReceiverRepository receiverRepository;
+    @Autowired
+    ServerRepository serverRepository;
 
     ExternalAccount externalAccount1 = new ExternalAccount();
-    Receiver receiver1 = new Receiver();
+    User user1 = new User();
+    User.Server server1 = user1.new Server();
+    User.Server.Receiver receiver1 = server1.new Receiver();
 
     @Before
     public void setUp() {
@@ -52,6 +56,13 @@ public class WhooMongoTest {
         receiver1.setDeviceToken("device-token-sample");
         receiver1.setPushToken("push-token-sample");
         receiver1.setExternalAccount(externalAccount1);
+
+        server1.setCondition(0);
+        server1.setServer_name("tomcat01");
+        server1.setId(externalAccount1.getUuid() + server1.getServer_name());
+        server1.setIp("211.170.163.68");
+        server1.setUuid(externalAccount1.getUuid());
+        server1.setReceiver(receiver1);
     }
 
     @Test
@@ -83,16 +94,37 @@ public class WhooMongoTest {
 
     @Test
     public void receiverFindOneByIdTest() {
-        Receiver findReceiver = receiverRepository.findOneById(33190001L);
+        User.Server.Receiver findReceiver = receiverRepository.findOneById(33190001L);
         assertEquals("skyfly33", findReceiver.getExternalAccount().getNickname());
         logger.info(findReceiver.getExternalAccount().getThumbnailImg());
     }
 
     @Test
     public void receiverFindAllTest() {
-        List<Receiver> receiverList = receiverRepository.getAll();
-        Receiver receiver = receiverList.get(0);
+        List<User.Server.Receiver> receiverList = receiverRepository.getAll();
+        User.Server.Receiver receiver = receiverList.get(0);
         assertEquals("push-token-sample", receiver.getPushToken());
         logger.info(receiver.getDeviceToken());
+    }
+
+    @Test
+    public void serverSaveTest() {
+        boolean chk = serverRepository.save(server1);
+        assertTrue(chk);
+    }
+
+    @Test
+    public void serverFindOneByIdTest() {
+        User.Server findServer = serverRepository.findOneById(33190001L);
+        assertEquals("skyfly33", findServer.getReceiver().getExternalAccount().getNickname());
+        logger.info(findServer.getReceiver().getExternalAccount().getThumbnailImg());
+    }
+
+    @Test
+    public void serverFindAllTest() {
+        List<User.Server> serverList = serverRepository.getAll();
+        User.Server server = serverList.get(0);
+        assertEquals("push-token-sample", server.getReceiver().getPushToken());
+        logger.info(server.getReceiver().getDeviceToken());
     }
 }

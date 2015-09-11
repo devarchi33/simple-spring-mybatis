@@ -1,6 +1,6 @@
 package com.skyfly33.spring.mongo.dao;
 
-import com.skyfly33.spring.mongo.model.whoo.Receiver;
+import com.skyfly33.spring.mongo.model.whoo.User;
 
 import java.util.List;
 
@@ -9,9 +9,9 @@ import java.util.List;
  */
 public interface ReceiverDao {
 
-    List<Receiver> getAll();
+    List<User.Server.Receiver> getAll();
 
-    Receiver findOneById(Long id);
+    User.Server.Receiver findOneById(Long id);
 
-    boolean save(Receiver receiver);
+    boolean save(User.Server.Receiver receiver);
 }
