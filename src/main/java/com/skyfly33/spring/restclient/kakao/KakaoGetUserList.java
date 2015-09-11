@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Arrays;
 
 /**
- * Created by jeoos43 on 15. 8. 31..
+ * Created by donghoon on 15. 8. 31..
  */
 @Component
 public class KakaoGetUserList {
