@@ -1,6 +1,6 @@
 package com.skyfly33.spring.mongo.service.impl;
 
-import com.skyfly33.spring.mongo.dao.TypeDao;
+import com.skyfly33.spring.mongo.dao.smaple.TypeDao;
 import com.skyfly33.spring.mongo.model.sample.Type;
 import com.skyfly33.spring.mongo.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;

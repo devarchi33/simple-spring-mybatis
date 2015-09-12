@@ -1,4 +1,4 @@
-package com.skyfly33.spring.mongo.dao;
+package com.skyfly33.spring.mongo.dao.smaple;
 
 import com.skyfly33.spring.mongo.model.sample.Type;
 

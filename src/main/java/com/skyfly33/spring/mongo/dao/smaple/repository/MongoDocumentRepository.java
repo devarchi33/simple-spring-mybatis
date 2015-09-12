@@ -1,9 +1,9 @@
-package com.skyfly33.spring.mongo.dao.repository;
+package com.skyfly33.spring.mongo.dao.smaple.repository;
 
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 import static org.springframework.data.mongodb.core.query.Query.query;
 
-import com.skyfly33.spring.mongo.dao.DocumentDao;
+import com.skyfly33.spring.mongo.dao.smaple.DocumentDao;
 import com.skyfly33.spring.mongo.model.sample.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
