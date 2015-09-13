@@ -2,6 +2,7 @@ package com.skyfly33.spring.mongo;
 
 import static org.junit.Assert.*;
 
+import com.mongodb.WriteResult;
 import com.skyfly33.spring.domain.BaseballTeam;
 import com.skyfly33.spring.mongo.repository.BaseballRankingRepository;
 import org.junit.Before;
@@ -91,5 +92,12 @@ public class BaseballTest {
         BaseballTeam updateKia = baseballRankingRepository.findOneByTeam("kia");
         assertEquals((kia.getLose() + 1), updateKia.getLose());
         logger.info("Time: " + watch.getTotalTimeSeconds());
+    }
+
+    @Test
+    public void updateWinningRateTest() {
+        baseballRankingRepository.updateWinningRate("kia");
+        BaseballTeam updateTeam = baseballRankingRepository.findOneByTeam("kia");
+        logger.info("Update Winning Rate: " + updateTeam.getWinning_rate());
     }
 }

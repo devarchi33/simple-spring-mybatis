@@ -1,5 +1,6 @@
 package com.skyfly33.spring.mongo;
 
+import com.mongodb.WriteResult;
 import com.skyfly33.spring.domain.BaseballTeam;
 
 import java.util.List;
@@ -13,11 +14,13 @@ public interface RankingDao {
 
     BaseballTeam findOneByTeam(String team);
 
-    int increaseTheNumberOfGame(String team);
+    Integer increaseTheNumberOfGame(String team);
 
-    int increaseWin(String team);
+    Integer increaseWin(String team);
 
-    int increaseDraw(String team);
+    Integer increaseDraw(String team);
 
-    int increaseLose(String team);
+    Integer increaseLose(String team);
+
+    WriteResult updateWinningRate(String team);
 }
