@@ -20,4 +20,6 @@
         <constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
     </bean>
 
+    <bean id="query" class="org.springframework.data.mongodb.core.query.Query"/>
+
 </beans>

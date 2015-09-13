@@ -23,4 +23,6 @@ public interface RankingDao {
     Integer increaseLose(String team);
 
     WriteResult updateWinningRate(String team, String winningRate);
+
+    List<?> sortTeamByField(String field);
 }

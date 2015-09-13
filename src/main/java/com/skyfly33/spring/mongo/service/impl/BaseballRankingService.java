@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.DecimalFormat;
+import java.util.List;
 
 /**
  * Created by donghoon on 15. 9. 13..
@@ -49,5 +50,10 @@ public class BaseballRankingService implements RankingService {
         BaseballTeam findTeam = baseballRankingRepository.findOneByTeam(team);
         String winningRate = decimalFormat.format(findTeam.getWin() / (double) (findTeam.getThe_number_of_game() - findTeam.getDraw()));
         return baseballRankingRepository.updateWinningRate(team, winningRate);
+    }
+
+    @Override
+    public List<BaseballTeam> sortTeamByField(String field) {
+        return baseballRankingRepository.sortTeamByField(field);
     }
 }

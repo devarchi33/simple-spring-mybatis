@@ -6,6 +6,7 @@ import com.skyfly33.spring.mongo.dao.RankingDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
@@ -26,6 +27,8 @@ public class BaseballRankingRepository implements RankingDao {
 
     @Autowired
     private MongoTemplate mongoTemplate;
+    @Autowired
+    private Query query;
 
     @Override
     public List<BaseballTeam> findAllTeam() {
@@ -75,6 +78,13 @@ public class BaseballRankingRepository implements RankingDao {
         Query query = query(where("team").is(team));
         Update update = new Update().set("winning_rate", winningRate);
         return mongoTemplate.upsert(query, update, BaseballTeam.class);
+    }
+
+    @Override
+    public List<BaseballTeam> sortTeamByField(String field) {
+        query.limit(10);
+        query.with(new Sort(Sort.Direction.DESC, field));
+        return mongoTemplate.find(query, BaseballTeam.class);
     }
 
 

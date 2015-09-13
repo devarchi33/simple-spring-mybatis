@@ -42,8 +42,18 @@ public class BaseballDaoTest {
     }
 
     @Test
-    public void getAllTest() {
+    public void findAllTeamTest() {
         List<BaseballTeam> teamList = baseballRankingRepository.findAllTeam();
+        assertEquals(10, teamList.size());
+
+        for (BaseballTeam team : teamList) {
+            logger.info("Team: " + team.getTeam());
+        }
+    }
+
+    @Test
+    public void sortTeamByFieldTest() {
+        List<BaseballTeam> teamList = baseballRankingRepository.sortTeamByField("winning_rate");
         assertEquals(10, teamList.size());
 
         for (BaseballTeam team : teamList) {
