@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -35,5 +36,13 @@ public class BaseballRankingRepository implements RankingDao {
     public BaseballTeam findOneByTeam(String team) {
         Query query = query(where("team").is(team));
         return mongoTemplate.findOne(query, BaseballTeam.class);
+    }
+
+    @Override
+    public int increaseWin(String team) {
+        Query query = query(where("team").is(team));
+        Update update = new Update().inc("win", 1);
+        BaseballTeam updateTeam = mongoTemplate.findAndModify(query, update, BaseballTeam.class);
+        return updateTeam.getWin();
     }
 }

@@ -12,4 +12,6 @@ public interface RankingDao {
     List<?> getAll();
 
     BaseballTeam findOneByTeam(String team);
+
+    int increaseWin(String team);
 }

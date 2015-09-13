@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.util.StopWatch;
 
 import java.util.List;
 
@@ -48,5 +49,19 @@ public class BaseballTest {
         for (BaseballTeam team : teamList) {
             logger.info("Team: " + team.getTeam());
         }
+    }
+
+    @Test
+    public void increaseWinTest() {
+        BaseballTeam kia = baseballRankingRepository.findOneByTeam("kia");
+
+        StopWatch watch = new StopWatch();
+        watch.start();
+        baseballRankingRepository.increaseWin("kia");
+        watch.stop();
+
+        BaseballTeam updateKia = baseballRankingRepository.findOneByTeam("kia");
+        assertEquals((kia.getWin() + 1), updateKia.getWin());
+        logger.info("Time: " + watch.getTotalTimeSeconds());
     }
 }
