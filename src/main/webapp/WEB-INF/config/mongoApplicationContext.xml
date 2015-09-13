@@ -14,7 +14,7 @@
 
     <!-- MongoDB -->
     <mongo:mongo id="mongo" host="127.0.0.1" port="27017"/>
-    <mongo:db-factory id="mongoDbFactory" dbname="sports"/>
+    <mongo:db-factory id="mongoDbFactory" dbname="test"/>
 
     <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
         <constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>

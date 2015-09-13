@@ -52,20 +52,6 @@ public class BaseballTest {
     }
 
     @Test
-    public void theNumberOfGameTest() {
-        BaseballTeam kia = baseballRankingRepository.findOneByTeam("kia");
-
-        StopWatch watch = new StopWatch();
-        watch.start();
-        baseballRankingRepository.increaseTheNumberOfGame("kia");
-        watch.stop();
-
-        BaseballTeam updateKia = baseballRankingRepository.findOneByTeam("kia");
-        assertEquals((kia.getThe_number_of_game() - 1), updateKia.getThe_number_of_game());
-        logger.info("Time: " + watch.getTotalTimeSeconds());
-    }
-
-    @Test
     public void increaseWinTest() {
         BaseballTeam kia = baseballRankingRepository.findOneByTeam("kia");
 

@@ -51,6 +51,7 @@ public class BaseballRankingRepository implements RankingDao {
         Query query = query(where("team").is(team));
         Update update = new Update().inc("win", 1);
         BaseballTeam updateTeam = mongoTemplate.findAndModify(query, update, BaseballTeam.class);
+        increaseTheNumberOfGame(team);
         return updateTeam.getWin();
     }
 
@@ -59,6 +60,7 @@ public class BaseballRankingRepository implements RankingDao {
         Query query = query(where("team").is(team));
         Update update = new Update().inc("draw", 1);
         BaseballTeam updateTeam = mongoTemplate.findAndModify(query, update, BaseballTeam.class);
+        increaseTheNumberOfGame(team);
         return updateTeam.getThe_number_of_game();
     }
 
@@ -67,6 +69,7 @@ public class BaseballRankingRepository implements RankingDao {
         Query query = query(where("team").is(team));
         Update update = new Update().inc("lose", 1);
         BaseballTeam updateTeam = mongoTemplate.findAndModify(query, update, BaseballTeam.class);
+        increaseTheNumberOfGame(team);
         return updateTeam.getThe_number_of_game();
     }
 
