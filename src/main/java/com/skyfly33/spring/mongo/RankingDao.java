@@ -13,5 +13,11 @@ public interface RankingDao {
 
     BaseballTeam findOneByTeam(String team);
 
+    int increaseTheNumberOfGame(String team);
+
     int increaseWin(String team);
+
+    int increaseDraw(String team);
+
+    int increaseLose(String team);
 }

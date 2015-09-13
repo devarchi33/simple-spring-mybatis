@@ -37,7 +37,7 @@ public class BaseballTest {
     public void findByTeamTest() {
         assertNotNull(baseballRankingRepository);
         BaseballTeam kia = baseballRankingRepository.findOneByTeam("kia");
-        assertEquals(0, kia.getDraw());
+        assertEquals("kia", kia.getTeam());
         logger.info("Team: " + kia.getTeam());
     }
 
@@ -52,6 +52,20 @@ public class BaseballTest {
     }
 
     @Test
+    public void theNumberOfGameTest() {
+        BaseballTeam kia = baseballRankingRepository.findOneByTeam("kia");
+
+        StopWatch watch = new StopWatch();
+        watch.start();
+        baseballRankingRepository.increaseTheNumberOfGame("kia");
+        watch.stop();
+
+        BaseballTeam updateKia = baseballRankingRepository.findOneByTeam("kia");
+        assertEquals((kia.getThe_number_of_game() - 1), updateKia.getThe_number_of_game());
+        logger.info("Time: " + watch.getTotalTimeSeconds());
+    }
+
+    @Test
     public void increaseWinTest() {
         BaseballTeam kia = baseballRankingRepository.findOneByTeam("kia");
 
@@ -62,6 +76,34 @@ public class BaseballTest {
 
         BaseballTeam updateKia = baseballRankingRepository.findOneByTeam("kia");
         assertEquals((kia.getWin() + 1), updateKia.getWin());
+        logger.info("Time: " + watch.getTotalTimeSeconds());
+    }
+
+    @Test
+    public void increaseDrawTest() {
+        BaseballTeam kia = baseballRankingRepository.findOneByTeam("kia");
+
+        StopWatch watch = new StopWatch();
+        watch.start();
+        baseballRankingRepository.increaseDraw("kia");
+        watch.stop();
+
+        BaseballTeam updateKia = baseballRankingRepository.findOneByTeam("kia");
+        assertEquals((kia.getDraw() + 1), updateKia.getDraw());
+        logger.info("Time: " + watch.getTotalTimeSeconds());
+    }
+
+    @Test
+    public void increaseLoseTest() {
+        BaseballTeam kia = baseballRankingRepository.findOneByTeam("kia");
+
+        StopWatch watch = new StopWatch();
+        watch.start();
+        baseballRankingRepository.increaseLose("kia");
+        watch.stop();
+
+        BaseballTeam updateKia = baseballRankingRepository.findOneByTeam("kia");
+        assertEquals((kia.getLose() + 1), updateKia.getLose());
         logger.info("Time: " + watch.getTotalTimeSeconds());
     }
 }

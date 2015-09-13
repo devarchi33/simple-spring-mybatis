@@ -39,10 +39,36 @@ public class BaseballRankingRepository implements RankingDao {
     }
 
     @Override
+    public int increaseTheNumberOfGame(String team) {
+        Query query = query(where("team").is(team));
+        Update update = new Update().inc("the_number_of_game", 1);
+        BaseballTeam updateTeam = mongoTemplate.findAndModify(query, update, BaseballTeam.class);
+        return updateTeam.getThe_number_of_game();
+    }
+
+    @Override
     public int increaseWin(String team) {
         Query query = query(where("team").is(team));
         Update update = new Update().inc("win", 1);
         BaseballTeam updateTeam = mongoTemplate.findAndModify(query, update, BaseballTeam.class);
         return updateTeam.getWin();
     }
+
+    @Override
+    public int increaseDraw(String team) {
+        Query query = query(where("team").is(team));
+        Update update = new Update().inc("draw", 1);
+        BaseballTeam updateTeam = mongoTemplate.findAndModify(query, update, BaseballTeam.class);
+        return updateTeam.getThe_number_of_game();
+    }
+
+    @Override
+    public int increaseLose(String team) {
+        Query query = query(where("team").is(team));
+        Update update = new Update().inc("lose", 1);
+        BaseballTeam updateTeam = mongoTemplate.findAndModify(query, update, BaseballTeam.class);
+        return updateTeam.getThe_number_of_game();
+    }
+
+
 }

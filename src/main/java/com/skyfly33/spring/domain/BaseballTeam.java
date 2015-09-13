@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "baseball.ranking")
 public class BaseballTeam {
     private String team;
+    private int the_number_of_game;
     private int win;
     private int lose;
     private int draw;
