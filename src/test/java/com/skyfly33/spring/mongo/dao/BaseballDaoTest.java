@@ -1,10 +1,9 @@
-package com.skyfly33.spring.mongo;
+package com.skyfly33.spring.mongo.dao;
 
 import static org.junit.Assert.*;
 
-import com.mongodb.WriteResult;
 import com.skyfly33.spring.domain.BaseballTeam;
-import com.skyfly33.spring.mongo.repository.BaseballRankingRepository;
+import com.skyfly33.spring.mongo.dao.repository.BaseballRankingRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,9 +21,9 @@ import java.util.List;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/config/mongoApplicationContext.xml"})
-public class BaseballTest {
+public class BaseballDaoTest {
 
-    Logger logger = LoggerFactory.getLogger(BaseballTest.class);
+    Logger logger = LoggerFactory.getLogger(BaseballDaoTest.class);
 
     @Autowired
     BaseballRankingRepository baseballRankingRepository;
@@ -44,7 +43,7 @@ public class BaseballTest {
 
     @Test
     public void getAllTest() {
-        List<BaseballTeam> teamList = baseballRankingRepository.getAll();
+        List<BaseballTeam> teamList = baseballRankingRepository.findAllTeam();
         assertEquals(10, teamList.size());
 
         for (BaseballTeam team : teamList) {
@@ -58,11 +57,11 @@ public class BaseballTest {
 
         StopWatch watch = new StopWatch();
         watch.start();
-        baseballRankingRepository.increaseWin("kia");
+        int updateKia = baseballRankingRepository.increaseWin("kia");
         watch.stop();
+        baseballRankingRepository.increaseTheNumberOfGame("kia");
 
-        BaseballTeam updateKia = baseballRankingRepository.findOneByTeam("kia");
-        assertEquals((kia.getWin() + 1), updateKia.getWin());
+        assertEquals((kia.getWin() + 1), updateKia);
         logger.info("Time: " + watch.getTotalTimeSeconds());
     }
 
@@ -72,11 +71,11 @@ public class BaseballTest {
 
         StopWatch watch = new StopWatch();
         watch.start();
-        baseballRankingRepository.increaseDraw("kia");
+        int updateKia = baseballRankingRepository.increaseDraw("kia");
         watch.stop();
+        baseballRankingRepository.increaseTheNumberOfGame("kia");
 
-        BaseballTeam updateKia = baseballRankingRepository.findOneByTeam("kia");
-        assertEquals((kia.getDraw() + 1), updateKia.getDraw());
+        assertEquals((kia.getDraw() + 1), updateKia);
         logger.info("Time: " + watch.getTotalTimeSeconds());
     }
 
@@ -86,18 +85,12 @@ public class BaseballTest {
 
         StopWatch watch = new StopWatch();
         watch.start();
-        baseballRankingRepository.increaseLose("kia");
+        int updateKia = baseballRankingRepository.increaseLose("kia");
         watch.stop();
+        baseballRankingRepository.increaseTheNumberOfGame("kia");
 
-        BaseballTeam updateKia = baseballRankingRepository.findOneByTeam("kia");
-        assertEquals((kia.getLose() + 1), updateKia.getLose());
+        assertEquals((kia.getLose() + 1), updateKia);
         logger.info("Time: " + watch.getTotalTimeSeconds());
     }
 
-    @Test
-    public void updateWinningRateTest() {
-        baseballRankingRepository.updateWinningRate("kia");
-        BaseballTeam updateTeam = baseballRankingRepository.findOneByTeam("kia");
-        logger.info("Update Winning Rate: " + updateTeam.getWinning_rate());
-    }
 }

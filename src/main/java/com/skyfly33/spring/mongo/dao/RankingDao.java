@@ -1,4 +1,4 @@
-package com.skyfly33.spring.mongo;
+package com.skyfly33.spring.mongo.dao;
 
 import com.mongodb.WriteResult;
 import com.skyfly33.spring.domain.BaseballTeam;
@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface RankingDao {
 
-    List<?> getAll();
+    List<?> findAllTeam();
 
     BaseballTeam findOneByTeam(String team);
 
@@ -22,5 +22,5 @@ public interface RankingDao {
 
     Integer increaseLose(String team);
 
-    WriteResult updateWinningRate(String team);
+    WriteResult updateWinningRate(String team, String winningRate);
 }
