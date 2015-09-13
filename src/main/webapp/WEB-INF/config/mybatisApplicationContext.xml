@@ -22,7 +22,7 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <bean id="dataSource2" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
           destroy-method="close">
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
         <property name="jdbcUrl"
@@ -31,7 +31,7 @@
         <property name="password" value="sky1111"/>
     </bean>
 
-    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+    <bean id="dataSource2" class="com.mchange.v2.c3p0.ComboPooledDataSource"
           destroy-method="close">
         <property name="driverClass" value="oracle.jdbc.driver.OracleDriver"/>
         <property name="jdbcUrl"
