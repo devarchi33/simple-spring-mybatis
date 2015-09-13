@@ -16,9 +16,9 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Controller
 @RequestMapping("/")
-public class CubeoneController {
+public class HomeController {
 
-    Logger logger = LoggerFactory.getLogger(CubeoneController.class);
+    Logger logger = LoggerFactory.getLogger(HomeController.class);
 
     @Autowired
     UserService userService;
