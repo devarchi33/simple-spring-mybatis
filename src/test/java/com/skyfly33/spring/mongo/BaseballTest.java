@@ -1,0 +1,52 @@
+package com.skyfly33.spring.mongo;
+
+import static org.junit.Assert.*;
+
+import com.skyfly33.spring.domain.BaseballTeam;
+import com.skyfly33.spring.mongo.repository.BaseballRankingRepository;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.util.List;
+
+/**
+ * Created by donghoon on 15. 9. 13..
+ */
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/config/mongoApplicationContext.xml"})
+public class BaseballTest {
+
+    Logger logger = LoggerFactory.getLogger(BaseballTest.class);
+
+    @Autowired
+    BaseballRankingRepository baseballRankingRepository;
+
+    @Before
+    public void setUp() {
+
+    }
+
+    @Test
+    public void findByTeamTest() {
+        assertNotNull(baseballRankingRepository);
+        BaseballTeam kia = baseballRankingRepository.findOneByTeam("kia");
+        assertEquals(0, kia.getDraw());
+        logger.info("Team: " + kia.getTeam());
+    }
+
+    @Test
+    public void getAllTest() {
+        List<BaseballTeam> teamList = baseballRankingRepository.getAll();
+        assertEquals(10, teamList.size());
+
+        for (BaseballTeam team : teamList) {
+            logger.info("Team: " + team.getTeam());
+        }
+    }
+}
