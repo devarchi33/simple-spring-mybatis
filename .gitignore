@@ -10,3 +10,5 @@ bower_components/
 node_modules/
 target/
 *.properties
+simple-spring-mybatis.ipr
+simple-spring-mybatis.iws
