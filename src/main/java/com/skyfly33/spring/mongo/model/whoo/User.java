@@ -16,6 +16,7 @@ public class User {
     private long uuid;
     private String name;
     private String email;
+    private  int certify;
     @DBRef
     private ExternalAccount externalAccount;
     @DBRef

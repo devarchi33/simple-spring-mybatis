@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 /**
  * Created by donghoon on 15. 9. 2..
  */
-@Document(collection = "externalAccount")
+@Document(collection = "user_external_account")
 @Data
 public class ExternalAccount {
     @Id
