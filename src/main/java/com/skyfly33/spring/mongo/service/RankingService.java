@@ -18,4 +18,6 @@ public interface RankingService {
     WriteResult updateWinningRate(String team);
 
     List<?> sortTeamByField(String field);
+
+    WriteResult updateGameBehind(String team);
 }

@@ -20,6 +20,8 @@ public class BaseballRankingService implements RankingService {
     private BaseballRankingRepository baseballRankingRepository;
     private String pattern = "#.###";
     private DecimalFormat decimalFormat = new DecimalFormat(pattern);
+    private String pattern2 = "#.#";
+    private DecimalFormat decimalFormat2 = new DecimalFormat(pattern2);
 
     @Override
     public Integer increaseWin(String team) {
@@ -55,5 +57,14 @@ public class BaseballRankingService implements RankingService {
     @Override
     public List<BaseballTeam> sortTeamByField(String field) {
         return baseballRankingRepository.sortTeamByField(field);
+    }
+
+    @Override
+    public WriteResult updateGameBehind(String team) {
+        List<BaseballTeam> teamList = baseballRankingRepository.sortTeamByField("winning_rate");
+        BaseballTeam first = teamList.get(0);
+        BaseballTeam behindTeam = baseballRankingRepository.findOneByTeam(team);
+        String gameBehind = decimalFormat2.format((double) ((first.getWin() - behindTeam.getWin()) + (behindTeam.getLose() - first.getLose())) / 2);
+        return baseballRankingRepository.updateGameBehind(team, gameBehind);
     }
 }

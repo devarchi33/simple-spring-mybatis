@@ -15,4 +15,5 @@ public class BaseballTeam {
     private int lose;
     private int draw;
     private double winning_rate;
+    private double game_behind;
 }

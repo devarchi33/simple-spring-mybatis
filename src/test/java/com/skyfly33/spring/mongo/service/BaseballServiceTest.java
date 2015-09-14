@@ -90,4 +90,9 @@ public class BaseballServiceTest {
             logger.info("Team: " + team.getTeam());
         }
     }
+
+    @Test
+    public void updateGameBehind() {
+        baseballRankingService.updateGameBehind("nexen");
+    }
 }

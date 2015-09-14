@@ -87,5 +87,12 @@ public class BaseballRankingRepository implements RankingDao {
         return mongoTemplate.find(query, BaseballTeam.class);
     }
 
+    @Override
+    public WriteResult updateGameBehind(String team, String gameBehind) {
+        Query query = query(where("team").is(team));
+        Update update = new Update().set("game_behind", gameBehind);
+        return mongoTemplate.upsert(query, update, BaseballTeam.class);
+    }
+
 
 }
