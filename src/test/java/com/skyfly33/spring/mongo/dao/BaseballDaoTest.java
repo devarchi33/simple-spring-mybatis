@@ -103,4 +103,10 @@ public class BaseballDaoTest {
         logger.info("Time: " + watch.getTotalTimeSeconds());
     }
 
+    @Test
+    public void recentTenGameTest() {
+        Object[] recentTenGaame = {"w", "l", "w", "w", "l", "w", "w", "l", "w", "w"};
+        baseballRankingRepository.updateRecentTenGame("hanhwa", recentTenGaame);
+    }
+
 }

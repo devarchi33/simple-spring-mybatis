@@ -27,4 +27,6 @@ public interface RankingDao {
     List<?> sortTeamByField(String field);
 
     WriteResult updateGameBehind(String team, String gameBehind);
+
+    WriteResult updateRecentTenGame(String team, Object... recentTenGame);
 }

@@ -94,5 +94,12 @@ public class BaseballRankingRepository implements RankingDao {
         return mongoTemplate.upsert(query, update, BaseballTeam.class);
     }
 
+    @Override
+    public WriteResult updateRecentTenGame(String team, Object... recentTenGame) {
+        Query query = query(where("team").is(team));
+        Update update = new Update().pushAll("recent_ten_game", recentTenGame); //push를 하게 되면 배열안에 배열이 들어감.
+        return mongoTemplate.updateFirst(query, update, BaseballTeam.class);
+    }
+
 
 }
