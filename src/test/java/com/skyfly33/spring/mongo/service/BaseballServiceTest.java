@@ -93,6 +93,12 @@ public class BaseballServiceTest {
 
     @Test
     public void updateGameBehind() {
-        baseballRankingService.updateGameBehind("nexen");
+        baseballRankingService.updateGameBehind("doosan");
+        baseballRankingService.updateGameBehind("kia");
+        baseballRankingService.updateGameBehind("lotte");
+        baseballRankingService.updateGameBehind("hanhwa");
+        baseballRankingService.updateGameBehind("sk");
+        baseballRankingService.updateGameBehind("lg");
+        baseballRankingService.updateGameBehind("kt");
     }
 }
