@@ -21,7 +21,7 @@ public class WHOOController {
 
     @RequestMapping("/setKakaoAuthCode")
     public String setAuthCode(@RequestBody String kakaoAuthCode) {
-        logger.info("kakaoAuthCode" + kakaoAuthCode);
+        logger.info("kakaoAuthCode: " + kakaoAuthCode);
         return kakaoAuthCode;
     }
 
@@ -29,8 +29,18 @@ public class WHOOController {
     public
     @ResponseBody
     String saveAuthCode(@RequestParam String code) {
-        logger.info("Auth Code : " + code);
+        logger.info("Auth Code: " + code);
         return code;
+    }
+
+    @RequestMapping(value = "/getKey", method = RequestMethod.POST)
+    public
+    @ResponseBody
+    Object getKakaoRestKey() {
+        Code vo = new Code();
+        logger.info("Send Kakao RestKey to App");
+
+        return vo;
     }
 
     @RequestMapping(value = "/upsert", method = RequestMethod.POST)
