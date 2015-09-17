@@ -122,7 +122,7 @@ public class OneSignalCreateNotification {
     public void createNotificationByJDK(String channel, String rawMessage) {
         try {
             Message message = mapper.readValue(rawMessage, Message.class);
-            String sendMessage = message.getIp() + ": " + "something wrong with " + message.getMessage();
+            String sendMessage = message.getIp() + ": " + "something wrong with " + message.getMessage() + ", time: " + message.getTime();
 
             String contents = "{ " +
                     "\"app_id\"            : \"" + "061e0aea-4ebb-11e5-9e94-27572f15b95f" + "\", " +
