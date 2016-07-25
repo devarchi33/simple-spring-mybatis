@@ -17,12 +17,13 @@
 
     <select id="isValidUser" resultType="java.lang.Boolean" parameterType="com.skyfly33.spring.domain.User">
         SELECT * FROM cubeone_user
-        WHERE email = #{email} AND
-              password = #{password}
+        WHERE email = #{email}
+        AND password = #{password}
     </select>
 
     <insert id="signUpUser" parameterType="com.skyfly33.spring.domain.User">
         INSERT INTO cubeone_user (email, password, phone)
         VALUES (#{email}, #{password}, #{phone})
     </insert>
+
 </mapper>

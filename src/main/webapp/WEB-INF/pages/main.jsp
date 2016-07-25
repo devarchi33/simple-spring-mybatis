@@ -26,7 +26,7 @@
     <link rel="stylesheet"
           href="<c:url value="/resources/bower_components/adminlte/plugins/datepicker/datepicker3.css"/>"/>
     <link rel="stylesheet"
-          href="<c:url value="/resources/bower_components/adminlte/plugins/daterangepicker/daterangepicker-bs3.css"/>"/>
+          href="<c:url value="/resources/bower_components/adminlte/plugins/daterangepicker/daterangepicker.css"/>"/>
     <link rel="stylesheet"
           href="<c:url value="/resources/bower_components/adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css"/>"/>
 
@@ -48,8 +48,8 @@
     </div>
 
     <%--script--%>
-    <!-- jQuery 2.1.4 -->
-    <script src="<c:url value="/resources/bower_components/adminlte/plugins/jQuery/jQuery-2.1.4.min.js"/>"></script>
+    <!-- jQuery 2.2.3 -->
+    <script src="<c:url value="/resources/bower_components/adminlte/plugins/jQuery/jquery-2.2.3.min.js"/>"></script>
     <!-- jQuery UI 1.11.4 -->
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
