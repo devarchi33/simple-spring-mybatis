@@ -15,15 +15,9 @@
         WHERE email = #{email}
     </select>
 
-    <select id="isValidUser" resultType="java.lang.Boolean" parameterType="com.devarchi33.spring.domain.User">
-        SELECT * FROM cubeone_user
-        WHERE email = #{email}
-        AND password = #{password}
-    </select>
-
     <insert id="signUpUser" parameterType="com.devarchi33.spring.domain.User">
-        INSERT INTO cubeone_user (email, password, phone)
-        VALUES (#{email}, #{password}, #{phone})
+        INSERT INTO cubeone_user (email, password)
+        VALUES (#{email}, #{password})
     </insert>
 
 </mapper>

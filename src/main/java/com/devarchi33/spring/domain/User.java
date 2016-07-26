@@ -11,22 +11,19 @@ public class User {
     private Long id;
     private String email;
     private String password;
-    private int phone;
 
     public User() {
     }
 
-    public User(Long id, String email, String password, int phone) {
+    public User(Long id, String email, String password) {
         this.id = id;
         this.email = email;
         this.password = password;
-        this.phone = phone;
     }
 
-    public User(String email, String password, int phone) {
+    public User(String email, String password) {
         this.email = email;
         this.password = password;
-        this.phone = phone;
     }
 
     public Long getId() {
@@ -53,11 +50,4 @@ public class User {
         this.password = password;
     }
 
-    public int getPhone() {
-        return phone;
-    }
-
-    public void setPhone(int phone) {
-        this.phone = phone;
-    }
 }

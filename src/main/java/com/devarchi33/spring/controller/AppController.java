@@ -10,21 +10,19 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * Created by donghoon on 15. 8. 22..
  */
 @Controller
 @RequestMapping("/")
-public class CubeoneController {
+public class AppController {
 
-    Logger logger = LoggerFactory.getLogger(CubeoneController.class);
+    Logger logger = LoggerFactory.getLogger(AppController.class);
 
     @Autowired
     UserService userService;
-
-    private String thumbnailImg = null;
-    private String kakaoNickName = null;
 
     @ModelAttribute("user")
     public User constructor() {
@@ -32,54 +30,54 @@ public class CubeoneController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView printWelcome() {
-        ModelAndView mv = new ModelAndView("hello");
+    public ModelAndView login() {
+        ModelAndView mv = new ModelAndView("login");
         mv.addObject("message", "Login Form :)");
         return mv;
     }
 
-    @RequestMapping(value = "main", method = RequestMethod.POST)
-    public ModelAndView saveParam(@RequestParam("userThumb") String userThumb,
-                                  @RequestParam("kakaoNickName") String kakaoNickName) {
-        ModelAndView mv = new ModelAndView("main");
-        logger.info("Thumbnail url : " + userThumb);
-        logger.info("kakaoNickName : " + kakaoNickName);
-        this.thumbnailImg = userThumb;
-        this.kakaoNickName = kakaoNickName;
-        mv.addObject("thumbnail", this.thumbnailImg);
-        mv.addObject("kakaoNickName", this.kakaoNickName);
-        return mv;
-    }
+//    @RequestMapping(value = "main", method = RequestMethod.POST)
+//    public ModelAndView main(@RequestParam("userThumb") String userThumb,
+//                             @RequestParam("kakaoNickName") String kakaoNickName) {
+//        ModelAndView mv = new ModelAndView("main");
+//        logger.info("Thumbnail url : " + userThumb);
+//        logger.info("kakaoNickName : " + kakaoNickName);
+//        this.thumbnailImg = userThumb;
+//        this.kakaoNickName = kakaoNickName;
+//        mv.addObject("thumbnail", this.thumbnailImg);
+//        mv.addObject("kakaoNickName", this.kakaoNickName);
+//        return mv;
+//    }
 
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public ModelAndView excuteLogin(HttpServletRequest request,
                                     @ModelAttribute("User") User user,
                                     @RequestParam("form-email") String form_email,
                                     @RequestParam("form-password") String form_password) {
-        logger.info("input email : " + form_email);
-        logger.info("input password : " + form_password);
+
+        logger.info("input email : {}, input password : {} ", form_email, form_password);
 
         ModelAndView mv = new ModelAndView();
 
         user.setEmail(form_email);
         user.setPassword(form_password);
-        user.setPhone(userService.findUserByEmail(form_email).getPhone());
 
-//        if (userService.isValidUser(user)) {
-        logger.info("login success");
-        mv.addObject("thumbnail", this.thumbnailImg);
-        mv.addObject("loginEmail", form_email);
-        mv.setViewName("main");
-//        } else {
-//            logger.debug("login fail");
-//            mv.addObject("inValidUser", "please check login info...");
-//            mv.setViewName("hello");
-//        }
+        boolean checkUser = userService.isValidUser(user);
 
+        if (checkUser) {
+            logger.info("login success");
+            List<User> userList = userService.findAllUsers();
+            mv.addObject("email", form_email);
+            mv.addObject("name", form_email.split("@")[0]);
+            mv.addObject("userList", userList);
+            mv.setViewName("main");
+        } else {
+            logger.debug("login fail");
+            mv.addObject("inValidUser", "please check login info...");
+            mv.setViewName("login");
+        }
 
         mv.addObject("pass", user.getPassword());
-        mv.addObject("phone", user.getPhone());
-        logger.info("phone" + user.getPhone());
 
         return mv;
     }
@@ -92,7 +90,7 @@ public class CubeoneController {
 
     @RequestMapping(value = "signUp", method = RequestMethod.POST)
     public ModelAndView signUpProc(@ModelAttribute("user") User user) {
-        ModelAndView mv = new ModelAndView("contents/signUp");
+        ModelAndView mv = new ModelAndView("login");
         userService.signUpUser(user);
         return mv;
     }

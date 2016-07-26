@@ -118,11 +118,6 @@
                                 <form:password path="password" placeholder="Password.."
                                                class="form-password form-control" id="form-password"/>
                             </div>
-                            <div class="form-group">
-                                <label class="sr-only" for="phone">Phone</label>
-                                <form:input path="phone" placeholder="Phone.."
-                                            class="form-phone form-control" id="form-phone"/>
-                            </div>
                             <button type="submit" class="btn">Sign me up!</button>
                         </form:form>
                     </div>

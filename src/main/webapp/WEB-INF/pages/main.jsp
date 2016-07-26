@@ -7,15 +7,17 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <!doctype html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>devarchi33_test</title>
     <%--style--%>
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="<c:url value="/resources/bower_components/bootstrap/dist/css/bootstrap.min.css"/>">
     <link rel="stylesheet" href="<c:url value="/resources/bower_components/font-awesome/css/font-awesome.min.css"/>">
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="<c:url value="/resources/bower_components/adminlte/dist/css/AdminLTE.min.css"/>"/>
     <link rel="stylesheet"
           href="<c:url value="/resources/bower_components/adminlte/dist/css/skins/_all-skins.min.css"/>"/>
@@ -29,6 +31,8 @@
           href="<c:url value="/resources/bower_components/adminlte/plugins/daterangepicker/daterangepicker.css"/>"/>
     <link rel="stylesheet"
           href="<c:url value="/resources/bower_components/adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css"/>"/>
+    <link rel="stylesheet"
+          href="<c:url value="/resources/bower_components/adminlte/plugins/datatables/dataTables.bootstrap.css"/>"/>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -37,8 +41,8 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body>
-<div class="wrapper skin-black">
+<body class="skin-black sidebar-mini">
+<div class="wrapper">
 
     <%@ include file="components/header.jsp" %>
     <%@ include file="components/mainSideBar.jsp" %>
@@ -56,35 +60,23 @@
     <script>
         $.widget.bridge('uibutton', $.ui.button);
     </script>
-    <!-- Bootstrap 3.3.5 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="<c:url value="/resources/bower_components/bootstrap/dist/js/bootstrap.min.js" />"></script>
-    <!-- Sparkline -->
     <script src="<c:url value="/resources/bower_components/adminlte/plugins/sparkline/jquery.sparkline.min.js" /> "></script>
-    <!-- jvectormap -->
     <script src="<c:url value="/resources/bower_components/adminlte/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"/> "></script>
     <script src="<c:url value="/resources/bower_components/adminlte/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"/> "></script>
-    <!-- jQuery Knob Chart -->
     <script src="<c:url value="/resources/bower_components/adminlte/plugins/knob/jquery.knob.js"/>"></script>
-    <!-- daterangepicker -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
     <script src="<c:url value="/resources/bower_components/adminlte/plugins/daterangepicker/daterangepicker.js"/>"></script>
-    <!-- datepicker -->
     <script src="<c:url value="/resources/bower_components/adminlte/plugins/datepicker/bootstrap-datepicker.js"/>"></script>
-    <!-- Bootstrap WYSIHTML5 -->
     <script src="<c:url value="/resources/bower_components/adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"/>"></script>
-    <!-- Slimscroll -->
     <script src="<c:url value="/resources/bower_components/adminlte/plugins/slimScroll/jquery.slimscroll.min.js"/>"></script>
-    <!-- FastClick -->
     <script src="<c:url value="/resources/bower_components/adminlte/plugins/fastclick/fastclick.min.js"/>"></script>
-    <!-- AdminLTE App -->
+    <script src="<c:url value="/resources/bower_components/adminlte/plugins/datatables/jquery.dataTables.min.js"/> "></script>
+    <script src="<c:url value="/resources/bower_components/adminlte/plugins/datatables/dataTables.bootstrap.min.js"/> "></script>
     <script src="<c:url value="/resources/bower_components/adminlte/dist/js/app.min.js"/>"></script>
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="<c:url value="/resources/bower_components/adminlte/dist/js/pages/dashboard.js"/> "></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="<c:url value="/resources/bower_components/adminlte/dist/js/demo.js"/> "></script>
-    <!-- Morris.js charts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-    <script src="<c:url value="/resources/bower_components/adminlte/plugins/morris/morris.min.js"/> "></script>
+    <script src="<c:url value="/resources/js/devarchi33.js"/> "></script>
+
 </div>
 </body>
 </html>

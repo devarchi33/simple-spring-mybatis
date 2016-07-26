@@ -44,7 +44,7 @@ public class UserDaoTest extends TestCase {
 
     @Test
     public void testIsValidUser() throws Exception {
-        User loginParam = new User(1L, "skyfly33@iruen.com", "iruen", 01020570001);
+        User loginParam = new User(1L, "skyfly33@iruen.com", "iruen");
 
         Boolean isValidUser = userDao.isValidUser(loginParam);
         assertTrue(isValidUser);
@@ -52,7 +52,7 @@ public class UserDaoTest extends TestCase {
 
     @Test
     public void testSignUpUser() throws Exception {
-        User signUpUser = new User("devarchi33@gmail.com", "devarchi33", 01020570003);
+        User signUpUser = new User("devarchi33@gmail.com", "devarchi33");
 
         userDao.signUpUser(signUpUser);
 

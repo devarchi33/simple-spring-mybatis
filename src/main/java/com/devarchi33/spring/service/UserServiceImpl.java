@@ -35,8 +35,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Boolean isValidUser(User user) {
-        Boolean isValidUser = userDao.isValidUser(user);
-        return isValidUser;
+        User findUser = userDao.findUserByEmail(user.getEmail());
+        Boolean isValidUser;
+
+        if (user.getEmail().equals(findUser.getEmail()) && user.getPassword().equals(findUser.getPassword())) {
+            isValidUser = true;
+            return isValidUser;
+        } else {
+            isValidUser = false;
+            return isValidUser;
+        }
     }
 
     @Override
