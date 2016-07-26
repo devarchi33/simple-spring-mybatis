@@ -20,4 +20,9 @@
         VALUES (#{email}, #{password})
     </insert>
 
+    <delete id="deleteUserByEmail" parameterType="java.lang.String">
+        DELETE FROM cubeone_user
+        WHERE email = #{email}
+    </delete>
+
 </mapper>

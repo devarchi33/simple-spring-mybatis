@@ -33,6 +33,7 @@ public class AppController {
     public ModelAndView login() {
         ModelAndView mv = new ModelAndView("login");
         mv.addObject("message", "Login Form :)");
+
         return mv;
     }
 
@@ -86,6 +87,7 @@ public class AppController {
     public ModelAndView signUp() {
         ModelAndView mv = new ModelAndView("contents/signUp");
         mv.addObject("message", "This is devarchi33_test registration form made with Bootstrap.");
+
         return mv;
     }
 
@@ -97,13 +99,28 @@ public class AppController {
         if (findUser != null) {
             mv = new ModelAndView("contents/signUp");
             mv.addObject("message", "이미 가입된 이메일 입니다.");
+
             return mv;
         } else {
             userService.signUpUser(user);
             mv = new ModelAndView("login");
             mv.addObject("message2", user.getEmail() + ", 님의 회원가입이 완료되었습니다.");
+
             return mv;
         }
+    }
+
+    @RequestMapping(value = "deleteUser", method = RequestMethod.POST)
+    public ModelAndView deleteUser(@RequestParam String email) {
+        logger.debug("delete email: {}", email);
+
+        ModelAndView mv = new ModelAndView("main");
+        userService.deleteUserByEmail(email);
+
+        List<User> userList = userService.findAllUsers();
+        mv.addObject("userList", userList);
+
+        return mv;
     }
 
 //    @ExceptionHandler(RuntimeException.class)
@@ -111,4 +128,5 @@ public class AppController {
 //        ModelAndView mv = new ModelAndView("error/errorRuntimeException");
 //        return mv;
 //    }
+
 }

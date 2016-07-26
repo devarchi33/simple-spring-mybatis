@@ -18,10 +18,10 @@
 
     <bean id="transactionManager"
           class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource"/>
+        <property name="dataSource" ref="plainDataSource"/>
     </bean>
 
-    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+    <bean id="plainDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
         <property name="jdbcUrl"
                   value="jdbc:mysql://iruentech.cjyn70ttjgoq.ap-northeast-2.rds.amazonaws.com:3306/test?characterEncoding=utf8"/>
@@ -29,8 +29,16 @@
         <property name="password" value="iruen1111"/>
     </bean>
 
+    <bean id="jscanDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+        <property name="jdbcUrl"
+                  value="jdbc:whitejdbc:mysql://iruentech.cjyn70ttjgoq.ap-northeast-2.rds.amazonaws.com:3306/test?characterEncoding=utf8"/>
+        <property name="user" value="iruen"/>
+        <property name="password" value="iruen1111"/>
+    </bean>
+
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
+        <property name="dataSource" ref="plainDataSource"/>
         <property name="mapperLocations">
             <list>
                 <value>classpath:/mybatis/user-mapper.xml</value>

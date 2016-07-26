@@ -115,7 +115,7 @@
                             <%--</div>--%>
                             <div class="form-group">
                                 <label class="sr-only" for="form-email">Email</label>
-                                <input type="email" name="form-email" placeholder="Email..."
+                                <input type="email" name="email" placeholder="Email..."
                                        class="form-email form-control" id="form-email">
                             </div>
                             <div class="form-group">

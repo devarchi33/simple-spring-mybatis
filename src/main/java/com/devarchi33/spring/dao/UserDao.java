@@ -18,4 +18,6 @@ public interface UserDao {
     Boolean isValidUser(User user);
 
     void signUpUser(User user);
+
+    void deleteUserByEmail(String email);
 }

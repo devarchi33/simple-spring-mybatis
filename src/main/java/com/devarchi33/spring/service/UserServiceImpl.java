@@ -2,6 +2,7 @@ package com.devarchi33.spring.service;
 
 import com.devarchi33.spring.dao.UserDao;
 import com.devarchi33.spring.domain.User;
+import org.apache.ibatis.jdbc.Null;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -36,6 +37,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public Boolean isValidUser(User user) {
         User findUser = userDao.findUserByEmail(user.getEmail());
+
+        if (findUser == null) {
+            return false;
+        }
+
         Boolean isValidUser;
 
         if (user.getEmail().equals(findUser.getEmail()) && user.getPassword().equals(findUser.getPassword())) {
@@ -52,5 +58,9 @@ public class UserServiceImpl implements UserService {
         userDao.signUpUser(user);
     }
 
+    @Override
+    public void deleteUserByEmail(String email) {
+        userDao.deleteUserByEmail(email);
+    }
 
 }

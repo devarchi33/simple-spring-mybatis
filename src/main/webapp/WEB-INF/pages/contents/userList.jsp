@@ -5,6 +5,7 @@
   Time: 오후 3:27
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <section class="content-header">
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -46,6 +47,14 @@
                                     aria-label="Explanation: activate to sort column ascending">
                                     Password
                                 </th>
+                                <th class="sorting" tabindex="0" aria-controls="user_table" rowspan="1" colspan="1"
+                                    aria-label="Explanation: activate to sort column ascending" style="width: 50px;">
+                                    Edit
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="user_table" rowspan="1" colspan="1"
+                                    aria-label="Explanation: activate to sort column ascending" style="width: 50px;">
+                                    Delete
+                                </th>
                             </tr>
                             </thead>
                             <tbody>
@@ -54,6 +63,20 @@
                                     <td><c:out value="${status.count}"/></td>
                                     <td class="sorting_1"><c:out value="${user.getEmail()}"/></td>
                                     <td class="sorting_1"><c:out value="${user.getPassword()}"/></td>
+                                    <td>
+                                        <button type="button" class="btn btn-block btn-info btn-flat full-width">Edit
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <form:form role="form" action="/deleteUser" method="post"
+                                                   onsubmit="return confirm('Are you really delete this user?')">
+                                            <input type="hidden" name="email"
+                                                   value="<c:out value="${user.getEmail()}"/>">
+                                            <button type="submit" class="btn btn-block btn-danger btn-flat full-width">
+                                                Delete
+                                            </button>
+                                        </form:form>
+                                    </td>
                                 </tr>
                             </c:forEach>
                             </tbody>

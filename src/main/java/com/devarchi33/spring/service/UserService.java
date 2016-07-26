@@ -22,5 +22,7 @@ public interface UserService {
 
     Boolean isValidUser(User user);
 
-    void signUpUser (User user);
+    void signUpUser(User user);
+
+    void deleteUserByEmail(String email);
 }
