@@ -91,6 +91,11 @@
             <artifactId>c3p0</artifactId>
             <version>0.9.5.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+            <version>2.1.1</version>
+        </dependency>
 
         <!-- db driver-->
         <dependency>
@@ -168,6 +173,17 @@
                     </includes>
                 </configuration>
             </plugin>
+            <!--<plugin>-->
+            <!--<groupId>org.apache.maven.plugins</groupId>-->
+            <!--<artifactId>maven-war-plugin</artifactId>-->
+            <!--<version>2.6</version>-->
+
+            <!--<configuration>-->
+            <!--<warSourceDirectory>WebContent</warSourceDirectory>-->
+            <!--<webXml>src/main/webapp/WEB-INF/web.xml</webXml>-->
+            <!--<outputDirectory>/Users/donghoon/Documents/amazon/build</outputDirectory>-->
+            <!--</configuration>-->
+            <!--</plugin>-->
         </plugins>
     </build>
 </project>

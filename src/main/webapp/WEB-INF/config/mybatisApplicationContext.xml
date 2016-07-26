@@ -37,6 +37,14 @@
         <property name="password" value="iruen1111"/>
     </bean>
 
+    <bean id="jscanDataSource2" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.whitesql.GenericDriver"/>
+        <property name="url"
+                  value="jdbc:whitejdbc:mysql://iruentech.cjyn70ttjgoq.ap-northeast-2.rds.amazonaws.com:3306/test?characterEncoding=utf8"/>
+        <property name="username" value="iruen"/>
+        <property name="password" value="iruen1111"/>
+    </bean>
+
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="plainDataSource"/>
         <property name="mapperLocations">
