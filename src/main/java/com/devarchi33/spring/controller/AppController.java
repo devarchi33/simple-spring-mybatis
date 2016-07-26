@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -51,10 +52,10 @@ public class AppController {
 //    }
 
     @RequestMapping(value = "login", method = RequestMethod.POST)
-    public ModelAndView excuteLogin(HttpServletRequest request,
-                                    @ModelAttribute("User") User user,
+    public ModelAndView excuteLogin(@ModelAttribute("User") User user,
                                     @RequestParam("form-email") String form_email,
-                                    @RequestParam("form-password") String form_password) {
+                                    @RequestParam("form-password") String form_password,
+                                    HttpSession session) {
 
         logger.info("input email : {}, input password : {} ", form_email, form_password);
 
@@ -69,9 +70,12 @@ public class AppController {
             logger.info("login success");
             List<User> userList = userService.findAllUsers();
             mv.addObject("email", form_email);
-            mv.addObject("name", form_email.split("@")[0]);
             mv.addObject("userList", userList);
             mv.setViewName("main");
+            mv.addObject("page", "userList");
+
+            User loginUser = userService.findUserByEmail(form_email);
+            session.setAttribute("loginUser", loginUser);
         } else {
             logger.debug("login fail");
             mv.addObject("message2", "이메일 또는 패스워드를 확인해주세요.");
@@ -83,9 +87,17 @@ public class AppController {
         return mv;
     }
 
+    @RequestMapping(value = "logout", method = RequestMethod.POST)
+    public ModelAndView logout(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        session.removeAttribute("loginUser");
+        ModelAndView mv = new ModelAndView("login");
+        return mv;
+    }
+
     @RequestMapping(value = "signUp", method = RequestMethod.GET)
     public ModelAndView signUp() {
-        ModelAndView mv = new ModelAndView("contents/signUp");
+        ModelAndView mv = new ModelAndView("signUp");
         mv.addObject("message", "This is devarchi33_test registration form made with Bootstrap.");
 
         return mv;
@@ -97,7 +109,7 @@ public class AppController {
         User findUser = userService.findUserByEmail(user.getEmail());
 
         if (findUser != null) {
-            mv = new ModelAndView("contents/signUp");
+            mv = new ModelAndView("signUp");
             mv.addObject("message", "이미 가입된 이메일 입니다.");
 
             return mv;
@@ -108,6 +120,16 @@ public class AppController {
 
             return mv;
         }
+    }
+
+    @RequestMapping(value = "editUser", method = RequestMethod.GET)
+    public ModelAndView editUser(@RequestParam String email) {
+        User editUser = userService.findUserByEmail(email);
+        ModelAndView mv = new ModelAndView("main");
+        mv.addObject("name", email.split("@")[0]);
+        mv.addObject("page", "editUser");
+        mv.addObject("editUser", editUser);
+        return mv;
     }
 
     @RequestMapping(value = "deleteUser", method = RequestMethod.POST)

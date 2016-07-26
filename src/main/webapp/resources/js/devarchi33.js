@@ -18,8 +18,7 @@ $(document).ready(function () {
     var devarchi33App = new devarchi33App();
 
     var option1 = {
-        "scrollY": "400px",
-        "scrollCollapse": true,
+        "scrollCollapse": false,
         "paging": true
     };
 

@@ -48,7 +48,17 @@
     <%@ include file="components/mainSideBar.jsp" %>
 
     <div class="content-wrapper">
-        <%@ include file="contents/userList.jsp" %>
+        <c:choose>
+            <c:when test="${page == 'userList'}">
+                <%@ include file="contents/userList.jsp" %>
+            </c:when>
+            <c:when test="${page == 'editUser'}">
+                <%@ include file="contents/editUser.jsp" %>
+            </c:when>
+            <c:otherwise>
+                <%@ include file="contents/userList.jsp" %>
+            </c:otherwise>
+        </c:choose>
     </div>
 
     <%--script--%>

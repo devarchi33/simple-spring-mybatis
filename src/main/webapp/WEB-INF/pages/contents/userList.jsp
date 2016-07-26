@@ -64,8 +64,13 @@
                                     <td class="sorting_1"><c:out value="${user.getEmail()}"/></td>
                                     <td class="sorting_1"><c:out value="${user.getPassword()}"/></td>
                                     <td>
-                                        <button type="button" class="btn btn-block btn-info btn-flat full-width">Edit
-                                        </button>
+                                        <form:form role="form" action="/editUser" method="get">
+                                            <input type="hidden" name="email"
+                                                   value="<c:out value="${user.getEmail()}"/>">
+                                            <button type="submit" class="btn btn-block btn-info btn-flat full-width">
+                                                Edit
+                                            </button>
+                                        </form:form>
                                     </td>
                                     <td>
                                         <form:form role="form" action="/deleteUser" method="post"
