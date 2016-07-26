@@ -30,7 +30,7 @@
     </bean>
 
     <bean id="jscanDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
-        <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+        <property name="driverClass" value="com.whitesql.GenericDriver"/>
         <property name="jdbcUrl"
                   value="jdbc:whitejdbc:mysql://iruentech.cjyn70ttjgoq.ap-northeast-2.rds.amazonaws.com:3306/test?characterEncoding=utf8"/>
         <property name="user" value="iruen"/>
