@@ -73,7 +73,7 @@ public class AppController {
             mv.setViewName("main");
         } else {
             logger.debug("login fail");
-            mv.addObject("inValidUser", "please check login info...");
+            mv.addObject("message2", "이메일 또는 패스워드를 확인해주세요.");
             mv.setViewName("login");
         }
 
@@ -85,19 +85,30 @@ public class AppController {
     @RequestMapping(value = "signUp", method = RequestMethod.GET)
     public ModelAndView signUp() {
         ModelAndView mv = new ModelAndView("contents/signUp");
+        mv.addObject("message", "This is devarchi33_test registration form made with Bootstrap.");
         return mv;
     }
 
     @RequestMapping(value = "signUp", method = RequestMethod.POST)
     public ModelAndView signUpProc(@ModelAttribute("user") User user) {
-        ModelAndView mv = new ModelAndView("login");
-        userService.signUpUser(user);
-        return mv;
+        ModelAndView mv;
+        User findUser = userService.findUserByEmail(user.getEmail());
+
+        if (findUser != null) {
+            mv = new ModelAndView("contents/signUp");
+            mv.addObject("message", "이미 가입된 이메일 입니다.");
+            return mv;
+        } else {
+            userService.signUpUser(user);
+            mv = new ModelAndView("login");
+            mv.addObject("message2", user.getEmail() + ", 님의 회원가입이 완료되었습니다.");
+            return mv;
+        }
     }
 
-    @ExceptionHandler(RuntimeException.class)
-    public ModelAndView RuntimeExceptionHandler() {
-        ModelAndView mv = new ModelAndView("error/errorRuntimeException");
-        return mv;
-    }
+//    @ExceptionHandler(RuntimeException.class)
+//    public ModelAndView RuntimeExceptionHandler() {
+//        ModelAndView mv = new ModelAndView("error/errorRuntimeException");
+//        return mv;
+//    }
 }

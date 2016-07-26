@@ -41,39 +41,39 @@
 </head>
 <body>
 <!-- Top menu -->
-<nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">devarchi33_test Registration Form</a>
-        </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="top-navbar-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-							<span class="li-text">
-								Put some text or
-							</span>
-                    <a href="#"><strong>links</strong></a>
-							<span class="li-text">
-								here, or some icons:
-							</span>
-							<span class="li-social">
-								<a href="#"><i class="fa fa-facebook"></i></a>
-								<a href="#"><i class="fa fa-twitter"></i></a>
-								<a href="#"><i class="fa fa-envelope"></i></a>
-								<a href="#"><i class="fa fa-skype"></i></a>
-							</span>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<%--<nav class="navbar navbar-inverse navbar-no-bg" role="navigation">--%>
+<%--<div class="container">--%>
+<%--<div class="navbar-header">--%>
+<%--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">--%>
+<%--<span class="sr-only">Toggle navigation</span>--%>
+<%--<span class="icon-bar"></span>--%>
+<%--<span class="icon-bar"></span>--%>
+<%--<span class="icon-bar"></span>--%>
+<%--</button>--%>
+<%--<a class="navbar-brand" href="#">devarchi33_test Registration Form</a>--%>
+<%--</div>--%>
+<%--<!-- Collect the nav links, forms, and other content for toggling -->--%>
+<%--<div class="collapse navbar-collapse" id="top-navbar-1">--%>
+<%--<ul class="nav navbar-nav navbar-right">--%>
+<%--<li>--%>
+<%--<span class="li-text">--%>
+<%--Put some text or--%>
+<%--</span>--%>
+<%--<a href="#"><strong>links</strong></a>--%>
+<%--<span class="li-text">--%>
+<%--here, or some icons:--%>
+<%--</span>--%>
+<%--<span class="li-social">--%>
+<%--<a href="#"><i class="fa fa-facebook"></i></a>--%>
+<%--<a href="#"><i class="fa fa-twitter"></i></a>--%>
+<%--<a href="#"><i class="fa fa-envelope"></i></a>--%>
+<%--<a href="#"><i class="fa fa-skype"></i></a>--%>
+<%--</span>--%>
+<%--</li>--%>
+<%--</ul>--%>
+<%--</div>--%>
+<%--</div>--%>
+<%--</nav>--%>
 
 <!-- Top content -->
 <div class="top-content">
@@ -86,7 +86,7 @@
 
                     <div class="description">
                         <p>
-                            This is devarchi33_test registration form made with Bootstrap.
+                            <c:out value="${message}"/>
                         </p>
                     </div>
                     <div class="top-big-link">
@@ -108,10 +108,15 @@
                     <div class="form-bottom">
                         <form:form modelAttribute="user" role="form" action="signUp" method="post"
                                    class="registration-form">
+                            <%--<div class="form-group">--%>
+                            <%--<label class="sr-only" for="email">Email</label>--%>
+                            <%--<form:input path="email" placeholder="Email.."--%>
+                            <%--class="form-email form-control" id="form-email"/>--%>
+                            <%--</div>--%>
                             <div class="form-group">
-                                <label class="sr-only" for="email">Email</label>
-                                <form:input path="email" placeholder="Email.."
-                                            class="form-email form-control" id="form-email"/>
+                                <label class="sr-only" for="form-email">Email</label>
+                                <input type="email" name="form-email" placeholder="Email..."
+                                       class="form-email form-control" id="form-email">
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="password">Password</label>
