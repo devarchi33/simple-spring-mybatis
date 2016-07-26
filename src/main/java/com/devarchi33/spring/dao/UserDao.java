@@ -1,6 +1,6 @@
-package com.skyfly33.spring.dao;
+package com.devarchi33.spring.dao;
 
-import com.skyfly33.spring.domain.User;
+import com.devarchi33.spring.domain.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

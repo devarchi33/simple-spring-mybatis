@@ -1,4 +1,4 @@
-package com.skyfly33.spring;
+package com.devarchi33.spring;
 
 import org.junit.Before;
 import org.junit.Test;

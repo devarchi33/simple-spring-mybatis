@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name cubeoneApp.controller:MainCtrl
+ * @name devarchi33App.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the cubeoneApp
+ * Controller of the devarchi33App
  */
-angular.module('cubeoneApp')
+angular.module('devarchi33App')
   .controller('MainCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',

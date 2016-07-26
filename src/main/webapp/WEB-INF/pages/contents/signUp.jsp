@@ -12,7 +12,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>CubeoneAPI_Test Join</title>
+    <title>devarchi33_test Join</title>
 
     <%--style--%>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
@@ -50,7 +50,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">CubeoneAPI_Test Registration Form</a>
+            <a class="navbar-brand" href="#">devarchi33_test Registration Form</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="top-navbar-1">
@@ -82,11 +82,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-7 text">
-                    <h1><strong>CubeoneAPI_Test</strong> Registration Form</h1>
+                    <h1><strong>devarchi33_test</strong> Registration Form</h1>
 
                     <div class="description">
                         <p>
-                            This is CubeoneAPI_Test registration form made with Bootstrap.
+                            This is devarchi33_test registration form made with Bootstrap.
                         </p>
                     </div>
                     <div class="top-big-link">

@@ -1,7 +1,7 @@
-package com.skyfly33.spring.controller;
+package com.devarchi33.spring.controller;
 
-import com.skyfly33.spring.domain.User;
-import com.skyfly33.spring.service.UserService;
+import com.devarchi33.spring.service.UserService;
+import com.devarchi33.spring.domain.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,14 +65,16 @@ public class CubeoneController {
         user.setPassword(form_password);
         user.setPhone(userService.findUserByEmail(form_email).getPhone());
 
-        if (userService.isValidUser(user)) {
-            mv.addObject("thumbnail", this.thumbnailImg);
-            mv.addObject("loginEmail", form_email);
-            mv.setViewName("main");
-        } else {
-            mv.addObject("inValidUser", "please check login info...");
-            mv.setViewName("hello");
-        }
+//        if (userService.isValidUser(user)) {
+        logger.info("login success");
+        mv.addObject("thumbnail", this.thumbnailImg);
+        mv.addObject("loginEmail", form_email);
+        mv.setViewName("main");
+//        } else {
+//            logger.debug("login fail");
+//            mv.addObject("inValidUser", "please check login info...");
+//            mv.setViewName("hello");
+//        }
 
 
         mv.addObject("pass", user.getPassword());

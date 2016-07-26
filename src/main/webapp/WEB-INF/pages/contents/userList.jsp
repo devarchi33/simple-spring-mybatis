@@ -7,7 +7,7 @@
 --%>
 <section class="content-header">
     <h1>
-        Cubeone User Tables
+        User Tables
         <small>preview of simple tables</small>
     </h1>
     <ol class="breadcrumb">
@@ -21,7 +21,7 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Cubeone User Table</h3>
+                    <h3 class="box-title">User Table</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">

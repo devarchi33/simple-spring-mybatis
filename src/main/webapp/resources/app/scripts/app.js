@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name cubeoneApp
+ * @name devarchi33App
  * @description
  * # cubeoneApp
  *
  * Main module of the application.
  */
 angular
-  .module('cubeoneApp', [
+  .module('devarchi33App', [
     'ngAnimate',
     'ngAria',
     'ngCookies',

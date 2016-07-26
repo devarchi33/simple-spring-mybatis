@@ -1,4 +1,4 @@
-package com.skyfly33.spring.controller;
+package com.devarchi33.spring.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

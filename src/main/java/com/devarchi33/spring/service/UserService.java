@@ -1,7 +1,7 @@
-package com.skyfly33.spring.service;
+package com.devarchi33.spring.service;
 
-import com.skyfly33.spring.dao.UserDao;
-import com.skyfly33.spring.domain.User;
+import com.devarchi33.spring.dao.UserDao;
+import com.devarchi33.spring.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

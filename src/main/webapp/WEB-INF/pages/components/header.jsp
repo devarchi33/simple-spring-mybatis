@@ -8,7 +8,7 @@
 <header class="main-header">
     <a href="#" class="logo">
         <!-- LOGO -->
-        CubeoneAPI_Test
+        devarchi33_test
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top" role="navigation">

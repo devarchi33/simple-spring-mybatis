@@ -1,7 +1,7 @@
-package com.skyfly33.spring.service;
+package com.devarchi33.spring.service;
 
-import com.skyfly33.spring.dao.UserDao;
-import com.skyfly33.spring.domain.User;
+import com.devarchi33.spring.dao.UserDao;
+import com.devarchi33.spring.domain.User;
 import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;

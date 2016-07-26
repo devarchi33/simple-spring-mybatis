@@ -35,7 +35,7 @@
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-            <li class="header">CubeoneAPI_Test</li>
+            <li class="header">devarchi33_test</li>
             <!-- Optionally, you can add icons to the links -->
             <li class="active"><a href="#"><span>UserList</span></a><</li>
             <li><a href="#"><span>Another Link</span></a></li>

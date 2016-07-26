@@ -1,4 +1,4 @@
-package com.skyfly33.spring.dao;
+package com.devarchi33.spring.dao;
 
 import static org.junit.Assert.*;
 

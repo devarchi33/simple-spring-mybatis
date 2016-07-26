@@ -11,7 +11,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>CubeoneAPI_Test</title>
+    <title>devarchi33_test</title>
     <%--style--%>
     <link rel="stylesheet" href="<c:url value="/resources/bower_components/bootstrap/dist/css/bootstrap.min.css"/>">
     <link rel="stylesheet" href="<c:url value="/resources/bower_components/font-awesome/css/font-awesome.min.css"/>">
