@@ -20,6 +20,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void signUpUser(User user) {
+        userDao.signUpUser(user);
+    }
+
+    @Override
     public List<User> findAllUsers() {
         List<User> allUser;
 
@@ -54,8 +59,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void signUpUser(User user) {
-        userDao.signUpUser(user);
+    public void updateUser(User user) {
+        userDao.updateUser(user);
     }
 
     @Override

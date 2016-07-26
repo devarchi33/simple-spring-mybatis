@@ -6,6 +6,11 @@
 
 <mapper namespace="com.devarchi33.spring.dao.UserDao">
 
+    <insert id="signUpUser" parameterType="com.devarchi33.spring.domain.User">
+        INSERT INTO cubeone_user (email, password)
+        VALUES (#{email}, #{password})
+    </insert>
+
     <select id="findAllUsers" resultType="com.devarchi33.spring.domain.User">
         SELECT * FROM cubeone_user
     </select>
@@ -15,10 +20,12 @@
         WHERE email = #{email}
     </select>
 
-    <insert id="signUpUser" parameterType="com.devarchi33.spring.domain.User">
-        INSERT INTO cubeone_user (email, password)
-        VALUES (#{email}, #{password})
-    </insert>
+    <update id="updateUser" parameterType="com.devarchi33.spring.domain.User">
+        UPDATE cubeone_user
+        SET email = #{email}
+        AND password = #{password}
+        WHERE email = #{email}
+    </update>
 
     <delete id="deleteUserByEmail" parameterType="java.lang.String">
         DELETE FROM cubeone_user

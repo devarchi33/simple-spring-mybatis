@@ -30,6 +30,33 @@ public class AppController {
         return new User();
     }
 
+    @RequestMapping(value = "signUp", method = RequestMethod.GET)
+    public ModelAndView signUp() {
+        ModelAndView mv = new ModelAndView("signUp");
+        mv.addObject("message", "This is devarchi33_test registration form made with Bootstrap.");
+
+        return mv;
+    }
+
+    @RequestMapping(value = "signUp", method = RequestMethod.POST)
+    public ModelAndView signUpProc(@ModelAttribute("user") User user) {
+        ModelAndView mv;
+        User findUser = userService.findUserByEmail(user.getEmail());
+
+        if (findUser != null) {
+            mv = new ModelAndView("signUp");
+            mv.addObject("message", "이미 가입된 이메일 입니다.");
+
+            return mv;
+        } else {
+            userService.signUpUser(user);
+            mv = new ModelAndView("login");
+            mv.addObject("message2", user.getEmail() + ", 님의 회원가입이 완료되었습니다.");
+
+            return mv;
+        }
+    }
+
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView login() {
         ModelAndView mv = new ModelAndView("login");
@@ -69,7 +96,6 @@ public class AppController {
         if (checkUser) {
             logger.info("login success");
             List<User> userList = userService.findAllUsers();
-            mv.addObject("email", form_email);
             mv.addObject("userList", userList);
             mv.setViewName("main");
             mv.addObject("page", "userList");
@@ -95,40 +121,27 @@ public class AppController {
         return mv;
     }
 
-    @RequestMapping(value = "signUp", method = RequestMethod.GET)
-    public ModelAndView signUp() {
-        ModelAndView mv = new ModelAndView("signUp");
-        mv.addObject("message", "This is devarchi33_test registration form made with Bootstrap.");
-
-        return mv;
-    }
-
-    @RequestMapping(value = "signUp", method = RequestMethod.POST)
-    public ModelAndView signUpProc(@ModelAttribute("user") User user) {
-        ModelAndView mv;
-        User findUser = userService.findUserByEmail(user.getEmail());
-
-        if (findUser != null) {
-            mv = new ModelAndView("signUp");
-            mv.addObject("message", "이미 가입된 이메일 입니다.");
-
-            return mv;
-        } else {
-            userService.signUpUser(user);
-            mv = new ModelAndView("login");
-            mv.addObject("message2", user.getEmail() + ", 님의 회원가입이 완료되었습니다.");
-
-            return mv;
-        }
-    }
 
     @RequestMapping(value = "editUser", method = RequestMethod.GET)
-    public ModelAndView editUser(@RequestParam String email) {
-        User editUser = userService.findUserByEmail(email);
+    public ModelAndView editUserPage(@RequestParam String email) {
         ModelAndView mv = new ModelAndView("main");
         mv.addObject("name", email.split("@")[0]);
         mv.addObject("page", "editUser");
-        mv.addObject("editUser", editUser);
+        return mv;
+    }
+
+    @RequestMapping(value = "editUser", method = RequestMethod.POST)
+    public ModelAndView editUser(@RequestParam String editEmail,
+                                 @RequestParam String editPassword) {
+
+        ModelAndView mv = new ModelAndView("main");
+        mv.addObject("page", "userList");
+
+        User editUser = new User(editEmail, editPassword);
+        userService.updateUser(editUser);
+        List<User> userList = userService.findAllUsers();
+        mv.addObject("userList", userList);
+
         return mv;
     }
 

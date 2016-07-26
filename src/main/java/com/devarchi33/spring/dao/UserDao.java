@@ -11,13 +11,15 @@ import java.util.List;
 @Repository
 public interface UserDao {
 
+    void signUpUser(User user);
+
     List<User> findAllUsers();
 
     User findUserByEmail(String email);
 
     Boolean isValidUser(User user);
 
-    void signUpUser(User user);
+    void updateUser(User user);
 
     void deleteUserByEmail(String email);
 }
