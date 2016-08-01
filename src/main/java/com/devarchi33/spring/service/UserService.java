@@ -18,6 +18,8 @@ public interface UserService {
 
     void signUpUser(User user);
 
+    String dummyQuery();
+
     List<User> findAllUsers();
 
     User findUserByEmail(String email);

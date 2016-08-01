@@ -13,6 +13,8 @@ public interface UserDao {
 
     void signUpUser(User user);
 
+    String dummyQuery();
+
     List<User> findAllUsers();
 
     User findUserByEmail(String email);

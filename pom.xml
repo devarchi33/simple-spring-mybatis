@@ -14,11 +14,11 @@
     </properties>
 
     <dependencies>
-        <!--<dependency>-->
-        <!--<groupId>com.iruen.jscan</groupId>-->
-        <!--<artifactId>jscan-agent</artifactId>-->
-        <!--<version>1.0.0</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>com.iruen.jscan</groupId>
+            <artifactId>jscan-agent</artifactId>
+            <version>1.0.0</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>

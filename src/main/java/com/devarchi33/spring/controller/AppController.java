@@ -62,6 +62,8 @@ public class AppController {
         ModelAndView mv = new ModelAndView("login");
         mv.addObject("message", "Login Form :)");
 
+        userService.dummyQuery();
+
         return mv;
     }
 

@@ -25,6 +25,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public String dummyQuery() {
+        return userDao.dummyQuery();
+    }
+
+    @Override
     public List<User> findAllUsers() {
         List<User> allUser;
 

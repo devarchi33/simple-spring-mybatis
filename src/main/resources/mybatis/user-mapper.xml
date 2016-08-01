@@ -11,6 +11,10 @@
         VALUES (#{email}, #{password})
     </insert>
 
+    <select id="dummyQuery" resultType="java.lang.String">
+        SELECT 'ABCDEF12345' FROM DUAL;
+    </select>
+
     <select id="findAllUsers" resultType="com.devarchi33.spring.domain.User">
         SELECT * FROM cubeone_user
     </select>

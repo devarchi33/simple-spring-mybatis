@@ -10,6 +10,10 @@
        http://mybatis.org/schema/mybatis-spring
        http://mybatis.org/schema/mybatis-spring.xsd">
 
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations" value="/WEB-INF/config/mybatis.properties"/>
+    </bean>
+
     <tx:annotation-driven/>
 
     <mybatis:scan base-package="com.devarchi33.spring.dao"/>
@@ -18,35 +22,32 @@
 
     <bean id="transactionManager"
           class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="plainDataSource"/>
+        <property name="dataSource" ref="${DATASOURCE}"/>
     </bean>
 
-    <bean id="plainDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
-        <property name="driverClass" value="com.mysql.jdbc.Driver"/>
-        <property name="jdbcUrl"
-                  value="jdbc:mysql://iruentech.cjyn70ttjgoq.ap-northeast-2.rds.amazonaws.com:3306/test?characterEncoding=utf8"/>
-        <property name="user" value="iruen"/>
-        <property name="password" value="iruen1111"/>
+    <bean id="plainDataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${MYSQL_DRIVER}"/>
+        <property name="url" value="${IRUEN_DB_URL}"/>
+        <property name="username" value="${IRUEN_USER}"/>
+        <property name="password" value="${IRUEN_PASSWORD}"/>
     </bean>
 
     <bean id="jscanDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
-        <property name="driverClass" value="com.whitesql.GenericDriver"/>
-        <property name="jdbcUrl"
-                  value="jdbc:whitejdbc:mysql://iruentech.cjyn70ttjgoq.ap-northeast-2.rds.amazonaws.com:3306/test?characterEncoding=utf8"/>
-        <property name="user" value="iruen"/>
-        <property name="password" value="iruen1111"/>
+        <property name="driverClass" value="${JSCAN_DRIVER}"/>
+        <property name="jdbcUrl" value="${JSCAN_DB_URL}"/>
+        <property name="user" value="${IRUEN_USER}"/>
+        <property name="password" value="${IRUEN_PASSWORD}"/>
     </bean>
 
     <bean id="jscanDataSource2" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
-        <property name="driverClassName" value="com.whitesql.GenericDriver"/>
-        <property name="url"
-                  value="jdbc:whitejdbc:mysql://iruentech.cjyn70ttjgoq.ap-northeast-2.rds.amazonaws.com:3306/test?characterEncoding=utf8"/>
-        <property name="username" value="iruen"/>
-        <property name="password" value="iruen1111"/>
+        <property name="driverClassName" value="${JSCAN_DRIVER}"/>
+        <property name="url" value="${JSCAN_DB_URL}"/>
+        <property name="username" value="${IRUEN_USER}"/>
+        <property name="password" value="${IRUEN_PASSWORD}"/>
     </bean>
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="plainDataSource"/>
+        <property name="dataSource" ref="${DATASOURCE}"/>
         <property name="mapperLocations">
             <list>
                 <value>classpath:/mybatis/user-mapper.xml</value>
