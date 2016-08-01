@@ -72,14 +72,14 @@
                     <div class="form-bottom">
                         <form:form role="form" action="/login" method="post" class="login-form" modelAttribute="User">
                             <div class="form-group">
-                                <label class="sr-only" for="form-email">Username</label>
-                                <input type="email" name="form-email" placeholder="Email..."
-                                       class="form-email form-control" id="form-email">
+                                <label class="sr-only" for="userId">Username</label>
+                                <input type="email" name="userId" placeholder="Email..."
+                                       class="form-email form-control" id="userId">
                             </div>
                             <div class="form-group">
-                                <label class="sr-only" for="form-password">Password</label>
-                                <input type="password" name="form-password" placeholder="Password..."
-                                       class="form-password form-control" id="form-password">
+                                <label class="sr-only" for="password">Password</label>
+                                <input type="password" name="password" placeholder="Password..."
+                                       class="form-password form-control" id="password">
                             </div>
                             <button type="submit" class="btn">Sign in!</button>
                         </form:form>

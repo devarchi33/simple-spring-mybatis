@@ -62,8 +62,6 @@ public class AppController {
         ModelAndView mv = new ModelAndView("login");
         mv.addObject("message", "Login Form :)");
 
-        userService.dummyQuery();
-
         return mv;
     }
 
@@ -82,8 +80,8 @@ public class AppController {
 
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public ModelAndView excuteLogin(@ModelAttribute("User") User user,
-                                    @RequestParam("form-email") String form_email,
-                                    @RequestParam("form-password") String form_password,
+                                    @RequestParam("userId") String form_email,
+                                    @RequestParam("password") String form_password,
                                     HttpSession session) {
 
         logger.info("input email : {}, input password : {} ", form_email, form_password);
