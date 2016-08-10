@@ -1,12 +1,15 @@
 package com.devarchi33.spring.controller;
 
-import com.devarchi33.spring.service.UserService;
 import com.devarchi33.spring.domain.User;
+import com.devarchi33.spring.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,12 +21,13 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/")
-public class AppController {
+public class LoginController {
 
-    Logger logger = LoggerFactory.getLogger(AppController.class);
+    private final Logger logger = LoggerFactory.getLogger(LoginController.class);
+    private final String ACTIVE = "active";
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @ModelAttribute("user")
     public User constructor() {
@@ -55,6 +59,7 @@ public class AppController {
 
             return mv;
         }
+
     }
 
     @RequestMapping(method = RequestMethod.GET)
@@ -96,9 +101,10 @@ public class AppController {
         if (checkUser) {
             logger.info("login success");
             List<User> userList = userService.findAllUsers();
-            mv.addObject("userList", userList);
             mv.setViewName("main");
             mv.addObject("page", "userList");
+            mv.addObject("userList", userList);
+            mv.addObject("userListActive", ACTIVE);
 
             User loginUser = userService.findUserByEmail(form_email);
             session.setAttribute("loginUser", loginUser);
@@ -107,8 +113,6 @@ public class AppController {
             mv.addObject("message2", "이메일 또는 패스워드를 확인해주세요.");
             mv.setViewName("login");
         }
-
-        mv.addObject("pass", user.getPassword());
 
         return mv;
     }
@@ -120,48 +124,5 @@ public class AppController {
         ModelAndView mv = new ModelAndView("login");
         return mv;
     }
-
-
-    @RequestMapping(value = "editUser", method = RequestMethod.GET)
-    public ModelAndView editUserPage(@RequestParam String email) {
-        ModelAndView mv = new ModelAndView("main");
-        mv.addObject("name", email.split("@")[0]);
-        mv.addObject("page", "editUser");
-        return mv;
-    }
-
-    @RequestMapping(value = "editUser", method = RequestMethod.POST)
-    public ModelAndView editUser(@RequestParam String editEmail,
-                                 @RequestParam String editPassword) {
-
-        ModelAndView mv = new ModelAndView("main");
-        mv.addObject("page", "userList");
-
-        User editUser = new User(editEmail, editPassword);
-        userService.updateUser(editUser);
-        List<User> userList = userService.findAllUsers();
-        mv.addObject("userList", userList);
-
-        return mv;
-    }
-
-    @RequestMapping(value = "deleteUser", method = RequestMethod.POST)
-    public ModelAndView deleteUser(@RequestParam String email) {
-        logger.debug("delete email: {}", email);
-
-        ModelAndView mv = new ModelAndView("main");
-        userService.deleteUserByEmail(email);
-
-        List<User> userList = userService.findAllUsers();
-        mv.addObject("userList", userList);
-
-        return mv;
-    }
-
-//    @ExceptionHandler(RuntimeException.class)
-//    public ModelAndView RuntimeExceptionHandler() {
-//        ModelAndView mv = new ModelAndView("error/errorRuntimeException");
-//        return mv;
-//    }
 
 }

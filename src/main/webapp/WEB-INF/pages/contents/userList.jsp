@@ -64,7 +64,7 @@
                                     <td class="sorting_1"><c:out value="${user.getEmail()}"/></td>
                                     <td class="sorting_1"><c:out value="${user.getPassword()}"/></td>
                                     <td>
-                                        <form:form role="form" action="/editUser" method="get">
+                                        <form:form role="form" action="/user/editUser" method="get">
                                             <input type="hidden" name="email"
                                                    value="<c:out value="${user.getEmail()}"/>">
                                             <button type="submit" class="btn btn-block btn-info btn-flat full-width">
@@ -73,7 +73,7 @@
                                         </form:form>
                                     </td>
                                     <td>
-                                        <form:form role="form" action="/deleteUser" method="post"
+                                        <form:form role="form" action="/user/deleteUser" method="post"
                                                    onsubmit="return confirm('Are you really delete this user?')">
                                             <input type="hidden" name="email"
                                                    value="<c:out value="${user.getEmail()}"/>">

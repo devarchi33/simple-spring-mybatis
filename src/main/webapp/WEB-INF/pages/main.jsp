@@ -55,6 +55,9 @@
             <c:when test="${page == 'editUser'}">
                 <%@ include file="contents/editUser.jsp" %>
             </c:when>
+            <c:when test="${page == 'germany'}">
+                <%@ include file="contents/country/germany.jsp" %>
+            </c:when>
             <c:otherwise>
                 <%@ include file="contents/userList.jsp" %>
             </c:otherwise>

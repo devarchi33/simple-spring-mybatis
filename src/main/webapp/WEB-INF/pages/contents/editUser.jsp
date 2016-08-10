@@ -43,7 +43,7 @@
                             </thead>
                             <tbody>
                             <tr role="row" class="odd">
-                                <form:form role="form" action="/editUser" method="post">
+                                <form:form role="form" action="/user/editUser" method="post">
                                     <td><input type="text" name="editEmail" placeholder="email.."/>
                                     </td>
                                     <td><input type="password" name="editPassword" placeholder="password.."/>
