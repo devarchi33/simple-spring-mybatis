@@ -55,35 +55,8 @@
             <c:when test="${page == 'editUser'}">
                 <%@ include file="contents/editUser.jsp" %>
             </c:when>
-            <c:when test="${page == 'dresden'}">
-                <%@ include file="contents/country/germany/dresden.jsp" %>
-            </c:when>
-            <c:when test="${page == 'hameln'}">
-                <%@ include file="contents/country/germany/hameln.jsp" %>
-            </c:when>
-            <c:when test="${page == 'munchen'}">
-                <%@ include file="contents/country/germany/munchen.jsp" %>
-            </c:when>
-            <c:when test="${page == 'berlin'}">
-                <%@ include file="contents/country/germany/berlin.jsp" %>
-            </c:when>
-            <c:when test="${page == 'fussen'}">
-                <%@ include file="contents/country/germany/fussen.jsp" %>
-            </c:when>
-            <c:when test="${page == 'stralsund'}">
-                <%@ include file="contents/country/germany/stralsund.jsp" %>
-            </c:when>
-            <c:when test="${page == 'braunschweig'}">
-                <%@ include file="contents/country/germany/braunschweig.jsp" %>
-            </c:when>
-            <c:when test="${page == 'koln'}">
-                <%@ include file="contents/country/germany/koln.jsp" %>
-            </c:when>
-            <c:when test="${page == 'bremen'}">
-                <%@ include file="contents/country/germany/bremen.jsp" %>
-            </c:when>
-            <c:when test="${page == 'stuttgart'}">
-                <%@ include file="contents/country/germany/stuttgart.jsp" %>
+            <c:when test="${page == 'city'}">
+                <%@ include file="contents/country/city.jsp" %>
             </c:when>
             <c:otherwise>
                 <%@ include file="contents/userList.jsp" %>
