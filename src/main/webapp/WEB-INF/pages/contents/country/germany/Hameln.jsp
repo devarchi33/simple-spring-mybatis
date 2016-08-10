@@ -10,7 +10,8 @@
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li> Country</li>
-        <li class="active"> Germany</li>
+        <li> ${city.getCountryName()}</li>
+        <li class="active"> ${city.getCityName()}</li>
     </ol>
 </section>
 <br><br>
@@ -19,7 +20,7 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Germany</h3>
+                    <h3 class="box-title">${city.getCityName()}</h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
                                 class="fa fa-minus"></i>
