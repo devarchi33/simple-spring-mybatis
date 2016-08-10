@@ -100,11 +100,10 @@ public class LoginController {
 
         if (checkUser) {
             logger.info("login success");
-            List<User> userList = userService.findAllUsers();
             mv.setViewName("main");
-            mv.addObject("page", "userList");
-            mv.addObject("userList", userList);
-            mv.addObject("userListActive", ACTIVE);
+            mv.addObject("page", "home");
+            mv.addObject("homeActive", ACTIVE);
+            mv.addObject("title", "Home");
 
             User loginUser = userService.findUserByEmail(form_email);
             session.setAttribute("loginUser", loginUser);

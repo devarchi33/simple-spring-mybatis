@@ -11,7 +11,12 @@
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
-            <!-- Optionally, you can add icons to the links -->
+            <li class="${homeActive}">
+                <a href="/main/home">
+                    <i class="fa fa-home"></i> <span>Home</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+            </li>
             <li class="${userListActive}">
                 <a href="/user/list">
                     <i class="fa fa-user"></i> <span>UserList</span>

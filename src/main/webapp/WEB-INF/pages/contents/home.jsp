@@ -8,11 +8,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <section class="content-header">
     <ol class="breadcrumb">
-        <li><i class="fa fa-globe"></i> Country</li>
-        <li> ${city.getCountryName()}</li>
-        <li class="active"><a
-                href="/country/${city.getCountryName().toLowerCase()}/${city.getCityName().toLowerCase()}"> ${city.getCityName()}</a>
-        </li>
+        <li class="active"><a href="/main/home"><i class="fa fa-dashboard"></i> Home</a></li>
     </ol>
 </section>
 <br><br>
@@ -21,7 +17,7 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">${city.getCityName()}</h3>
+                    <h3 class="box-title">${title}</h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
                                 class="fa fa-minus"></i>
