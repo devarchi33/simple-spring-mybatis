@@ -31,7 +31,7 @@
                 <ul class="treeview-menu">
                     <li class="${germany}">
                         <a href="#">
-                            <i class="fa fa-globe"></i>German<i class="fa fa-angle-left pull-right"></i>
+                            <i class="fa fa-globe"></i>Germany<i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="treeview-menu">
                             <li class="${dresden}">

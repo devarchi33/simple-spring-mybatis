@@ -33,7 +33,9 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-
+                    <img class="img-responsive pad"
+                         src="<c:url value="/resources/img/country/${city.getCountryName()}/${city.getCityName()}.jpg"/>"
+                         alt="Photo">
                 </div>
                 <!-- /.box-body -->
             </div>
