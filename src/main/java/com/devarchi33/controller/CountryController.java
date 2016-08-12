@@ -1,7 +1,7 @@
-package com.devarchi33.spring.controller;
+package com.devarchi33.controller;
 
-import com.devarchi33.spring.domain.City;
-import com.devarchi33.spring.domain.Country;
+import com.devarchi33.domain.City;
+import com.devarchi33.domain.Country;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;

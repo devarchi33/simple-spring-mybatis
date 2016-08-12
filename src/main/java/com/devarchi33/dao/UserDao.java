@@ -1,20 +1,15 @@
-package com.devarchi33.spring.service;
+package com.devarchi33.dao;
 
-import com.devarchi33.spring.dao.UserDao;
-import com.devarchi33.spring.domain.User;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.devarchi33.domain.User;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * Created by donghoon on 15. 8. 22..
  */
-@Service
-public interface UserService {
-
-    @Autowired
-    UserDao userDao = null;
+@Repository
+public interface UserDao {
 
     void signUpUser(User user);
 

@@ -1,4 +1,4 @@
-package com.devarchi33.spring;
+package com.devarchi33;
 
 import org.junit.Before;
 import org.junit.Test;

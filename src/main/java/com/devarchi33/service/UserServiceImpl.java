@@ -1,8 +1,7 @@
-package com.devarchi33.spring.service;
+package com.devarchi33.service;
 
-import com.devarchi33.spring.dao.UserDao;
-import com.devarchi33.spring.domain.User;
-import org.apache.ibatis.jdbc.Null;
+import com.devarchi33.dao.UserDao;
+import com.devarchi33.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;

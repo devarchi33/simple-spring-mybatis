@@ -1,4 +1,4 @@
-package com.devarchi33.spring.controller;
+package com.devarchi33.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

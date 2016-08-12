@@ -1,4 +1,4 @@
-package com.devarchi33.spring.domain;
+package com.devarchi33.domain;
 
 /**
  * Created by donghoon on 2016. 8. 10..

@@ -1,7 +1,7 @@
-package com.devarchi33.spring.controller;
+package com.devarchi33.controller;
 
-import com.devarchi33.spring.domain.User;
-import com.devarchi33.spring.service.UserService;
+import com.devarchi33.domain.User;
+import com.devarchi33.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 /**
  * Created by donghoon on 15. 8. 22..

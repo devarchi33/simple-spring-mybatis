@@ -1,4 +1,4 @@
-package com.devarchi33.spring.domain;
+package com.devarchi33.domain;
 
 import org.apache.ibatis.type.Alias;
 

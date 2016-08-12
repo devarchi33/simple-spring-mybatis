@@ -1,6 +1,6 @@
-package com.devarchi33.spring.dao;
+package com.devarchi33.dao;
 
-import com.devarchi33.spring.domain.User;
+import com.devarchi33.domain.User;
 import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
