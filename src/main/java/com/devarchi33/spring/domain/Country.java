@@ -5,7 +5,7 @@ package com.devarchi33.spring.domain;
  */
 public enum Country {
 
-    GERMANY("Germany"), USA("USA"), UK("UK"), KOREA("Korea");
+    GERMANY("Germany"), USA("USA"), UK("UK"), KOREA("Korea"), SPAIN("Spain");
 
     private String countryName;
 

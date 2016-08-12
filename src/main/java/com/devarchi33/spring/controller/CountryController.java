@@ -474,4 +474,115 @@ public class CountryController {
         return mv;
     }
 
+    //    spain
+    @RequestMapping(value = "/spain/barcelona", method = RequestMethod.GET)
+    public ModelAndView barcelona() {
+
+        ModelAndView mv = new ModelAndView();
+        City city = new City(Country.SPAIN.getCountryName(), "Barcelona");
+
+        defalutMvSetting(mv, city);
+
+        return mv;
+    }
+
+    @RequestMapping(value = "/spain/bilbao", method = RequestMethod.GET)
+    public ModelAndView bilbao() {
+
+        ModelAndView mv = new ModelAndView();
+        City city = new City(Country.SPAIN.getCountryName(), "Bilbao");
+
+        defalutMvSetting(mv, city);
+
+        return mv;
+    }
+
+    @RequestMapping(value = "/spain/cordoba", method = RequestMethod.GET)
+    public ModelAndView cordoba() {
+
+        ModelAndView mv = new ModelAndView();
+        City city = new City(Country.SPAIN.getCountryName(), "Cordoba");
+
+        defalutMvSetting(mv, city);
+
+        return mv;
+    }
+
+    @RequestMapping(value = "/spain/granada", method = RequestMethod.GET)
+    public ModelAndView granada() {
+
+        ModelAndView mv = new ModelAndView();
+        City city = new City(Country.SPAIN.getCountryName(), "Granada");
+
+        defalutMvSetting(mv, city);
+
+        return mv;
+    }
+
+    @RequestMapping(value = "/spain/madrid", method = RequestMethod.GET)
+    public ModelAndView madrid() {
+
+        ModelAndView mv = new ModelAndView();
+        City city = new City(Country.SPAIN.getCountryName(), "Madrid");
+
+        defalutMvSetting(mv, city);
+
+        return mv;
+    }
+
+    @RequestMapping(value = "/spain/malaga", method = RequestMethod.GET)
+    public ModelAndView malaga() {
+
+        ModelAndView mv = new ModelAndView();
+        City city = new City(Country.SPAIN.getCountryName(), "Malaga");
+
+        defalutMvSetting(mv, city);
+
+        return mv;
+    }
+
+    @RequestMapping(value = "/spain/salamanca", method = RequestMethod.GET)
+    public ModelAndView salamanca() {
+
+        ModelAndView mv = new ModelAndView();
+        City city = new City(Country.SPAIN.getCountryName(), "Salamanca");
+
+        defalutMvSetting(mv, city);
+
+        return mv;
+    }
+
+    @RequestMapping(value = "/spain/sevilla", method = RequestMethod.GET)
+    public ModelAndView sevilla() {
+
+        ModelAndView mv = new ModelAndView();
+        City city = new City(Country.SPAIN.getCountryName(), "Sevilla");
+
+        defalutMvSetting(mv, city);
+
+        return mv;
+    }
+
+    @RequestMapping(value = "/spain/valencia", method = RequestMethod.GET)
+    public ModelAndView valencia() {
+
+        ModelAndView mv = new ModelAndView();
+        City city = new City(Country.SPAIN.getCountryName(), "Valencia");
+
+        defalutMvSetting(mv, city);
+
+        return mv;
+    }
+
+    @RequestMapping(value = "/spain/zaragoza", method = RequestMethod.GET)
+    public ModelAndView zaragoza() {
+
+        ModelAndView mv = new ModelAndView();
+        City city = new City(Country.SPAIN.getCountryName(), "Zaragoza");
+
+        defalutMvSetting(mv, city);
+
+        return mv;
+    }
+
 }
