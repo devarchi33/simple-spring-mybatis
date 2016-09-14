@@ -40,13 +40,13 @@ public class MybatisConfig {
     private String MYSQL_DIRVER;
     @Value("${JSCAN_DRIVER}")
     private String JSCAN_DRIVER;
-    @Value("${IRUEN_DB_URL}")
+    @Value("${LOCAL_DB_URL}")
     private String IRUEN_DB_URL;
-    @Value("${JSCAN_DB_URL}")
+    @Value("${LOCAL_JSCAN_DB_URL}")
     private String JSCAN_DB_URL;
-    @Value("${IRUEN_USER}")
+    @Value("${LOCAL_USER}")
     private String USERNAME;
-    @Value("${IRUEN_PASSWORD}")
+    @Value("${LOCAL_PASSWORD}")
     private String PASSWORD;
     @Value("${DATASOURCE}")
     private String DATASOURCE_TYPE;
