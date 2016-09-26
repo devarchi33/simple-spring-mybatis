@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <header class="main-header">
     <!-- Logo -->
     <a href="/main/home" class="logo">
@@ -29,15 +30,11 @@
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        <span class="hidden-xs">Login with <c:out
-                                value="${sessionScope.get('loginUser').getEmail()}"/></span>
+                        <span class="hidden-xs">Logout</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            <p>
-                                Login with <c:out value="${sessionScope.get('loginUser').getEmail()}"/>
-                            </p>
                         </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">

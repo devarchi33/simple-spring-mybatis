@@ -1,6 +1,6 @@
 package com.devarchi33.dao;
 
-import com.devarchi33.domain.User;
+import com.devarchi33.domain.UserInfo;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -11,17 +11,17 @@ import java.util.List;
 @Repository
 public interface UserDao {
 
-    void signUpUser(User user);
+    void signUpUser(UserInfo user);
 
     String dummyQuery();
 
-    List<User> findAllUsers();
+    List<UserInfo> findAllUsers();
 
-    User findUserByEmail(String email);
+    UserInfo findUserByEmail(String email);
 
-    Boolean isValidUser(User user);
+    Boolean isValidUser(UserInfo user);
 
-    void updateUser(User user);
+    void updateUser(UserInfo user);
 
     void deleteUserByEmail(String email);
 }

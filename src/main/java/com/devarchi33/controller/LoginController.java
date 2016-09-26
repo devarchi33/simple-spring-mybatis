@@ -1,10 +1,11 @@
 package com.devarchi33.controller;
 
-import com.devarchi33.domain.User;
+import com.devarchi33.domain.UserInfo;
 import com.devarchi33.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  * Created by donghoon on 15. 8. 22..
+ * Modified by donghoon on 16. 9. 26..
  */
 @Controller
 @RequestMapping("/")
@@ -29,8 +31,8 @@ public class LoginController {
     private UserService userService;
 
     @ModelAttribute("user")
-    public User constructor() {
-        return new User();
+    public UserInfo constructor() {
+        return new UserInfo();
     }
 
     @RequestMapping(value = "signUp", method = RequestMethod.GET)
@@ -42,9 +44,9 @@ public class LoginController {
     }
 
     @RequestMapping(value = "signUp", method = RequestMethod.POST)
-    public ModelAndView signUpProc(@ModelAttribute("user") User user) {
+    public ModelAndView signUpProc(@ModelAttribute("user") UserInfo user) {
         ModelAndView mv;
-        User findUser = userService.findUserByEmail(user.getEmail());
+        UserInfo findUser = userService.findUserByEmail(user.getEmail());
 
         if (findUser != null) {
             mv = new ModelAndView("signUp");
@@ -69,43 +71,23 @@ public class LoginController {
         return mv;
     }
 
-//    @RequestMapping(value = "main", method = RequestMethod.POST)
-//    public ModelAndView main(@RequestParam("userThumb") String userThumb,
-//                             @RequestParam("kakaoNickName") String kakaoNickName) {
-//        ModelAndView mv = new ModelAndView("main");
-//        logger.info("Thumbnail url : " + userThumb);
-//        logger.info("kakaoNickName : " + kakaoNickName);
-//        this.thumbnailImg = userThumb;
-//        this.kakaoNickName = kakaoNickName;
-//        mv.addObject("thumbnail", this.thumbnailImg);
-//        mv.addObject("kakaoNickName", this.kakaoNickName);
-//        return mv;
-//    }
-
     @RequestMapping(value = "login", method = RequestMethod.POST)
-    public ModelAndView excuteLogin(@ModelAttribute("User") User user,
-                                    @RequestParam("userId") String form_email,
-                                    @RequestParam("password") String form_password,
-                                    HttpSession session) {
+    public ModelAndView excuteLogin(@RequestParam("userId") String form_email,
+                                    @RequestParam("password") String form_password) {
 
         logger.info("input email : {}, input password : {} ", form_email, form_password);
 
         ModelAndView mv = new ModelAndView();
 
-        user.setEmail(form_email);
-        user.setPassword(form_password);
+        UserDetails userDetails = userService.loadUserByUsername(form_email);
 
-        boolean checkUser = userService.isValidUser(user);
-
-        if (checkUser) {
+        // TODO: 2016. 9. 26. 로직수정. 
+        if (userDetails.isCredentialsNonExpired()) {
             logger.info("login success");
             mv.setViewName("main");
             mv.addObject("page", "home");
             mv.addObject("homeActive", ACTIVE);
             mv.addObject("title", "Home");
-
-            User loginUser = userService.findUserByEmail(form_email);
-            session.setAttribute("loginUser", loginUser);
         } else {
             logger.debug("login fail");
             mv.addObject("message2", "이메일 또는 패스워드를 확인해주세요.");
@@ -116,11 +98,8 @@ public class LoginController {
     }
 
     @RequestMapping(value = "logout", method = RequestMethod.POST)
-    public ModelAndView logout(HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        session.removeAttribute("loginUser");
-        ModelAndView mv = new ModelAndView("login");
-        return mv;
+    public ModelAndView logout() {
+        return login();
     }
 
 }

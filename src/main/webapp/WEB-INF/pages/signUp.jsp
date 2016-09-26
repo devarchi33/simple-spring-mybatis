@@ -1,7 +1,7 @@
 <%--
   Created by IntelliJ IDEA.
   User: donghoon
-  Date: 15. 8. 24.
+  Date: 16. 9. 26.
   Time: 오전 8:24
   To change this template use File | Settings | File Templates.
 --%>
@@ -115,13 +115,23 @@
                             <%--</div>--%>
                             <div class="form-group">
                                 <label class="sr-only" for="form-email">Email</label>
-                                <input type="email" name="email" placeholder="Email..."
-                                       class="form-email form-control" id="form-email">
+                                <form:input path="email" placeholder="Email..."
+                                            class="form-email form-control" id="form-email"/>
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="password">Password</label>
                                 <form:password path="password" placeholder="Password.."
                                                class="form-password form-control" id="form-password"/>
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="authority">Authority</label>
+                                <form:select path="authority" placeholder="Authority.."
+                                             class="form-authority form-control" id="form-authority">
+                                    <form:option value="권한을 선택하세요." disabled="true"/>
+                                    <form:option value="admin"/>
+                                    <form:option value="manager"/>
+                                    <form:option value="monitor"/>
+                                </form:select>
                             </div>
                             <button type="submit" class="btn">Sign me up!</button>
                         </form:form>

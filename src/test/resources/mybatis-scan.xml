@@ -40,7 +40,7 @@
         </property>
         <property name="typeAliases">
             <list>
-                <value>com.devarchi33.domain.User</value>
+                <value>com.devarchi33.domain.UserInfo</value>
             </list>
         </property>
     </bean>
@@ -50,7 +50,7 @@
         <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
     </bean>
 
-    <bean id="userService" class="com.devarchi33.service.UserServiceImpl">
+    <bean id="userService" class="com.devarchi33.service.UserService">
         <property name="userDao" ref="userDao"/>
     </bean>
 

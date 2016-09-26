@@ -1,9 +1,8 @@
 package com.devarchi33.config;
 
 import com.devarchi33.dao.UserDao;
-import com.devarchi33.domain.User;
+import com.devarchi33.domain.UserInfo;
 import com.devarchi33.service.UserService;
-import com.devarchi33.service.UserServiceImpl;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -25,6 +24,7 @@ import java.beans.PropertyVetoException;
 
 /**
  * Created by donghoon on 2016. 8. 12..
+ * Modified by donghoon on 2016. 9. 26..
  */
 @Configuration
 @EnableTransactionManagement
@@ -121,7 +121,7 @@ public class MybatisConfig {
 
         sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:/mybatis/user-mapper.xml"));
 
-        Class[] typeAliases = {User.class};
+        Class[] typeAliases = {UserInfo.class};
         sessionFactory.setTypeAliases(typeAliases);
 
         return sessionFactory.getObject();
@@ -138,7 +138,7 @@ public class MybatisConfig {
 
     @Bean
     public UserService userService() {
-        return new UserServiceImpl();
+        return new UserService();
     }
 
 }

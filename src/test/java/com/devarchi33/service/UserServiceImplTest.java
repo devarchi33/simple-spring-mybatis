@@ -1,7 +1,7 @@
 package com.devarchi33.service;
 
 import com.devarchi33.dao.UserDao;
-import com.devarchi33.domain.User;
+import com.devarchi33.domain.UserInfo;
 import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
@@ -35,8 +35,8 @@ public class UserServiceImplTest extends TestCase {
 
     @Test
     public void testFindAllUsers() throws Exception {
-        List<User> userList = userDao.findAllUsers();
-        User user1 = userList.get(0);
+        List<UserInfo> userList = userDao.findAllUsers();
+        UserInfo user1 = userList.get(0);
         assertEquals("skyfly33@iruen.com", user1.getEmail());
     }
 }

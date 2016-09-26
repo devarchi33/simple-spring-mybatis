@@ -1,13 +1,15 @@
 <%--
   Created by IntelliJ IDEA.
   User: donghoon
-  Date: 15. 8. 22.
+  Date: 16. 9. 26.
   Time: 오후 10:28
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -51,8 +53,6 @@
                     <div class="description">
                         <p>
                             <c:out value="${message2}"/>
-                            <%--Download it on <a href="http://azmind.com"><strong>AZMIND</strong></a>, customize and use it--%>
-                            <%--as you like!--%>
                         </p>
                     </div>
                 </div>

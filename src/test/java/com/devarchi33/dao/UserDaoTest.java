@@ -1,6 +1,6 @@
 package com.devarchi33.dao;
 
-import com.devarchi33.domain.User;
+import com.devarchi33.domain.UserInfo;
 import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
@@ -38,13 +38,13 @@ public class UserDaoTest extends TestCase {
     @Test
     public void testFindUserByEmail() throws Exception {
         String email = "skyfly33@iruen.com";
-        User user = userDao.findUserByEmail(email);
+        UserInfo user = userDao.findUserByEmail(email);
         assertEquals(email, user.getEmail());
     }
 
     @Test
     public void testIsValidUser() throws Exception {
-        User loginParam = new User(1L, "skyfly33@iruen.com", "iruen");
+        UserInfo loginParam = new UserInfo(1L, "skyfly33@iruen.com", "iruen");
 
         Boolean isValidUser = userDao.isValidUser(loginParam);
         assertTrue(isValidUser);
@@ -52,11 +52,11 @@ public class UserDaoTest extends TestCase {
 
     @Test
     public void testSignUpUser() throws Exception {
-        User signUpUser = new User("devarchi33@gmail.com", "devarchi33");
+        UserInfo signUpUser = new UserInfo("devarchi33@gmail.com", "devarchi33");
 
         userDao.signUpUser(signUpUser);
 
-        User getSignUpUser = userDao.findUserByEmail(signUpUser.getEmail());
+        UserInfo getSignUpUser = userDao.findUserByEmail(signUpUser.getEmail());
         assertEquals(signUpUser.getEmail(), getSignUpUser.getEmail());
     }
 }

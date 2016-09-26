@@ -1,6 +1,6 @@
 package com.devarchi33.controller;
 
-import com.devarchi33.domain.User;
+import com.devarchi33.domain.UserInfo;
 import com.devarchi33.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
  * Created by donghoon on 15. 8. 22..
+ * Modified by donghoon on 16. 9. 26..
  */
 @Controller
 @RequestMapping("/user")
@@ -28,27 +28,14 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public ModelAndView userList(HttpSession session) {
+    public ModelAndView userList() {
 
         ModelAndView mv = new ModelAndView();
-
-        boolean checkUser = session.getAttribute("loginUser") != null;
-
-        if (checkUser) {
-            User currentUser = (User) session.getAttribute("loginUser");
-            List<User> userList = userService.findAllUsers();
-            mv.setViewName("main");
-            mv.addObject("page", "userList");
-            mv.addObject("userList", userList);
-            mv.addObject("userListActive", ACTIVE);
-
-            User loginUser = userService.findUserByEmail(currentUser.getEmail());
-            session.setAttribute("loginUser", loginUser);
-        } else {
-            logger.debug("login fail");
-            mv.addObject("message2", "이메일 또는 패스워드를 확인해주세요.");
-            mv.setViewName("login");
-        }
+        List<UserInfo> userList = userService.findAllUsers();
+        mv.setViewName("main");
+        mv.addObject("page", "userList");
+        mv.addObject("userList", userList);
+        mv.addObject("userListActive", ACTIVE);
 
         return mv;
     }
@@ -57,20 +44,26 @@ public class UserController {
     public ModelAndView editUserPage(@RequestParam String email) {
         ModelAndView mv = new ModelAndView("main");
         mv.addObject("name", email.split("@")[0]);
+        mv.addObject("editEmail", email);
         mv.addObject("page", "editUser");
         return mv;
     }
 
     @RequestMapping(value = "/editUser", method = RequestMethod.POST)
     public ModelAndView editUser(@RequestParam String editEmail,
-                                 @RequestParam String editPassword) {
+                                 @RequestParam String editPassword,
+                                 @RequestParam String editAuthority) {
 
+        // TODO: 2016. 9. 26. 로직수정. 
         ModelAndView mv = new ModelAndView("main");
         mv.addObject("page", "userList");
 
-        User editUser = new User(editEmail, editPassword);
+        UserInfo editUser = userService.findUserByEmail(editEmail);
+        editUser.setPassword(editPassword);
+        editUser.setAuthority(editAuthority);
         userService.updateUser(editUser);
-        List<User> userList = userService.findAllUsers();
+
+        List<UserInfo> userList = userService.findAllUsers();
         mv.addObject("userList", userList);
 
         return mv;
@@ -83,7 +76,7 @@ public class UserController {
         ModelAndView mv = new ModelAndView("main");
         userService.deleteUserByEmail(email);
 
-        List<User> userList = userService.findAllUsers();
+        List<UserInfo> userList = userService.findAllUsers();
         mv.addObject("userList", userList);
 
         return mv;
