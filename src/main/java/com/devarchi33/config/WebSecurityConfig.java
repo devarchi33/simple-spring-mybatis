@@ -66,25 +66,36 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(UNAUTHORIZED_RESOURCE_LIST)
                 .permitAll()
                 .anyRequest()
-                .authenticated();
-        httpSecurity
+                .authenticated()
+                .and()
                 .formLogin()
                 .loginPage(LOGIN_FORM)
                 .loginProcessingUrl("/login")
                 .failureUrl(LOGIN_FORM + "?error")
                 .defaultSuccessUrl("/main/home", true) // auth success handler 가 우선적용됨.
                 .successHandler(authenticationSuccessHandler())
-                .usernameParameter("userId")
-                .passwordParameter("password")
-                .permitAll();
-        httpSecurity
+                .usernameParameter("userId") // custom user param default: j_username
+                .passwordParameter("password") // custom user password default: j_password
+                .permitAll()
+                .and()
                 .logout()
                 .logoutUrl("/logout")
+                .invalidateHttpSession(true)
                 .logoutSuccessUrl(LOGIN_FORM)
-                .permitAll();
-        httpSecurity.exceptionHandling().authenticationEntryPoint(authenticationEntryPoint());
-        httpSecurity.requestCache().requestCache(nullRequestCache());
-        httpSecurity.httpBasic();
+                .permitAll()
+                .and()
+                .sessionManagement()
+                .invalidSessionUrl(LOGIN_FORM)
+                .sessionAuthenticationErrorUrl(LOGIN_FORM)
+                .maximumSessions(1);
+        httpSecurity.
+                exceptionHandling()
+                .authenticationEntryPoint(authenticationEntryPoint())
+                .and()
+                .requestCache()
+                .requestCache(nullRequestCache())
+                .and()
+                .httpBasic();
     }
 
     @Override

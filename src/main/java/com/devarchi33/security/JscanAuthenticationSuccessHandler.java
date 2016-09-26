@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
@@ -23,12 +24,16 @@ public class JscanAuthenticationSuccessHandler implements AuthenticationSuccessH
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
 
         String retUrl = httpServletRequest.getParameter("returl");
+        String userId = httpServletRequest.getParameter("userId");
         String csrfToken = httpServletRequest.getParameter("_csrf");
+        logger.debug("userId: {}", userId);
         logger.debug("CSRF Token: {}", csrfToken);
 
         if (retUrl == null || retUrl.isEmpty()) {
 
-            // TODO: 2016. 9. 26. 최초 로그인 패스 지정하기.
+            HttpSession session = httpServletRequest.getSession();
+            session.setAttribute("JSCAN", userId);
+            httpServletRequest.setAttribute("userId", userId);
             httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/main/home");
             return;
         }
