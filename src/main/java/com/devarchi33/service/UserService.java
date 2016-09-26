@@ -57,10 +57,11 @@ public class UserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String loginEmail) throws UsernameNotFoundException {
         UserInfo userInfo = findUserByEmail(loginEmail);
 
-        log.debug("UserInfo: {}", userInfo.toString());
-
-        if (userInfo == null)
+        if (userInfo == null) {
             throw new UsernameNotFoundException(loginEmail);
+        }
+
+        log.debug("UserInfo: {}", userInfo.toString());
 
         List<String> permList = loadPermission(userInfo);
         List<GrantedAuthority> auth = new ArrayList<>();

@@ -29,7 +29,7 @@ public class JscanAuthenticationSuccessHandler implements AuthenticationSuccessH
         if (retUrl == null || retUrl.isEmpty()) {
 
             // TODO: 2016. 9. 26. 최초 로그인 패스 지정하기.
-            httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "??");
+            httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/main/home");
             return;
         }
 

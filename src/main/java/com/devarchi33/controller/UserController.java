@@ -2,9 +2,11 @@ package com.devarchi33.controller;
 
 import com.devarchi33.domain.UserInfo;
 import com.devarchi33.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,6 +26,8 @@ public class UserController {
     private final Logger logger = LoggerFactory.getLogger(UserController.class);
     private final String ACTIVE = "active";
 
+    @Autowired
+    private PasswordEncoder encoder;
     @Autowired
     private UserService userService;
 
@@ -54,12 +58,11 @@ public class UserController {
                                  @RequestParam String editPassword,
                                  @RequestParam String editAuthority) {
 
-        // TODO: 2016. 9. 26. 로직수정. 
         ModelAndView mv = new ModelAndView("main");
         mv.addObject("page", "userList");
 
         UserInfo editUser = userService.findUserByEmail(editEmail);
-        editUser.setPassword(editPassword);
+        editUser.setPassword(encoder.encode(editPassword));
         editUser.setAuthority(editAuthority);
         userService.updateUser(editUser);
 

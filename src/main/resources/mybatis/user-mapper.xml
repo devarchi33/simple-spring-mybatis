@@ -26,8 +26,8 @@
 
     <update id="updateUser" parameterType="com.devarchi33.domain.UserInfo">
         UPDATE cubeone_user
-        SET password = #{password}
-        AND authority = #{authority}
+        SET password = #{password},
+            authority = #{authority}
         WHERE email = #{email}
     </update>
 

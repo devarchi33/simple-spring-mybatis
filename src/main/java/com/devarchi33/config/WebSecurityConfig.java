@@ -32,10 +32,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserService userService;
 
-    private final String LOGIN_FORM = "/loginForm";
+    private final String LOGIN_FORM = "/";
+    private final String SIGNUP_FORM = "/signUp";
 
-    private final String[] UNSECURED_RESOURCE_LIST = new String[]{"/static/**"};
-    private final String[] UNAUTHORIZED_RESOURCE_LIST = new String[]{"/", LOGIN_FORM};
+    private final String[] UNSECURED_RESOURCE_LIST = new String[]{"/resources/**"};
+    private final String[] UNAUTHORIZED_RESOURCE_LIST = new String[]{LOGIN_FORM, SIGNUP_FORM};
 
     @Deprecated
     @Autowired
@@ -71,9 +72,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage(LOGIN_FORM)
                 .loginProcessingUrl("/login")
                 .failureUrl(LOGIN_FORM + "?error")
-                .defaultSuccessUrl("/dashboard/security", true)
+                .defaultSuccessUrl("/main/home", true) // auth success handler 가 우선적용됨.
                 .successHandler(authenticationSuccessHandler())
-                .usernameParameter("loginId")
+                .usernameParameter("userId")
                 .passwordParameter("password")
                 .permitAll();
         httpSecurity

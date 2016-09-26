@@ -30,11 +30,13 @@
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        <span class="hidden-xs">Logout</span>
+                        <span class="hidden-xs">Login with <sec:authentication property="principal.username"/></span>
+
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
+                            <p>Login with <sec:authentication property="principal.username"/></p>
                         </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">

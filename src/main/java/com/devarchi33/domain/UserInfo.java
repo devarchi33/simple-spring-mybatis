@@ -1,8 +1,10 @@
 package com.devarchi33.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.ToString;
 import org.apache.ibatis.type.Alias;
+import org.springframework.data.annotation.Id;
 
 /**
  * Created by donghoon on 15. 8. 22..
@@ -10,20 +12,15 @@ import org.apache.ibatis.type.Alias;
 @Alias("user")
 @Data
 @ToString
+@AllArgsConstructor
 public class UserInfo {
 
-    private Long id;
+    @Id
     private String email;
     private String password;
     private String authority;
 
     public UserInfo() {
-    }
-
-    public UserInfo(Long id, String email, String password) {
-        this.id = id;
-        this.email = email;
-        this.password = password;
     }
 
     public UserInfo(String email, String password) {
