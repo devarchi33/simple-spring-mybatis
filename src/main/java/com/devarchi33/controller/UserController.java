@@ -4,6 +4,7 @@ import com.devarchi33.domain.User;
 import com.devarchi33.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -58,22 +59,25 @@ public class UserController {
         ModelAndView mv = new ModelAndView("main");
         mv.addObject("name", email.split("@")[0]);
         mv.addObject("page", "editUser");
+        mv.addObject("editEmail", email);
         return mv;
     }
 
     @RequestMapping(value = "/editUser", method = RequestMethod.POST)
     public ModelAndView editUser(@RequestParam String editEmail,
-                                 @RequestParam String editPassword) {
+                                 @RequestParam String editPassword,
+                                 @RequestParam String editAuthority,
+                                 HttpSession session) {
 
         ModelAndView mv = new ModelAndView("main");
         mv.addObject("page", "userList");
 
-        User editUser = new User(editEmail, editPassword);
+        User editUser = userService.findUserByEmail(editEmail);
+        editUser.setPassword(editPassword);
+        editUser.setAuthority(editAuthority);
         userService.updateUser(editUser);
-        List<User> userList = userService.findAllUsers();
-        mv.addObject("userList", userList);
 
-        return mv;
+        return userList(session);
     }
 
     @RequestMapping(value = "/deleteUser", method = RequestMethod.POST)

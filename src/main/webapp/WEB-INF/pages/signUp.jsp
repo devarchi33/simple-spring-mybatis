@@ -123,6 +123,16 @@
                                 <form:password path="password" placeholder="Password.."
                                                class="form-password form-control" id="form-password"/>
                             </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="authority">Authority</label>
+                                <form:select path="authority" placeholder="Authority.."
+                                             class="form-authority form-control" id="form-authority">
+                                    <form:option value="권한을 선택하세요." disabled="true"/>
+                                    <form:option value="admin"/>
+                                    <form:option value="manager"/>
+                                    <form:option value="monitor"/>
+                                </form:select>
+                            </div>
                             <button type="submit" class="btn">Sign me up!</button>
                         </form:form>
                     </div>

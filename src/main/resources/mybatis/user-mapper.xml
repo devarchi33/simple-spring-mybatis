@@ -7,8 +7,8 @@
 <mapper namespace="com.devarchi33.dao.UserDao">
 
     <insert id="signUpUser" parameterType="com.devarchi33.domain.User">
-        INSERT INTO cubeone_user (email, password)
-        VALUES (#{email}, #{password})
+        INSERT INTO cubeone_user (email, password, authority)
+        VALUES (#{email}, #{password}, #{authority})
     </insert>
 
     <select id="dummyQuery" resultType="java.lang.String">
@@ -26,8 +26,8 @@
 
     <update id="updateUser" parameterType="com.devarchi33.domain.User">
         UPDATE cubeone_user
-        SET email = #{email}
-        AND password = #{password}
+        SET  password = #{password},
+             authority = #{authority}
         WHERE email = #{email}
     </update>
 

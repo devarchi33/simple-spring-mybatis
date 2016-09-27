@@ -44,7 +44,7 @@ public class UserDaoTest extends TestCase {
 
     @Test
     public void testIsValidUser() throws Exception {
-        User loginParam = new User(1L, "skyfly33@iruen.com", "iruen");
+        User loginParam = new User("skyfly33@iruen.com", "iruen", "admin");
 
         Boolean isValidUser = userDao.isValidUser(loginParam);
         assertTrue(isValidUser);

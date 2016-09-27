@@ -5,6 +5,7 @@
   Time: 오후 3:27
   To change this template use File | Settings | File Templates.
 --%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <section class="content-header">
     <ol class="breadcrumb">
@@ -35,8 +36,8 @@
                         <table class="table table-condensed">
                             <thead>
                             <tr role="row">
-                                <th>Email</th>
                                 <th>Password</th>
+                                <th>Authority</th>
                                 <th>Edit</th>
                                 <th>Back</th>
                             </tr>
@@ -44,9 +45,17 @@
                             <tbody>
                             <tr role="row" class="odd">
                                 <form:form role="form" action="/user/editUser" method="post">
-                                    <td><input type="text" name="editEmail" placeholder="email.."/>
+                                    <input type="hidden" name="editEmail" value="${editEmail}">
+                                    <td>
+                                        <input type="password" name="editPassword" placeholder="password.."/>
                                     </td>
-                                    <td><input type="password" name="editPassword" placeholder="password.."/>
+                                    <td>
+                                        <select class="form-control" name="editAuthority">
+                                            <option disabled="" selected="">권한을 선택해주세요.</option>
+                                            <option value="admin">ADMIN</option>
+                                            <option value="manager">MANAGER</option>
+                                            <option value="monitor">MONITOR</option>
+                                        </select>
                                     </td>
                                     <td>
                                         <button type="submit" class="btn btn-block btn-info btn-flat full-width">
